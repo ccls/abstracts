@@ -27,6 +27,10 @@
 
 == Installation 
 
+ script/generate ccls_engine
+ script/generate simply_authorized
+ script/generate simply_pages
+
 
 == Production Installation
 
