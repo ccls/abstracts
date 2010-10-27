@@ -1,0 +1,62 @@
+= UC Berkeley, School of Public Health, California Childhood Leukemia Study
+
+
+
+
+== Requirements
+
+* ruby >= 1.8.7 - primarily due to the liberal use of #inject
+* ruby <= 1.8.7 - primarily due to ruby 1.9.1 differences
+* rubygems
+* ImageMagick (which may require {MacPorts}[http://www.macports.org/])
+  * ImageMagick is used for image manipulation
+* curl - for the initial installation of rvm
+* mysql (not sqlite) - because ...
+  * a manually triggered rollback in the Addressing model
+  * the SubjectSearch model contains explicit MySQL code
+
+
+== Required Gem Sources
+
+ gem sources -a http://rubygems.org
+ gem sources -a http://gems.github.com
+
+== Required Gems
+
+
+
+== Required and included plugins
+
+
+== Installation 
+
+
+== Production Installation
+
+
+== Documentation
+
+
+== Testing
+
+
+== Further Info
+
+
+
+== To Do
+
+
+
+== Credit / Special Thanks
+
+User icons from {Gravatar}[http://gravatar.com]
+
+{Demo on css rounded corners}[http://css-radius.heroku.com]
+
+{Background image gradients}[http://gradients.glrzad.com/]
+
+{Equal column height example}[http://www.positioniseverything.net/articles/onetruelayout/equalheight]
+
+
+Copyright (c) 2010 [Jake Wendt], released under the MIT license
