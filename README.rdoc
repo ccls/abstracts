@@ -11,9 +11,6 @@
 * ImageMagick (which may require {MacPorts}[http://www.macports.org/])
   * ImageMagick is used for image manipulation
 * curl - for the initial installation of rvm
-* mysql (not sqlite) - because ...
-  * a manually triggered rollback in the Addressing model
-  * the SubjectSearch model contains explicit MySQL code
 
 
 == Required Gem Sources
