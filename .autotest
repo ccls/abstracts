@@ -1,0 +1,4 @@
+#require 'simply_pages/autotest'
+#require '/Users/jakewendt/github_repo/jakewendt/simply_pages/lib/simply_pages/autotest'
+#	From script/generate simply_pages ...
+require 'simply_pages/autotest'
