@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101027215815) do
+ActiveRecord::Schema.define(:version => 20101029225056) do
 
   create_table "pages", :force => true do |t|
     t.integer  "position"
