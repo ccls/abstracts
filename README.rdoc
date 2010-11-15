@@ -28,6 +28,7 @@
 == Installation 
 
  script/generate ccls_engine
+ script/generate calnet_authenticated User
  script/generate simply_authorized
  script/generate simply_pages
 
