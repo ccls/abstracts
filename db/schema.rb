@@ -76,42 +76,42 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.integer  "patient_on_chemo_protocol"
     t.string   "chemo_protocol_name"
     t.text     "chemo_protocol_agent_description"
-    t.string   "response_CD10_day_14",              :limit => 10
-    t.string   "response_CD10_day_7",               :limit => 10
-    t.string   "response_CD13_day_14",              :limit => 10
-    t.string   "response_CD13_day_7",               :limit => 10
-    t.string   "response_CD14_day_14",              :limit => 10
-    t.string   "response_CD14_day_7",               :limit => 10
-    t.string   "response_CD15_day_14",              :limit => 10
-    t.string   "response_CD15_day_7",               :limit => 10
-    t.string   "response_CD19_day_14",              :limit => 10
-    t.string   "response_CD19_day_7",               :limit => 10
-    t.string   "response_CD19CD10_day_14",          :limit => 10
-    t.string   "response_CD19CD10_day_7",           :limit => 10
-    t.string   "response_CD1a_day_14",              :limit => 10
-    t.string   "response_CD2a_day_14",              :limit => 10
-    t.string   "response_CD20_day_14",              :limit => 10
-    t.string   "response_CD20_day_7",               :limit => 10
-    t.string   "response_CD3a_day_14",              :limit => 10
-    t.string   "response_CD3_day_7",                :limit => 10
-    t.string   "response_CD33_day_14",              :limit => 10
-    t.string   "response_CD33_day_7",               :limit => 10
-    t.string   "response_CD34_day_14",              :limit => 10
-    t.string   "response_CD34_day_7",               :limit => 10
-    t.string   "response_CD4a_day_14",              :limit => 10
-    t.string   "response_CD5a_day_14",              :limit => 10
-    t.string   "response_CD56_day_14",              :limit => 10
-    t.string   "response_CD61_day_14",              :limit => 10
-    t.string   "response_CD7a_day_14",              :limit => 10
-    t.string   "response_CD8a_day_14",              :limit => 10
+    t.string   "response_cd10_day_14",              :limit => 10
+    t.string   "response_cd10_day_7",               :limit => 10
+    t.string   "response_cd13_day_14",              :limit => 10
+    t.string   "response_cd13_day_7",               :limit => 10
+    t.string   "response_cd14_day_14",              :limit => 10
+    t.string   "response_cd14_day_7",               :limit => 10
+    t.string   "response_cd15_day_14",              :limit => 10
+    t.string   "response_cd15_day_7",               :limit => 10
+    t.string   "response_cd19_day_14",              :limit => 10
+    t.string   "response_cd19_day_7",               :limit => 10
+    t.string   "response_cd19cd10_day_14",          :limit => 10
+    t.string   "response_cd19cd10_day_7",           :limit => 10
+    t.string   "response_cd1a_day_14",              :limit => 10
+    t.string   "response_cd2a_day_14",              :limit => 10
+    t.string   "response_cd20_day_14",              :limit => 10
+    t.string   "response_cd20_day_7",               :limit => 10
+    t.string   "response_cd3a_day_14",              :limit => 10
+    t.string   "response_cd3_day_7",                :limit => 10
+    t.string   "response_cd33_day_14",              :limit => 10
+    t.string   "response_cd33_day_7",               :limit => 10
+    t.string   "response_cd34_day_14",              :limit => 10
+    t.string   "response_cd34_day_7",               :limit => 10
+    t.string   "response_cd4a_day_14",              :limit => 10
+    t.string   "response_cd5a_day_14",              :limit => 10
+    t.string   "response_cd56_day_14",              :limit => 10
+    t.string   "response_cd61_day_14",              :limit => 10
+    t.string   "response_cd7a_day_14",              :limit => 10
+    t.string   "response_cd8a_day_14",              :limit => 10
     t.integer  "response_day30_is_in_remission"
     t.string   "chest_imaging_report_found",        :limit => 5
     t.date     "chest_imaging_report_on"
     t.string   "mediastial_mass_present",           :limit => 18
     t.text     "chest_imaging_comment"
-    t.string   "received_chest_CT",                 :limit => 50
-    t.string   "chest_CT_taken_on",                 :limit => 50
-    t.string   "chest_CT_medmass_present",          :limit => 50
+    t.string   "received_chest_ct",                 :limit => 50
+    t.string   "chest_ct_taken_on",                 :limit => 50
+    t.string   "chest_ct_medmass_present",          :limit => 50
     t.datetime "legacy_timestamp"
     t.integer  "user_id"
     t.integer  "cytogen_trisomy10"
@@ -131,14 +131,14 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.text     "cytogen_comment"
     t.boolean  "is_verification_complete"
     t.text     "discharge_summary"
-    t.integer  "diagnosis_is_B_ALL"
-    t.integer  "diagnosis_is_T_ALL"
-    t.string   "diagnosis_is_ALL",                  :limit => 20
-    t.string   "diagnosis_ALL_type",                :limit => 20
-    t.string   "diagnosis_is_CML",                  :limit => 20
-    t.string   "diagnosis_is_CLL",                  :limit => 20
-    t.string   "diagnosis_is_AML",                  :limit => 20
-    t.string   "diagnosis_AML_type",                :limit => 20
+    t.integer  "diagnosis_is_b_all"
+    t.integer  "diagnosis_is_t_all"
+    t.string   "diagnosis_is_all",                  :limit => 20
+    t.string   "diagnosis_all_type",                :limit => 20
+    t.string   "diagnosis_is_cml",                  :limit => 20
+    t.string   "diagnosis_is_cll",                  :limit => 20
+    t.string   "diagnosis_is_aml",                  :limit => 20
+    t.string   "diagnosis_aml_type",                :limit => 20
     t.string   "diagnosis_is_other",                :limit => 40
     t.string   "flow_cyto_report_found",            :limit => 5
     t.integer  "received_flow_cyto_day_14"
@@ -147,14 +147,14 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.date     "response_flow_cyto_day_14_on"
     t.date     "response_flow_cyto_day_7_on"
     t.string   "flow_cyto_cd10",                    :limit => 10
-    t.string   "flow_cyto_igM",                     :limit => 10
-    t.string   "flow_cyto_igM_text",                :limit => 50
-    t.string   "flow_cyto_BM_kappa",                :limit => 10
-    t.string   "flow_cyto_BM_kappa_text",           :limit => 50
-    t.string   "flow_cyto_BM_lambda",               :limit => 10
-    t.string   "flow_cyto_BM_lambda_text",          :limit => 50
-    t.string   "flow_cyto_CD10_19",                 :limit => 10
-    t.string   "flow_cyto_CD10_19_text",            :limit => 50
+    t.string   "flow_cyto_igm",                     :limit => 10
+    t.string   "flow_cyto_igm_text",                :limit => 50
+    t.string   "flow_cyto_bm_kappa",                :limit => 10
+    t.string   "flow_cyto_bm_kappa_text",           :limit => 50
+    t.string   "flow_cyto_bm_lambda",               :limit => 10
+    t.string   "flow_cyto_bm_lambda_text",          :limit => 50
+    t.string   "flow_cyto_cd10_19",                 :limit => 10
+    t.string   "flow_cyto_cd10_19_text",            :limit => 50
     t.string   "flow_cyto_cd10_text",               :limit => 50
     t.string   "flow_cyto_cd19",                    :limit => 10
     t.string   "flow_cyto_cd19_text",               :limit => 50
@@ -172,24 +172,24 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.string   "flow_cyto_cd40_text",               :limit => 50
     t.string   "flow_cyto_surface_ig",              :limit => 10
     t.string   "flow_cyto_surface_ig_text",         :limit => 50
-    t.string   "flow_cyto_CD1a",                    :limit => 10
-    t.string   "flow_cyto_CD1a_text",               :limit => 50
-    t.string   "flow_cyto_CD2",                     :limit => 10
-    t.string   "flow_cyto_CD2_text",                :limit => 50
-    t.string   "flow_cyto_CD3",                     :limit => 10
-    t.string   "flow_cyto_CD3_text",                :limit => 50
-    t.string   "flow_cyto_CD4",                     :limit => 10
-    t.string   "flow_cyto_CD4_text",                :limit => 50
-    t.string   "flow_cyto_CD5",                     :limit => 10
-    t.string   "flow_cyto_CD5_text",                :limit => 50
-    t.string   "flow_cyto_CD7",                     :limit => 10
-    t.string   "flow_cyto_CD7_text",                :limit => 50
-    t.string   "flow_cyto_CD8",                     :limit => 10
-    t.string   "flow_cyto_CD8_text",                :limit => 50
-    t.string   "flow_cyto_CD3_CD4",                 :limit => 10
-    t.string   "flow_cyto_CD3_CD4_text",            :limit => 50
-    t.string   "flow_cyto_CD3_CD8",                 :limit => 10
-    t.string   "flow_cyto_CD3_CD8_text",            :limit => 50
+    t.string   "flow_cyto_cd1a",                    :limit => 10
+    t.string   "flow_cyto_cd1a_text",               :limit => 50
+    t.string   "flow_cyto_cd2",                     :limit => 10
+    t.string   "flow_cyto_cd2_text",                :limit => 50
+    t.string   "flow_cyto_cd3",                     :limit => 10
+    t.string   "flow_cyto_cd3_text",                :limit => 50
+    t.string   "flow_cyto_cd4",                     :limit => 10
+    t.string   "flow_cyto_cd4_text",                :limit => 50
+    t.string   "flow_cyto_cd5",                     :limit => 10
+    t.string   "flow_cyto_cd5_text",                :limit => 50
+    t.string   "flow_cyto_cd7",                     :limit => 10
+    t.string   "flow_cyto_cd7_text",                :limit => 50
+    t.string   "flow_cyto_cd8",                     :limit => 10
+    t.string   "flow_cyto_cd8_text",                :limit => 50
+    t.string   "flow_cyto_cd3_cd4",                 :limit => 10
+    t.string   "flow_cyto_cd3_cd4_text",            :limit => 50
+    t.string   "flow_cyto_cd3_cd8",                 :limit => 10
+    t.string   "flow_cyto_cd3_cd8_text",            :limit => 50
     t.string   "flow_cyto_cd11b",                   :limit => 10
     t.string   "flow_cyto_cd11b_text",              :limit => 50
     t.string   "flow_cyto_cd11c",                   :limit => 10
@@ -210,8 +210,8 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.string   "flow_cyto_cd61_text",               :limit => 50
     t.string   "flow_cyto_cd14",                    :limit => 10
     t.string   "flow_cyto_cd14_text",               :limit => 50
-    t.string   "flow_cyto_glycoA",                  :limit => 10
-    t.string   "flow_cyto_glycoA_text",             :limit => 50
+    t.string   "flow_cyto_glycoa",                  :limit => 10
+    t.string   "flow_cyto_glycoa_text",             :limit => 50
     t.string   "flow_cyto_cd16",                    :limit => 10
     t.string   "flow_cyto_cd16_text",               :limit => 50
     t.string   "flow_cyto_cd56",                    :limit => 10
@@ -248,7 +248,7 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.string   "flow_cyto_other_marker_5",          :limit => 4
     t.string   "flow_cyto_other_marker_5_text",     :limit => 50
     t.text     "flow_cyto_remarks"
-    t.string   "Tdt_often_found_flow_cytometry",    :limit => 5
+    t.string   "tdt_often_found_flow_cytometry",    :limit => 5
     t.string   "tdt_report_found",                  :limit => 5
     t.date     "tdt_report_on"
     t.string   "tdt_positive_or_negative",          :limit => 10
@@ -260,10 +260,10 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.integer  "cytogen_karyotype_done"
     t.integer  "cytogen_hospital_fish_done"
     t.string   "hospital_fish_results"
-    t.integer  "cytogen_UCB_fish_done"
-    t.string   "UCB_fish_results",                  :limit => 50
-    t.string   "response_HLADR_day_14",             :limit => 10
-    t.string   "response_HLADR_day_7",              :limit => 10
+    t.integer  "cytogen_ucb_fish_done"
+    t.string   "ucb_fish_results",                  :limit => 50
+    t.string   "response_hladr_day_14",             :limit => 10
+    t.string   "response_hladr_day_7",              :limit => 10
     t.string   "histo_report_found",                :limit => 5
     t.date     "histo_report_on"
     t.text     "histo_report_results"
@@ -306,8 +306,8 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.string   "is_hypodiploid",                    :limit => 5
     t.string   "is_hyperdiploid",                   :limit => 5
     t.string   "is_diploid",                        :limit => 5
-    t.string   "DNA_index",                         :limit => 5
-    t.string   "other_DNA_measure",                 :limit => 15
+    t.string   "dna_index",                         :limit => 5
+    t.string   "other_dna_measure",                 :limit => 15
     t.string   "ploidy_comment",                    :limit => 100
     t.integer  "hepatomegaly_present"
     t.integer  "splenomegaly_present"
@@ -319,9 +319,9 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.string   "response_other3_name_day_14",       :limit => 25
     t.string   "response_other4_name_day_14",       :limit => 25
     t.string   "response_other5_name_day_14",       :limit => 25
-    t.string   "FAB_classification",                :limit => 50
-    t.string   "diagnosis_ICDO_description",        :limit => 55
-    t.string   "diagnosis_ICDO_number",             :limit => 50
+    t.string   "fab_classification",                :limit => 50
+    t.string   "diagnosis_icdo_description",        :limit => 55
+    t.string   "diagnosis_icdo_number",             :limit => 50
     t.string   "cytogen_t1221",                     :limit => 9
     t.string   "cytogen_inv16",                     :limit => 9
     t.string   "cytogen_t119",                      :limit => 9

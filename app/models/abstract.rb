@@ -32,61 +32,61 @@ class Abstract < ActiveRecord::Base
 		:allow_blank => true, :maximum => 250 )
 	validates_length_of( :chemo_protocol_agent_description,
 		:allow_blank => true, :maximum => 65000 )
-	validates_length_of( :response_CD10_day_14,
+	validates_length_of( :response_cd10_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD10_day_7,
+	validates_length_of( :response_cd10_day_7,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD13_day_14,
+	validates_length_of( :response_cd13_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD13_day_7,
+	validates_length_of( :response_cd13_day_7,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD14_day_14,
+	validates_length_of( :response_cd14_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD14_day_7,
+	validates_length_of( :response_cd14_day_7,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD15_day_14,
+	validates_length_of( :response_cd15_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD15_day_7,
+	validates_length_of( :response_cd15_day_7,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD19_day_14,
+	validates_length_of( :response_cd19_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD19_day_7,
+	validates_length_of( :response_cd19_day_7,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD19CD10_day_14,
+	validates_length_of( :response_cd19cd10_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD19CD10_day_7,
+	validates_length_of( :response_cd19cd10_day_7,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD1a_day_14,
+	validates_length_of( :response_cd1a_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD2a_day_14,
+	validates_length_of( :response_cd2a_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD20_day_14,
+	validates_length_of( :response_cd20_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD20_day_7,
+	validates_length_of( :response_cd20_day_7,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD3a_day_14,
+	validates_length_of( :response_cd3a_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD3_day_7,
+	validates_length_of( :response_cd3_day_7,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD33_day_14,
+	validates_length_of( :response_cd33_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD33_day_7,
+	validates_length_of( :response_cd33_day_7,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD34_day_14,
+	validates_length_of( :response_cd34_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD34_day_7,
+	validates_length_of( :response_cd34_day_7,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD4a_day_14,
+	validates_length_of( :response_cd4a_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD5a_day_14,
+	validates_length_of( :response_cd5a_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD56_day_14,
+	validates_length_of( :response_cd56_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD61_day_14,
+	validates_length_of( :response_cd61_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD7a_day_14,
+	validates_length_of( :response_cd7a_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_CD8a_day_14,
+	validates_length_of( :response_cd8a_day_14,
 		:allow_blank => true, :maximum => 10 )
 	validates_length_of( :chest_imaging_report_found,
 		:allow_blank => true, :maximum => 5 )
@@ -94,11 +94,11 @@ class Abstract < ActiveRecord::Base
 		:allow_blank => true, :maximum => 18 )
 	validates_length_of( :chest_imaging_comment,
 		:allow_blank => true, :maximum => 65000 )
-	validates_length_of( :received_chest_CT,
+	validates_length_of( :received_chest_ct,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :chest_CT_taken_on,
+	validates_length_of( :chest_ct_taken_on,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :chest_CT_medmass_present,
+	validates_length_of( :chest_ct_medmass_present,
 		:allow_blank => true, :maximum => 50 )
 	validates_length_of( :cytogen_report_found,
 		:allow_blank => true, :maximum => 5 )
@@ -114,17 +114,17 @@ class Abstract < ActiveRecord::Base
 		:allow_blank => true, :maximum => 65000 )
 	validates_length_of( :discharge_summary,
 		:allow_blank => true, :maximum => 65000 )
-	validates_length_of( :diagnosis_is_ALL,
+	validates_length_of( :diagnosis_is_all,
 		:allow_blank => true, :maximum => 20 )
-	validates_length_of( :diagnosis_ALL_type,
+	validates_length_of( :diagnosis_all_type,
 		:allow_blank => true, :maximum => 20 )
-	validates_length_of( :diagnosis_is_CML,
+	validates_length_of( :diagnosis_is_cml,
 		:allow_blank => true, :maximum => 20 )
-	validates_length_of( :diagnosis_is_CLL,
+	validates_length_of( :diagnosis_is_cll,
 		:allow_blank => true, :maximum => 20 )
-	validates_length_of( :diagnosis_is_AML,
+	validates_length_of( :diagnosis_is_aml,
 		:allow_blank => true, :maximum => 20 )
-	validates_length_of( :diagnosis_AML_type,
+	validates_length_of( :diagnosis_aml_type,
 		:allow_blank => true, :maximum => 20 )
 	validates_length_of( :diagnosis_is_other,
 		:allow_blank => true, :maximum => 40 )
@@ -132,21 +132,21 @@ class Abstract < ActiveRecord::Base
 		:allow_blank => true, :maximum => 5 )
 	validates_length_of( :flow_cyto_cd10,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :flow_cyto_igM,
+	validates_length_of( :flow_cyto_igm,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :flow_cyto_igM_text,
+	validates_length_of( :flow_cyto_igm_text,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :flow_cyto_BM_kappa,
+	validates_length_of( :flow_cyto_bm_kappa,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :flow_cyto_BM_kappa_text,
+	validates_length_of( :flow_cyto_bm_kappa_text,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :flow_cyto_BM_lambda,
+	validates_length_of( :flow_cyto_bm_lambda,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :flow_cyto_BM_lambda_text,
+	validates_length_of( :flow_cyto_bm_lambda_text,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :flow_cyto_CD10_19,
+	validates_length_of( :flow_cyto_cd10_19,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :flow_cyto_CD10_19_text,
+	validates_length_of( :flow_cyto_cd10_19_text,
 		:allow_blank => true, :maximum => 50 )
 	validates_length_of( :flow_cyto_cd10_text,
 		:allow_blank => true, :maximum => 50 )
@@ -182,41 +182,41 @@ class Abstract < ActiveRecord::Base
 		:allow_blank => true, :maximum => 10 )
 	validates_length_of( :flow_cyto_surface_ig_text,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :flow_cyto_CD1a,
+	validates_length_of( :flow_cyto_cd1a,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :flow_cyto_CD1a_text,
+	validates_length_of( :flow_cyto_cd1a_text,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :flow_cyto_CD2,
+	validates_length_of( :flow_cyto_cd2,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :flow_cyto_CD2_text,
+	validates_length_of( :flow_cyto_cd2_text,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :flow_cyto_CD3,
+	validates_length_of( :flow_cyto_cd3,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :flow_cyto_CD3_text,
+	validates_length_of( :flow_cyto_cd3_text,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :flow_cyto_CD4,
+	validates_length_of( :flow_cyto_cd4,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :flow_cyto_CD4_text,
+	validates_length_of( :flow_cyto_cd4_text,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :flow_cyto_CD5,
+	validates_length_of( :flow_cyto_cd5,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :flow_cyto_CD5_text,
+	validates_length_of( :flow_cyto_cd5_text,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :flow_cyto_CD7,
+	validates_length_of( :flow_cyto_cd7,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :flow_cyto_CD7_text,
+	validates_length_of( :flow_cyto_cd7_text,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :flow_cyto_CD8,
+	validates_length_of( :flow_cyto_cd8,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :flow_cyto_CD8_text,
+	validates_length_of( :flow_cyto_cd8_text,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :flow_cyto_CD3_CD4,
+	validates_length_of( :flow_cyto_cd3_cd4,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :flow_cyto_CD3_CD4_text,
+	validates_length_of( :flow_cyto_cd3_cd4_text,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :flow_cyto_CD3_CD8,
+	validates_length_of( :flow_cyto_cd3_cd8,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :flow_cyto_CD3_CD8_text,
+	validates_length_of( :flow_cyto_cd3_cd8_text,
 		:allow_blank => true, :maximum => 50 )
 	validates_length_of( :flow_cyto_cd11b,
 		:allow_blank => true, :maximum => 10 )
@@ -258,9 +258,9 @@ class Abstract < ActiveRecord::Base
 		:allow_blank => true, :maximum => 10 )
 	validates_length_of( :flow_cyto_cd14_text,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :flow_cyto_glycoA,
+	validates_length_of( :flow_cyto_glycoa,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :flow_cyto_glycoA_text,
+	validates_length_of( :flow_cyto_glycoa_text,
 		:allow_blank => true, :maximum => 50 )
 	validates_length_of( :flow_cyto_cd16,
 		:allow_blank => true, :maximum => 10 )
@@ -334,7 +334,7 @@ class Abstract < ActiveRecord::Base
 		:allow_blank => true, :maximum => 50 )
 	validates_length_of( :flow_cyto_remarks,
 		:allow_blank => true, :maximum => 65000 )
-	validates_length_of( :Tdt_often_found_flow_cytometry,
+	validates_length_of( :tdt_often_found_flow_cytometry,
 		:allow_blank => true, :maximum => 5 )
 	validates_length_of( :tdt_report_found,
 		:allow_blank => true, :maximum => 5 )
@@ -346,11 +346,11 @@ class Abstract < ActiveRecord::Base
 		:allow_blank => true, :maximum => 65000 )
 	validates_length_of( :hospital_fish_results,
 		:allow_blank => true, :maximum => 250 )
-	validates_length_of( :UCB_fish_results,
+	validates_length_of( :ucb_fish_results,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :response_HLADR_day_14,
+	validates_length_of( :response_hladr_day_14,
 		:allow_blank => true, :maximum => 10 )
-	validates_length_of( :response_HLADR_day_7,
+	validates_length_of( :response_hladr_day_7,
 		:allow_blank => true, :maximum => 10 )
 	validates_length_of( :histo_report_found,
 		:allow_blank => true, :maximum => 5 )
@@ -398,9 +398,9 @@ class Abstract < ActiveRecord::Base
 		:allow_blank => true, :maximum => 5 )
 	validates_length_of( :is_diploid,
 		:allow_blank => true, :maximum => 5 )
-	validates_length_of( :DNA_index,
+	validates_length_of( :dna_index,
 		:allow_blank => true, :maximum => 5 )
-	validates_length_of( :other_DNA_measure,
+	validates_length_of( :other_dna_measure,
 		:allow_blank => true, :maximum => 15 )
 	validates_length_of( :ploidy_comment,
 		:allow_blank => true, :maximum => 100 )
@@ -420,11 +420,11 @@ class Abstract < ActiveRecord::Base
 		:allow_blank => true, :maximum => 25 )
 	validates_length_of( :response_other5_name_day_14,
 		:allow_blank => true, :maximum => 25 )
-	validates_length_of( :FAB_classification,
+	validates_length_of( :fab_classification,
 		:allow_blank => true, :maximum => 50 )
-	validates_length_of( :diagnosis_ICDO_description,
+	validates_length_of( :diagnosis_icdo_description,
 		:allow_blank => true, :maximum => 55 )
-	validates_length_of( :diagnosis_ICDO_number,
+	validates_length_of( :diagnosis_icdo_number,
 		:allow_blank => true, :maximum => 50 )
 	validates_length_of( :cytogen_t1221,
 		:allow_blank => true, :maximum => 9 )
