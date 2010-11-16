@@ -152,8 +152,8 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.string   "flow_cyto_BM_kappa_text",           :limit => 50
     t.string   "flow_cyto_BM_lambda",               :limit => 10
     t.string   "flow_cyto_BM_lambda_text",          :limit => 50
-    t.string   "flow_cyto_CD10+19",                 :limit => 10
-    t.string   "flow_cyto_CD10+19_text",            :limit => 50
+    t.string   "flow_cyto_CD10_19",                 :limit => 10
+    t.string   "flow_cyto_CD10_19_text",            :limit => 50
     t.string   "flow_cyto_cd10_text",               :limit => 50
     t.string   "flow_cyto_cd19",                    :limit => 10
     t.string   "flow_cyto_cd19_text",               :limit => 50
@@ -185,10 +185,10 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.string   "flow_cyto_CD7_text",                :limit => 50
     t.string   "flow_cyto_CD8",                     :limit => 10
     t.string   "flow_cyto_CD8_text",                :limit => 50
-    t.string   "flow_cyto_CD3+CD4",                 :limit => 10
-    t.string   "flow_cyto_CD3+CD4_text",            :limit => 50
-    t.string   "flow_cyto_CD3+CD8",                 :limit => 10
-    t.string   "flow_cyto_CD3+CD8_text",            :limit => 50
+    t.string   "flow_cyto_CD3_CD4",                 :limit => 10
+    t.string   "flow_cyto_CD3_CD4_text",            :limit => 50
+    t.string   "flow_cyto_CD3_CD8",                 :limit => 10
+    t.string   "flow_cyto_CD3_CD8_text",            :limit => 50
     t.string   "flow_cyto_cd11b",                   :limit => 10
     t.string   "flow_cyto_cd11b_text",              :limit => 50
     t.string   "flow_cyto_cd11c",                   :limit => 10
@@ -265,6 +265,7 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.string   "response_HLADR_day_7",              :limit => 10
     t.string   "histo_report_found",                :limit => 5
     t.datetime "histo_report_on"
+    t.text     "histo_report_results"
     t.datetime "diagnosed_on"
     t.datetime "treatment_began_on"
     t.integer  "response_is_inconclusive_day_14"
