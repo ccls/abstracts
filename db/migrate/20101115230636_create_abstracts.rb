@@ -103,7 +103,6 @@ class CreateAbstracts < ActiveRecord::Migration
 			t.string   :chest_ct_taken_on, :limit => 50
 			t.string   :chest_ct_medmass_present, :limit => 50
 #			t.datetime :created_at	# todo created_at used by rails
-			t.datetime :legacy_timestamp
 #			t.integer  :created_by
 			t.integer  :user_id
 			t.integer  :cytogen_trisomy10

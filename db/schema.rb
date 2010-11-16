@@ -112,7 +112,6 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.string   "received_chest_ct",                 :limit => 50
     t.string   "chest_ct_taken_on",                 :limit => 50
     t.string   "chest_ct_medmass_present",          :limit => 50
-    t.datetime "legacy_timestamp"
     t.integer  "user_id"
     t.integer  "cytogen_trisomy10"
     t.integer  "cytogen_trisomy17"
