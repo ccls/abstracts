@@ -36,24 +36,24 @@ class CreateAbstracts < ActiveRecord::Migration
 			t.string   :response_blasts_units_day_7,  :limit => 15
 			t.integer  :response_in_remission_day_14
 			t.integer  :marrow_biopsy_report_found
-			t.datetime :marrow_biopsy_on
+			t.date     :marrow_biopsy_on
 			t.text     :marrow_biopsy_diagnosis
 			t.integer  :marrow_aspirate_report_found
-			t.datetime :marrow_aspirate_taken_on
+			t.date     :marrow_aspirate_taken_on
 			t.text     :marrow_aspirate_diagnosis
 			t.integer  :response_marrow_kappa_day_14
 			t.integer  :response_marrow_kappa_day_7
 			t.integer  :response_marrow_lambda_day_14
 			t.integer  :response_marrow_lambda_day_7
 			t.integer  :cbc_report_found
-			t.datetime :cbc_report_on
+			t.date     :cbc_report_on
 			t.decimal  :cbc_white_blood_count
 			t.integer  :cbc_percent_blasts
 			t.integer  :cbc_number_blasts
 			t.decimal  :cbc_hemoglobin_level
 			t.integer  :cbc_platelet_count
 			t.integer  :cerebrospinal_fluid_report_found
-			t.datetime :csf_report_on
+			t.date     :csf_report_on
 			t.integer  :csf_white_blood_count
 			t.text     :csf_white_blood_count_text
 			t.integer  :csf_red_blood_count
@@ -96,14 +96,16 @@ class CreateAbstracts < ActiveRecord::Migration
 			t.string   :response_CD8a_day_14, :limit => 10
 			t.integer  :response_day30_is_in_remission
 			t.string   :chest_imaging_report_found, :limit => 5
-			t.datetime :chest_imaging_report_on
+			t.date     :chest_imaging_report_on
 			t.string   :mediastial_mass_present, :limit => 18
 			t.text     :chest_imaging_comment
 			t.string   :received_chest_CT, :limit => 50
 			t.string   :chest_CT_taken_on, :limit => 50
 			t.string   :chest_CT_medmass_present, :limit => 50
 #			t.datetime :created_at	# TODO created_at used by rails
-			t.integer  :created_by
+			t.datetime :legacy_timestamp
+#			t.integer  :created_by
+			t.integer  :user_id
 			t.integer  :cytogen_trisomy10
 			t.integer  :cytogen_trisomy17
 			t.integer  :cytogen_trisomy21
@@ -111,7 +113,7 @@ class CreateAbstracts < ActiveRecord::Migration
 			t.integer  :cytogen_trisomy4
 			t.integer  :cytogen_trisomy5
 			t.string   :cytogen_report_found, :limit => 5
-			t.datetime :cytogen_report_on
+			t.date     :cytogen_report_on
 			t.string   :conventional_karyotype_results
 			t.string   :normal_cytogen, :limit => 5
 			t.string   :is_cytogen_hosp_fish_t1221_done, :limit => 5
@@ -133,9 +135,9 @@ class CreateAbstracts < ActiveRecord::Migration
 			t.string   :flow_cyto_report_found, :limit => 5
 			t.integer  :received_flow_cyto_day_14
 			t.integer  :received_flow_cyto_day_7
-			t.datetime :flow_cyto_report_on
-			t.datetime :response_flow_cyto_day_14_on
-			t.datetime :response_flow_cyto_day_7_on
+			t.date     :flow_cyto_report_on
+			t.date     :response_flow_cyto_day_14_on
+			t.date     :response_flow_cyto_day_7_on
 			t.string   :flow_cyto_cd10, :limit => 10
 			t.string   :flow_cyto_igM,  :limit => 10
 			t.string   :flow_cyto_igM_text, :limit => 50
@@ -240,7 +242,7 @@ class CreateAbstracts < ActiveRecord::Migration
 			t.text     :flow_cyto_remarks
 			t.string   :Tdt_often_found_flow_cytometry, :limit => 5
 			t.string   :tdt_report_found, :limit => 5
-			t.datetime :tdt_report_on
+			t.date     :tdt_report_on
 			t.string   :tdt_positive_or_negative, :limit => 10
 			t.integer  :tdt_numerical_result
 			t.boolean  :tdt_found_in_flow_cyto_chart
@@ -255,20 +257,22 @@ class CreateAbstracts < ActiveRecord::Migration
 			t.string   :response_HLADR_day_14, :limit => 10
 			t.string   :response_HLADR_day_7, :limit => 10
 			t.string   :histo_report_found, :limit => 5
-			t.datetime :histo_report_on
+			t.date     :histo_report_on
 			t.text     :histo_report_results
-			t.datetime :diagnosed_on
-			t.datetime :treatment_began_on
+			t.date     :diagnosed_on
+			t.date     :treatment_began_on
 			t.integer  :response_is_inconclusive_day_14
 			t.integer  :response_is_inconclusive_day_21
 			t.integer  :response_is_inconclusive_day_28
 			t.integer  :response_is_inconclusive_day_7
-			t.integer  :abstracted_by
-			t.datetime :abstracted_on
-			t.integer  :reviewed_by
-			t.datetime :reviewed_on
-			t.integer  :data_entry_by
-			t.datetime :data_entry_done_on
+#			t.integer  :abstracted_by
+			t.integer  :abstractor_id
+			t.date     :abstracted_on
+#			t.integer  :reviewed_by
+			t.integer  :reviewer_id
+			t.date     :reviewed_on
+#			t.integer  :data_entry_by
+			t.date     :data_entry_done_on
 			t.integer  :abstract_version_number
 			t.integer  :flow_cyto_num_results_available
 			t.string   :response_other1_value_day_14, :limit => 4
@@ -281,7 +285,7 @@ class CreateAbstracts < ActiveRecord::Migration
 			t.string   :h_and_p_reports_found, :limit => 5
 			t.integer  :received_discharge_summary
 			t.boolean  :is_h_and_p_report_found
-			t.datetime :h_and_p_reports_on
+			t.date     :h_and_p_reports_on
 			t.string   :physical_neuro, :limit => 5
 			t.string   :physical_other_soft_2, :limit => 5
 			t.string   :vital_status, :limit => 5
@@ -294,7 +298,7 @@ class CreateAbstracts < ActiveRecord::Migration
 			t.string   :physical_testicle, :limit => 5
 			t.string   :physical_other_soft, :limit => 5
 			t.string   :ploidy_report_found, :limit => 5
-			t.datetime :ploidy_report_on
+			t.date     :ploidy_report_on
 			t.string   :is_hypodiploid, :limit => 5
 			t.string   :is_hyperdiploid, :limit => 5
 			t.string   :is_diploid, :limit => 5
