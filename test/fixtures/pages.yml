@@ -1,23 +1,8 @@
 pages_1: 
   position: 1
-  menu_en: CCLS
-  body_es: 
-  title_es: 
-  menu_es: 
+  menu_en: Abstracts
   id: 1
   path: /
-  parent_id: 
   hide_menu: false
-  body_en: |
-    <div class='equal_height_column_wrapper'>
-    <div style='width:33%;float:left;text-align:center;'>
-    Column 1
-    </div>
-    <div style='width:33%;float:left;text-align:center;'>
-    Column 2
-    </div>
-    <div style='width:33%;float:left;text-align:center;'>
-    Column 3
-    </div>
-    </div>
-  title_en: CCLS
+  body_en: Home Page
+  title_en: Abstracts

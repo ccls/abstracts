@@ -4,25 +4,15 @@ body {
 	margin: 0px;
 	background-color: #F0F0FF;
 /*
-	this gradient image was created at 
-	http://tools.dynamicdrive.com/gradient/
-	It is 1x800, top: F8F8FF, bottom: F0F0FF
-*/
 	background-image: url("../images/gradient.png");
+*/
 	background-repeat: repeat-x;
 }
-
-/*
-	The common width of 900 is set here and in ...
-		app/views/layouts/_head.html.erb
-		app/models/home_page_pic.rb
-div#head,
 div#container {
-*/
-div.main_width {
+	width: 1000px;
 	margin: 0 auto;
-	width: 900px;
 }
+
 div#header {
 /* Darker blue 2A71CC */
 /* Even darker 1629f2 */
@@ -40,31 +30,10 @@ div#header, div#footer {
 	min-width: 900px;
 }
 
-div#home_page_pic {
-	margin: 10px auto;
-}
-
-/*
-	surveyor uses #menu, so we can't
-	Actually, now that I've changed the layout for the survey,
-	we could actually use #menu here.
-*/
 div#rootmenu {
 	padding:0;
 	height: 35px;
-/*
-	text-align: left;
-	background-color: #51A9E7;
-*/
 }
-/*
-	margin:0;
-	5x35
-	menu_normal : 51A9E7 - 2A71CC
-	menu_hover  : 2A71CC - 1629f2
-	menu_active : 1629f2 - 0057AE
-	menu_current: 0057AE - 51A9E7
-*/
 div#rootmenu a {
 	float:left;
 	text-align: center;
@@ -73,7 +42,6 @@ div#rootmenu a {
 	background-image: url('../images/menu_normal.png');
 	background-repeat: repeat-x;
 	color: #111111;
-/*	padding: 0px 24px; */
 	
 	border-left: 1px dotted #2A71CC;
 	text-decoration:none;
