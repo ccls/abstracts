@@ -30,6 +30,9 @@ div#header, div#footer {
 	min-width: 900px;
 }
 
+#rootmenu li {
+	display:inline;
+}
 /*
 div#rootmenu {
 	padding:0;
