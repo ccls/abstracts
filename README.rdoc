@@ -35,6 +35,8 @@
 
 == Production Installation
 
+For some reason, the current setup won't allow the creation of a sqlite3 database,
+so must be created elsewhere and imported?
 
 == Documentation
 
