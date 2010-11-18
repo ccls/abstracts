@@ -1,6 +1,6 @@
 pages_1: 
   position: 1
-  menu_en: Abstracts
+  menu_en: Home
   id: 1
   path: /
   hide_menu: false
