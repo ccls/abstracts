@@ -1,8 +1,38 @@
-require 'test_helper'
+# full path NEEDED for rake test:coverage to find test_helper
+require File.dirname(__FILE__) + '/../test_helper'
 
 class AbstractsControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
+
+	ASSERT_ACCESS_OPTIONS = {
+		:model => 'Abstract',
+		:actions => [:new,:create,:edit,:update,:show,:destroy,:index],
+		:attributes_for_create => :factory_attributes,
+		:method_for_create => :create_abstract
+	}
+	def factory_attributes(options={})
+		Factory.attributes_for(:abstract,options)
+	end
+
+	assert_access_with_login({ 
+		:logins => [:superuser,:admin] })
+	assert_no_access_with_login({ 
+		:logins => [:editor,:interviewer,:reader,:active_user] })
+	assert_no_access_without_login
+
+	assert_access_with_https
+	assert_no_access_with_http
+
+	assert_no_access_with_login(
+		:attributes_for_create => nil,
+		:method_for_create => nil,
+		:actions => nil,
+		:suffix => " and invalid id",
+		:login => :superuser,
+		:redirect => :abstracts_path,
+		:edit => { :id => 0 },
+		:update => { :id => 0 },
+		:show => { :id => 0 },
+		:destroy => { :id => 0 }
+	)
+
 end

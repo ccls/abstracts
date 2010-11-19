@@ -1,3 +1,4 @@
+require 'partial_abstract_controller'
 class ApplicationController < ActionController::Base
 
 	helper :all # include all helpers, all the time

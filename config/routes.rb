@@ -2,25 +2,25 @@ ActionController::Routing::Routes.draw do |map|
 
 	map.root :controller => "pages", :action => "show", :path => [""]
 
-	map.resource  :calendar,   :only => [ :show ]
+#	map.resource  :calendar,   :only => [ :show ]
 
 	map.resources :abstracts do |abstract|
-		abstract.resource :identifying
-		abstract.resource :bone_marrow
-		abstract.resource :cbc
-		abstract.resource :cerebrospinal_fluid
-		abstract.resource :checklist
-		abstract.resource :chest_imaging
-		abstract.resource :clinical_chemo_protocol
-		abstract.resource :cytogenetic
-		abstract.resource :diagnosis
-		abstract.resource :discharge
-		abstract.resource :flow_cytometry
-		abstract.resource :histocompatibility
-		abstract.resource :identifying
-		abstract.resource :name
-		abstract.resource :tdt
-		abstract.resource :therapy_response
+		abstract.resource :identifying, :only => [:edit,:update,:show]
+		abstract.resource :bone_marrow, :only => [:edit,:update,:show]
+		abstract.resource :cbc, :only => [:edit,:update,:show]
+		abstract.resource :cerebrospinal_fluid, :only => [:edit,:update,:show]
+		abstract.resource :checklist, :only => [:edit,:update,:show]
+		abstract.resource :chest_imaging, :only => [:edit,:update,:show]
+		abstract.resource :clinical_chemo_protocol, :only => [:edit,:update,:show]
+		abstract.resource :cytogenetic, :only => [:edit,:update,:show]
+		abstract.resource :diagnosis, :only => [:edit,:update,:show]
+		abstract.resource :discharge, :only => [:edit,:update,:show]
+		abstract.resource :flow_cytometry, :only => [:edit,:update,:show]
+		abstract.resource :histocompatibility, :only => [:edit,:update,:show]
+		abstract.resource :identifying, :only => [:edit,:update,:show]
+		abstract.resource :name, :only => [:edit,:update,:show]
+		abstract.resource :tdt, :only => [:edit,:update,:show]
+		abstract.resource :therapy_response, :only => [:edit,:update,:show]
 	end
 
 #	map.resources :home_page_pics, :collection => { 
