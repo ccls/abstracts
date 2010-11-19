@@ -1,0 +1,3 @@
+class IdentifyingDatasController < ApplicationController
+	include PartialAbstractController
+end

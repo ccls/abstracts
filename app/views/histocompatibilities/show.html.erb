@@ -1,1 +1,7 @@
-<%= link_to "Back to Abstract", abstract_path(@abstract) %>
+<%= edit_link() %>
+
+<%= wrapped_spans(:abstract,:histo_report_found) %>
+<%= wrapped_spans(:abstract,:histo_report_on) %>
+<%= wrapped_spans(:abstract,:histo_report_results) %>
+
+<%= abstract_pages(@abstract) %>

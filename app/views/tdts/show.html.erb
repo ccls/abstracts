@@ -1,1 +1,10 @@
-<%= link_to "Back to Abstract", abstract_path(@abstract) %>
+<%= edit_link() %>
+
+<%= wrapped_spans(:abstract,:tdt_report_found) %>
+<%= wrapped_spans(:abstract,:tdt_report_on) %>
+<%= wrapped_spans(:abstract,:tdt_found_in_flow_cyto_chart) %>
+<%= wrapped_spans(:abstract,:tdt_found_in_separate_report) %>
+<%= wrapped_spans(:abstract,:tdt_positive_or_negative) %>
+<%= wrapped_spans(:abstract,:tdt_numerical_result) %>
+
+<%= abstract_pages(@abstract) %>

@@ -122,3 +122,15 @@ th {
 form.destroy_link_to {
 	display:inline;
 }
+
+
+
+.center {
+	text-align: center;
+}
+.right {
+	float: right;
+}
+.left {
+	float: left;
+}

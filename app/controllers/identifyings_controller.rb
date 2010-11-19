@@ -1,3 +1,0 @@
-class IdentifyingsController < ApplicationController
-	include PartialAbstractController
-end

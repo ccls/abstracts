@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
 #	map.resource  :calendar,   :only => [ :show ]
 
 	map.resources :abstracts do |abstract|
-		abstract.resource :identifying, :only => [:edit,:update,:show]
+		abstract.resource :identifying_data, :only => [:edit,:update,:show]
 		abstract.resource :bone_marrow, :only => [:edit,:update,:show]
 		abstract.resource :cbc, :only => [:edit,:update,:show]
 		abstract.resource :cerebrospinal_fluid, :only => [:edit,:update,:show]
@@ -17,7 +17,6 @@ ActionController::Routing::Routes.draw do |map|
 		abstract.resource :discharge, :only => [:edit,:update,:show]
 		abstract.resource :flow_cytometry, :only => [:edit,:update,:show]
 		abstract.resource :histocompatibility, :only => [:edit,:update,:show]
-		abstract.resource :identifying, :only => [:edit,:update,:show]
 		abstract.resource :name, :only => [:edit,:update,:show]
 		abstract.resource :tdt, :only => [:edit,:update,:show]
 		abstract.resource :therapy_response, :only => [:edit,:update,:show]

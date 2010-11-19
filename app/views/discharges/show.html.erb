@@ -1,1 +1,24 @@
-<%= link_to "Back to Abstract", abstract_path(@abstract) %>
+<%= edit_link() %>
+
+<p>Check relevant report(s):</p>
+
+<%= wrapped_spans(:abstract,:h_and_p_reports_found) %>
+<%= wrapped_spans(:abstract,:h_and_p_reports_on) %>
+
+<%= wrapped_spans(:abstract,:is_h_and_p_report_found) %>
+
+<%= wrapped_spans(:abstract,:hepatomegaly_present) %>
+<%= wrapped_spans(:abstract,:splenomegaly_present) %>
+
+<%= wrapped_spans(:abstract,:is_down_syndrome_phenotype) %>
+<p>MISS</p>
+
+<p>Discharge Summary</p>
+
+
+<p>* From Admitting H &amp; P</p>
+<hr/>
+<h4>Clinical Diagnosis from the Discharge Summary Report</h4>
+<%= wrapped_spans(:abstract,:discharge_summary) %>
+
+<%= abstract_pages(@abstract) %>

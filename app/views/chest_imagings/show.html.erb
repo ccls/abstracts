@@ -1,1 +1,8 @@
-<%= link_to "Back to Abstract", abstract_path(@abstract) %>
+<%= edit_link() %>
+
+<%= wrapped_spans(:abstract,:chest_imaging_report_found) %>
+<%= wrapped_spans(:abstract,:chest_imaging_report_on) %>
+<%= wrapped_spans(:abstract,:mediastial_mass_present) %>
+<%= wrapped_spans(:abstract,:chest_imaging_comment) %>
+
+<%= abstract_pages(@abstract) %>

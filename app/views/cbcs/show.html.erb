@@ -1,1 +1,14 @@
-<%= link_to "Back to Abstract", abstract_path(@abstract) %>
+<%= edit_link() %>
+
+<%= wrapped_spans(:abstract,:cbc_report_found) %>
+<%= wrapped_spans(:abstract,:cbc_report_on) %>
+<%= wrapped_spans(:abstract,:cbc_white_blood_count) %><span>K/mm3</span>
+
+<%= wrapped_spans(:abstract,:cbc_percent_blasts) %><span>%</span>
+<h4>OR</h4>
+<%= wrapped_spans(:abstract,:cbc_number_blasts) %>
+
+<%= wrapped_spans(:abstract,:cbc_hemoglobin_level) %><span>GM/DL</span>
+<%= wrapped_spans(:abstract,:cbc_platelet_count) %><span>K/mm3</span>
+
+<%= abstract_pages(@abstract) %>

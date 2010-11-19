@@ -1,1 +1,17 @@
-<%= link_to "Back to Abstract", abstract_path(@abstract) %>
+<%= edit_link() %>
+
+<%= wrapped_spans(:abstract,:cerebrospinal_fluid_report_found) %>
+<%= wrapped_spans(:abstract,:csf_report_on) %>
+<%= wrapped_spans(:abstract,:csf_white_blood_count) %>
+<%= wrapped_spans(:abstract,:csf_white_blood_count_text) %>
+<%= wrapped_spans(:abstract,:csf_red_blood_count) %>
+<%= wrapped_spans(:abstract,:csf_red_blood_count_text) %>
+<%= wrapped_spans(:abstract,:blasts_are_present) %>
+<%= wrapped_spans(:abstract,:number_of_blasts) %>
+<%= wrapped_spans(:abstract,:peripheral_blood_in_csf) %>
+<%= wrapped_spans(:abstract,:csf_comment) %>
+
+<p>* Enter Numerical data only</p>
+
+
+<%= abstract_pages(@abstract) %>

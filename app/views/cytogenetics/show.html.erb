@@ -1,1 +1,39 @@
-<%= link_to "Back to Abstract", abstract_path(@abstract) %>
+<%= edit_link() %>
+
+<%= wrapped_spans(:abstract,:cytogen_report_found) %>
+<%= wrapped_spans(:abstract,:cytogen_report_on) %>
+
+<%= wrapped_spans(:abstract,:cytogen_karyotype_done) %>
+<%= wrapped_spans(:abstract,:cytogen_hospital_fish_done) %>
+<%= wrapped_spans(:abstract,:cytogen_ucb_fish_done) %>
+
+<%= wrapped_spans(:abstract,:conventional_karyotype_results) %>
+<%= wrapped_spans(:abstract,:hospital_fish_results) %>
+<%= wrapped_spans(:abstract,:ucb_fish_results) %>
+<%= wrapped_spans(:abstract,:cytogen_comment) %>
+<%= wrapped_spans(:abstract,:cytogen_is_hyperdiploidy) %>
+<%= wrapped_spans(:abstract,:cytogen_chromosome_number) %>
+
+<hr/>
+
+<%= wrapped_spans(:abstract,:cytogen_t1221) %>
+<%= wrapped_spans(:abstract,:cytogen_inv16) %>
+<%= wrapped_spans(:abstract,:cytogen_t119) %>
+<%= wrapped_spans(:abstract,:cytogen_t821) %>
+<%= wrapped_spans(:abstract,:cytogen_t922) %>
+<%= wrapped_spans(:abstract,:cytogen_t1517) %>
+<%= wrapped_spans(:abstract,:cytogen_trisomy4) %>
+<%= wrapped_spans(:abstract,:cytogen_trisomy5) %>
+<%= wrapped_spans(:abstract,:cytogen_trisomy10) %>
+<%= wrapped_spans(:abstract,:cytogen_trisomy17) %>
+<%= wrapped_spans(:abstract,:cytogen_trisomy21) %>
+
+<hr/>
+
+<%= wrapped_spans(:abstract,:cytogen_other_trans_1) %>
+<%= wrapped_spans(:abstract,:cytogen_other_trans_2) %>
+<%= wrapped_spans(:abstract,:cytogen_other_trans_3) %>
+<%= wrapped_spans(:abstract,:cytogen_other_trans_4) %>
+<%= wrapped_spans(:abstract,:cytogen_other_trans_5) %>
+
+<%= abstract_pages(@abstract) %>

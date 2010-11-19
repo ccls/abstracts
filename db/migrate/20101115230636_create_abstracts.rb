@@ -7,7 +7,7 @@ class CreateAbstracts < ActiveRecord::Migration
 			t.integer  :received_h_and_p
 			t.integer  :received_other_reports
 			t.integer  :received_discharge_summary
-			t.integer  :received_other_reports
+#			t.integer  :received_other_reports
 			t.integer  :received_chemo_protocol
 			t.integer  :received_resp_to_therapy
 			t.text     :received_specify_other_reports
@@ -282,7 +282,7 @@ class CreateAbstracts < ActiveRecord::Migration
 			t.string   :response_other4_value_day_14, :limit => 4
 			t.string   :response_other5_value_day_14, :limit => 4
 			t.string   :h_and_p_reports_found, :limit => 5
-			t.integer  :received_discharge_summary
+#			t.integer  :received_discharge_summary
 			t.boolean  :is_h_and_p_report_found
 			t.date     :h_and_p_reports_on
 			t.string   :physical_neuro, :limit => 5

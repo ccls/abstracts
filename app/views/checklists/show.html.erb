@@ -1,1 +1,18 @@
-<%= link_to "Back to Abstract", abstract_path(@abstract) %>
+<%= edit_link() %>
+
+<%= wrapped_spans(:abstract,:received_bone_marrow_biopsy) %>
+<%= wrapped_spans(:abstract,:received_bone_marrow_aspirate) %>
+<%= wrapped_spans(:abstract,:received_flow_cytometry) %>
+<%= wrapped_spans(:abstract,:received_hla_typing) %>
+<%= wrapped_spans(:abstract,:received_cytogenetics) %>
+<%= wrapped_spans(:abstract,:received_cbc) %>
+<%= wrapped_spans(:abstract,:received_csf) %>
+<%= wrapped_spans(:abstract,:received_chest_xray) %>
+<%= wrapped_spans(:abstract,:received_h_and_p) %>
+<%= wrapped_spans(:abstract,:received_chemo_protocol) %>
+<%= wrapped_spans(:abstract,:received_discharge_summary) %>
+<%= wrapped_spans(:abstract,:received_resp_to_therapy) %>
+<%= wrapped_spans(:abstract,:received_other_reports) %>
+<%= wrapped_spans(:abstract,:received_specify_other_reports) %>
+
+<%= abstract_pages(@abstract) %>
