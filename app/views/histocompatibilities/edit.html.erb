@@ -1,0 +1,12 @@
+<% form_for(@abstract,:url => abstract_histocompatibility_path(@abstract)) do |f| %>
+
+<%= f.wrapped_y_n_dk_select(:histo_report_found,
+	:include_blank => true ) %>
+<%= f.wrapped_date_text_field(:histo_report_on) %>
+<%= f.wrapped_text_area(:histo_report_results) %>
+
+<p>
+<%= button_link_to "Cancel", :action => 'show' %>&nbsp;
+<%= f.submit 'Save Changes',:name => nil %>
+</p>
+<% end %>

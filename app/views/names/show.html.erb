@@ -1,11 +1,11 @@
 <%= edit_link() %>
 
 <%= wrapped_spans(:abstract,:abstractor_id) %>
-<%= wrapped_spans(:abstract,:abstracted_on) %>
+<%= wrapped_date_spans(:abstract,:abstracted_on) %>
 <%= wrapped_spans(:abstract,:reviewer_id) %>
-<%= wrapped_spans(:abstract,:reviewed_on) %>
+<%= wrapped_date_spans(:abstract,:reviewed_on) %>
 <%= wrapped_spans(:abstract,:user_id) %>
-<%= wrapped_spans(:abstract,:data_entry_done_on) %>
+<%= wrapped_date_spans(:abstract,:data_entry_done_on) %>
 <%= wrapped_spans(:abstract,:abstract_version_number) %>
 
 <%= abstract_pages(@abstract) %>

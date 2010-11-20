@@ -64,7 +64,7 @@ module PartialAbstractControllerTestHelper
 					put :update, :abstract_id => abstract.id,
 						:abstract => factory_attributes
 					assert assigns(:abstract)
-					assert_redirected_to abstract_path(abstract)
+					assert_redirected_to :action => 'show'	#abstract_path(abstract)
 				end
 			
 				test "should NOT update with invalid " <<

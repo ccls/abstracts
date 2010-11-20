@@ -1,0 +1,36 @@
+<% form_for(@abstract,:url => abstract_checklist_path(@abstract)) do |f| %>
+
+<%= f.wrapped_y_n_dk_select(:received_bone_marrow_biopsy,
+	:include_blank => true) %>
+<%= f.wrapped_y_n_dk_select(:received_bone_marrow_aspirate,
+	:include_blank => true) %>
+<%= f.wrapped_y_n_dk_select(:received_flow_cytometry,
+	:include_blank => true) %>
+<%= f.wrapped_y_n_dk_select(:received_hla_typing,
+	:include_blank => true) %>
+<%= f.wrapped_y_n_dk_select(:received_cytogenetics,
+	:include_blank => true) %>
+<%= f.wrapped_y_n_dk_select(:received_cbc,
+	:include_blank => true) %>
+<%= f.wrapped_y_n_dk_select(:received_csf,
+	:include_blank => true) %>
+<%= f.wrapped_y_n_dk_select(:received_chest_xray,
+	:include_blank => true) %>
+<%= f.wrapped_y_n_dk_select(:received_h_and_p,
+	:include_blank => true) %>
+<%= f.wrapped_y_n_dk_select(:received_chemo_protocol,
+	:include_blank => true) %>
+<%= f.wrapped_y_n_dk_select(:received_discharge_summary,
+	:include_blank => true) %>
+<%= f.wrapped_y_n_dk_select(:received_resp_to_therapy,
+	:include_blank => true) %>
+<%= f.wrapped_y_n_dk_select(:received_other_reports,
+	:include_blank => true) %>
+<%= f.wrapped_text_area(:received_specify_other_reports,
+	:label_text => 'Specify:') %>
+
+<p>
+<%= button_link_to "Cancel", :action => 'show' %>&nbsp;
+<%= f.submit 'Save Changes',:name => nil %>
+</p>
+<% end %>

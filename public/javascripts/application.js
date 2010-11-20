@@ -1,5 +1,8 @@
 jQuery(function(){
 
+	jQuery('.datepicker').datepicker();
+
+
 /*
 	var root = (location.host == 'ccls.berkeley.edu')?'/buffler':''
 	jQuery.getScript(root + 

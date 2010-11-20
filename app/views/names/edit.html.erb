@@ -1,0 +1,15 @@
+<% form_for(@abstract,:url => abstract_name_path(@abstract)) do |f| %>
+
+<%= f.wrapped_text_field(:abstractor_id) %>
+<%= f.wrapped_date_text_field(:abstracted_on) %>
+<%= f.wrapped_text_field(:reviewer_id) %>
+<%= f.wrapped_date_text_field(:reviewed_on) %>
+<%= f.wrapped_text_field(:user_id) %>
+<%= f.wrapped_date_text_field(:data_entry_done_on) %>
+<%= f.wrapped_text_field(:abstract_version_number) %>
+
+<p>
+<%= button_link_to "Cancel", :action => 'show' %>&nbsp;
+<%= f.submit 'Save Changes',:name => nil %>
+</p>
+<% end %>

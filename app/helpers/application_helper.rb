@@ -31,18 +31,24 @@ module ApplicationHelper
 #	end
 
 
-	def mdy(date)
-		( date.nil? )?'&nbsp;':date.strftime("%m/%d/%Y")
-	end
-
-	def y_n_dk(value)
-		case value
-			when 1   then 'Yes'
-			when 2   then 'No'
-			when 999 then "Don't Know"
-			else '&nbsp;'
-		end
-	end
+#	def mdy(date)
+#		( date.nil? )?'&nbsp;':date.strftime("%m/%d/%Y")
+#	end
+#
+#	def y_n_dk(value)
+#		case value
+#			when 1   then 'Yes'
+#			when 2   then 'No'
+#			when 999 then "Don't Know"
+#			else '&nbsp;'
+#		end
+#	end
+#
+#	def _wrapped_y_n_dk_spans(object_name,method,options={})
+#		object = instance_variable_get("@#{object_name}")
+#		_wrapped_spans(object_name,method,options.update(
+#			:value => y_n_dk(object.send(method)) ) )
+#	end
 
 	def abstract_pages(abstract)
 		order = [
@@ -84,6 +90,7 @@ module ApplicationHelper
 
 	def edit_link
 		s =  "<p class='center'>"
+#		s << "<span class='left'>#{controller.class.name.gsub(/Controller$/,'').singularize}</span>"
 		s << link_to( "Edit", params.update(:action => 'edit'), :class => 'right' )
 		s << "</p>"
 	end

@@ -1,0 +1,33 @@
+<% form_for(@abstract,:url => abstract_discharge_path(@abstract)) do |f| %>
+
+<p>Check relevant report(s):</p>
+
+<%= f.wrapped_y_n_dk_select(:h_and_p_reports_found,
+	:include_blank => true ) %>
+<%= f.wrapped_date_text_field(:h_and_p_reports_on) %>
+
+<%= f.wrapped_y_n_dk_select(:is_h_and_p_report_found,
+	:include_blank => true ) %>
+
+<%= f.wrapped_y_n_dk_select(:hepatomegaly_present,
+	:include_blank => true ) %>
+<%= f.wrapped_y_n_dk_select(:splenomegaly_present,
+	:include_blank => true ) %>
+
+<%= f.wrapped_y_n_dk_select(:is_down_syndrome_phenotype,
+	:include_blank => true ) %>
+<p>MISS</p>
+
+<p>Discharge Summary</p>
+
+
+<p>* From Admitting H &amp; P</p>
+<hr/>
+<h4>Clinical Diagnosis from the Discharge Summary Report</h4>
+<%= f.wrapped_text_area(:discharge_summary) %>
+
+<p>
+<%= button_link_to "Cancel", :action => 'show' %>&nbsp;
+<%= f.submit 'Save Changes',:name => nil %>
+</p>
+<% end %>
