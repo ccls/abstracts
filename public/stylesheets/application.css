@@ -132,3 +132,14 @@ fieldset {
 .note {
 	font-size: 8pt;
 }
+
+div.number_of_blasts,
+div.csf_red_blood_count_text,
+div.csf_white_blood_count_text {
+	clear:none;
+}
+div.number_of_blasts > label,
+div.csf_red_blood_count_text > label,
+div.csf_white_blood_count_text > label {
+	width: auto;
+}
