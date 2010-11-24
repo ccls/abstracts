@@ -143,3 +143,12 @@ div.csf_red_blood_count_text > label,
 div.csf_white_blood_count_text > label {
 	width: auto;
 }
+
+.columns.small .column .field_wrapper .label,
+.columns.small .column .field_wrapper .value,
+form.edit_abstract .columns.small .column .field_wrapper input,
+form.edit_abstract .columns.small .column .field_wrapper label {
+	width: 100px;
+	text-align: right;
+	padding-right: 5px;
+}

@@ -134,3 +134,6 @@ form.destroy_link_to {
 .left {
 	float: left;
 }
+.superscript { font-size:x-small; vertical-align:top; }
+.subscript   { font-size:x-small; vertical-align:bottom; }
+
