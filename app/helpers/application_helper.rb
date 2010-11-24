@@ -95,4 +95,35 @@ module ApplicationHelper
 		s << "</p>"
 	end
 
+	def pos_neg_select(object_name, method, 
+			options={}, html_options={})
+		select(object_name, method,
+			[['Positive',1],['Negative',2]],
+			options, html_options)
+	end
+
+	def _wrapped_pos_neg_spans(object_name,method,options={})
+		object = instance_variable_get("@#{object_name}")
+		_wrapped_spans(object_name,method,options.update(
+			:value => pos_neg(object.send(method)) ) )
+	end
+
+	def pos_neg(value)
+		case value
+			when 1   then 'Positive'
+			when 2   then 'Negative'
+			else '&nbsp;'
+		end
+	end
+
+end
+
+
+ActionView::Helpers::FormBuilder.class_eval do
+	def pos_neg_select(method,options={},html_options={})
+		@template.pos_neg_select(
+			@object_name, method, 
+				objectify_options(options),
+				html_options)
+	end
 end

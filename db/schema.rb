@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.integer  "response_report_found_day_14"
     t.integer  "response_report_found_day_28"
     t.integer  "response_report_found_day_7"
-    t.datetime "response_report_on_day_14"
-    t.datetime "response_report_on_day_28"
-    t.datetime "response_report_on_day_7"
+    t.date     "response_report_on_day_14"
+    t.date     "response_report_on_day_28"
+    t.date     "response_report_on_day_7"
     t.string   "response_classification_day_14",    :limit => 2
     t.string   "response_classification_day_28",    :limit => 2
     t.string   "response_classification_day_7",     :limit => 2
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.integer  "number_of_blasts"
     t.string   "peripheral_blood_in_csf"
     t.text     "csf_comment"
-    t.string   "chemo_protocol_report_found"
+    t.integer  "chemo_protocol_report_found"
     t.integer  "patient_on_chemo_protocol"
     t.string   "chemo_protocol_name"
     t.text     "chemo_protocol_agent_description"
@@ -105,13 +105,13 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.string   "response_cd7a_day_14",              :limit => 10
     t.string   "response_cd8a_day_14",              :limit => 10
     t.integer  "response_day30_is_in_remission"
-    t.string   "chest_imaging_report_found",        :limit => 5
+    t.integer  "chest_imaging_report_found"
     t.date     "chest_imaging_report_on"
-    t.string   "mediastial_mass_present",           :limit => 18
+    t.integer  "mediastial_mass_present"
     t.text     "chest_imaging_comment"
-    t.string   "received_chest_ct",                 :limit => 50
-    t.string   "chest_ct_taken_on",                 :limit => 50
-    t.string   "chest_ct_medmass_present",          :limit => 50
+    t.integer  "received_chest_ct"
+    t.date     "chest_ct_taken_on"
+    t.integer  "chest_ct_medmass_present"
     t.integer  "user_id"
     t.integer  "cytogen_trisomy10"
     t.integer  "cytogen_trisomy17"
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.integer  "is_down_syndrome_phenotype"
     t.integer  "cytogen_trisomy4"
     t.integer  "cytogen_trisomy5"
-    t.string   "cytogen_report_found",              :limit => 5
+    t.integer  "cytogen_report_found"
     t.date     "cytogen_report_on"
     t.string   "conventional_karyotype_results"
     t.string   "normal_cytogen",                    :limit => 5
@@ -132,14 +132,14 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.text     "discharge_summary"
     t.integer  "diagnosis_is_b_all"
     t.integer  "diagnosis_is_t_all"
-    t.string   "diagnosis_is_all",                  :limit => 20
-    t.string   "diagnosis_all_type",                :limit => 20
-    t.string   "diagnosis_is_cml",                  :limit => 20
-    t.string   "diagnosis_is_cll",                  :limit => 20
-    t.string   "diagnosis_is_aml",                  :limit => 20
-    t.string   "diagnosis_aml_type",                :limit => 20
-    t.string   "diagnosis_is_other",                :limit => 40
-    t.string   "flow_cyto_report_found",            :limit => 5
+    t.integer  "diagnosis_is_all"
+    t.integer  "diagnosis_all_type_id"
+    t.integer  "diagnosis_is_cml"
+    t.integer  "diagnosis_is_cll"
+    t.integer  "diagnosis_is_aml"
+    t.integer  "diagnosis_aml_type_id"
+    t.integer  "diagnosis_is_other"
+    t.integer  "flow_cyto_report_found"
     t.integer  "received_flow_cyto_day_14"
     t.integer  "received_flow_cyto_day_7"
     t.date     "flow_cyto_report_on"
@@ -247,10 +247,10 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.string   "flow_cyto_other_marker_5",          :limit => 4
     t.string   "flow_cyto_other_marker_5_text",     :limit => 50
     t.text     "flow_cyto_remarks"
-    t.string   "tdt_often_found_flow_cytometry",    :limit => 5
-    t.string   "tdt_report_found",                  :limit => 5
+    t.integer  "tdt_often_found_flow_cytometry"
+    t.integer  "tdt_report_found"
     t.date     "tdt_report_on"
-    t.string   "tdt_positive_or_negative",          :limit => 10
+    t.integer  "tdt_positive_or_negative"
     t.integer  "tdt_numerical_result"
     t.boolean  "tdt_found_in_flow_cyto_chart"
     t.boolean  "tdt_found_in_separate_report"
@@ -277,7 +277,6 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.integer  "reviewer_id"
     t.date     "reviewed_on"
     t.date     "data_entry_done_on"
-    t.integer  "abstract_version_number"
     t.integer  "flow_cyto_num_results_available"
     t.string   "response_other1_value_day_14",      :limit => 4
     t.string   "response_other1_value_day_7",       :limit => 4
@@ -286,13 +285,13 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.string   "response_other3_value_day_14",      :limit => 4
     t.string   "response_other4_value_day_14",      :limit => 4
     t.string   "response_other5_value_day_14",      :limit => 4
-    t.string   "h_and_p_reports_found",             :limit => 5
+    t.integer  "h_and_p_reports_found"
     t.boolean  "is_h_and_p_report_found"
     t.date     "h_and_p_reports_on"
     t.string   "physical_neuro",                    :limit => 5
     t.string   "physical_other_soft_2",             :limit => 5
-    t.string   "vital_status",                      :limit => 5
-    t.datetime "dod"
+    t.integer  "vital_status_id"
+    t.date     "dod"
     t.integer  "discharge_summary_found"
     t.string   "physical_gingival",                 :limit => 5
     t.string   "physical_leukemic_skin",            :limit => 5
@@ -300,7 +299,7 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.string   "physical_spleen",                   :limit => 5
     t.string   "physical_testicle",                 :limit => 5
     t.string   "physical_other_soft",               :limit => 5
-    t.string   "ploidy_report_found",               :limit => 5
+    t.integer  "ploidy_report_found"
     t.date     "ploidy_report_on"
     t.string   "is_hypodiploid",                    :limit => 5
     t.string   "is_hyperdiploid",                   :limit => 5
@@ -337,7 +336,6 @@ ActiveRecord::Schema.define(:version => 20101115230636) do
     t.string   "response_fab_subtype",              :limit => 15
     t.string   "response_tdt_day_14",               :limit => 10
     t.string   "response_tdt_day_7",                :limit => 10
-    t.string   "abstract_version_description"
     t.integer  "abstract_version_id"
     t.datetime "created_at"
     t.datetime "updated_at"
