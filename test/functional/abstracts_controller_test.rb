@@ -37,6 +37,15 @@ class AbstractsControllerTest < ActionController::TestCase
 
 	%w( superuser admin ).each do |cu|
 			
+		test "should set user_id on creation with #{cu} login" <<
+				" without abstract hash" do
+			u = send(cu)
+			login_as u
+			post :create
+			assert assigns(:abstract)
+			assert_equal u.id, assigns(:abstract).user_id
+		end
+
 		test "should set user_id on creation with #{cu} login" do
 			u = send(cu)
 			login_as u

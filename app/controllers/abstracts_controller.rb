@@ -7,6 +7,7 @@ class AbstractsController < ApplicationController
 protected
 
 	def append_current_user_to_params
+		params[:abstract] = {} unless params[:abstract]
 		params[:abstract].merge!(:current_user => current_user)
 	end
 
