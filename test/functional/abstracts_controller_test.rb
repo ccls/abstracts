@@ -35,4 +35,17 @@ class AbstractsControllerTest < ActionController::TestCase
 		:destroy => { :id => 0 }
 	)
 
+	%w( superuser admin ).each do |cu|
+			
+		test "should set user_id on creation with #{cu} login" do
+			u = send(cu)
+			login_as u
+			post :create, :abstract => factory_attributes
+			assert assigns(:abstract)
+			assert_equal u.id, assigns(:abstract).user_id
+		end
+
+	end
+
+
 end
