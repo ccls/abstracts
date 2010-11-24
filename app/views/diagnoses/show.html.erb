@@ -1,22 +1,39 @@
 <%= edit_link() %>
 
-<p>Sources of responses on this page -- reviewing Oncologist's report</p>
-<%= wrapped_spans(:abstract,:diagnosis_is_all) %>
-<%= wrapped_spans(:abstract,:diagnosis_all_type) %>
-<%= wrapped_spans(:abstract,:diagnosis_is_cml) %>
-<%= wrapped_spans(:abstract,:diagnosis_is_cll) %>
-<%= wrapped_spans(:abstract,:diagnosis_is_other) %>
-<%= wrapped_spans(:abstract,:diagnosis_is_aml) %>
-<%= wrapped_spans(:abstract,:diagnosis_aml_type) %>
-<%= wrapped_spans(:abstract,:diagnosis_is_b_all) %>
-<%= wrapped_spans(:abstract,:diagnosis_is_t_all) %>
+<h4>Sources of responses on this page -- reviewing Oncologist's report</h4>
+<div class='columns'>
+<div class='column'>
+<%= wrapped_y_n_dk_spans(:abstract,:diagnosis_is_all,
+	:label_text => "ALL" ) %>
+<%= wrapped_spans(:abstract,:diagnosis_all_type_id,
+	:label_text => "ALL Type" ) %>
+<%= wrapped_y_n_dk_spans(:abstract,:diagnosis_is_cml,
+	:label_text => "CML" ) %>
+<%= wrapped_y_n_dk_spans(:abstract,:diagnosis_is_cll,
+	:label_text => "CLL" ) %>
+<%= wrapped_y_n_dk_spans(:abstract,:diagnosis_is_other,
+	:label_text => "Other" ) %>
+</div><!-- class='column' -->
+<div class='column'>
+<%= wrapped_y_n_dk_spans(:abstract,:diagnosis_is_aml,
+	:label_text => "AML" ) %>
+<%= wrapped_spans(:abstract,:diagnosis_aml_type_id,
+	:label_text => "AML Type" ) %>
+<%= wrapped_y_n_dk_spans(:abstract,:diagnosis_is_b_all,
+	:label_text => "B Lineage" ) %>
+<%= wrapped_y_n_dk_spans(:abstract,:diagnosis_is_t_all,
+	:label_text => "T Lineage" ) %>
+</div><!-- class='column' -->
+</div><!-- class='columns' -->
 
-<p>ICDO Code(s)...</p>
+<h4>ICDO Code(s)...</h4>
 <p>No matching fields?</p>
 
-<p>Legacy ICDO Data (only on records prior to 8/1/2009)* (data below is read-only)</p>
-<%= wrapped_spans(:abstract,:diagnosis_icdo_number) %>
-<%= wrapped_spans(:abstract,:diagnosis_icdo_description) %>
+<h4>Legacy ICDO Data (only on records prior to 8/1/2009)* (data below is read-only)</h4>
+<%= wrapped_spans(:abstract,:diagnosis_icdo_number,
+	:label_text => "ICDO #" ) %>
+<%= wrapped_spans(:abstract,:diagnosis_icdo_description,
+	:label_text => "ICDO Description" ) %>
 
 <p>* The following fields are set to 'read only' to permit viewing of ICDO data in records added before the ICDO Code(s)... section above was added.</p>
 

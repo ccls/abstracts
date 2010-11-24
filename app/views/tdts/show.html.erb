@@ -1,10 +1,14 @@
 <%= edit_link() %>
 
-<%= wrapped_y_n_dk_spans(:abstract,:tdt_report_found) %>
-<%= wrapped_date_spans(:abstract,:tdt_report_on) %>
+<%= wrapped_y_n_dk_spans(:abstract,:tdt_report_found,
+	:label_text => "Found?") %>
+<%= wrapped_date_spans(:abstract,:tdt_report_on,
+	:label_text => "Date") %>
 <%= wrapped_yes_or_no_spans(:abstract,:tdt_found_in_flow_cyto_chart) %>
 <%= wrapped_yes_or_no_spans(:abstract,:tdt_found_in_separate_report) %>
-<%= wrapped_spans(:abstract,:tdt_positive_or_negative) %>
-<%= wrapped_spans(:abstract,:tdt_numerical_result) %>
+<%= wrapped_pos_neg_spans(:abstract,:tdt_positive_or_negative,
+	:label_text => "Pos/Neg") %>
+<%= wrapped_spans(:abstract,:tdt_numerical_result,
+	:label_text => "Num result") %>
 
 <%= abstract_pages(@abstract) %>

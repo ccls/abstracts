@@ -1,7 +1,10 @@
 <%= edit_link() %>
 
-<%= wrapped_y_n_dk_spans(:abstract,:histo_report_found) %>
-<%= wrapped_date_spans(:abstract,:histo_report_on) %>
-<%= wrapped_spans(:abstract,:histo_report_results) %>
+<%= wrapped_y_n_dk_spans(:abstract,:histo_report_found,
+	:label_text => "Found?" ) %>
+<%= wrapped_date_spans(:abstract,:histo_report_on,
+	:label_text => "Date" ) %>
+<%= wrapped_spans(:abstract,:histo_report_results,
+	:label_text => "Results" ) %>
 
 <%= abstract_pages(@abstract) %>

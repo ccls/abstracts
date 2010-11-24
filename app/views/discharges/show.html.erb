@@ -2,23 +2,32 @@
 
 <p>Check relevant report(s):</p>
 
-<%= wrapped_y_n_dk_spans(:abstract,:h_and_p_reports_found) %>
-<%= wrapped_date_spans(:abstract,:h_and_p_reports_on) %>
+<%= wrapped_y_n_dk_spans(:abstract,:h_and_p_reports_found,
+	:label_text => "Found?" ) %>
+<%= wrapped_date_spans(:abstract,:h_and_p_reports_on,
+	:label_text => "Date" ) %>
 
-<%= wrapped_yes_or_no_spans(:abstract,:is_h_and_p_report_found) %>
+<%#= wrapped_yes_or_no_spans(:abstract,:is_h_and_p_report_found,
+	:label_text => "Found" ) %>
 
-<%= wrapped_y_n_dk_spans(:abstract,:hepatomegaly_present) %>
-<%= wrapped_y_n_dk_spans(:abstract,:splenomegaly_present) %>
+<%= wrapped_y_n_dk_spans(:abstract,:hepatomegaly_present,
+	:label_text => "Hepatomegaly? *" ) %>
+<%= wrapped_y_n_dk_spans(:abstract,:splenomegaly_present,
+	:label_text => "Splenomegaly? *" ) %>
 
-<%= wrapped_y_n_dk_spans(:abstract,:is_down_syndrome_phenotype) %>
-<p>MISS</p>
+<%= wrapped_y_n_dk_spans(:abstract,:is_down_syndrome_phenotype,
+	:label_text => "Down Syndrome Phenotype" ) %>
 
 <p>Discharge Summary</p>
+<%= wrapped_y_n_dk_spans(:abstract,:discharge_summary_found,
+	:label_text => "Found?" ) %>
+<%#= wrapped_date_spans(:abstract,:discharge_summary_found_on,
+	:label_text => "Found" ) %>
 
 
 <p>* From Admitting H &amp; P</p>
 <hr/>
-<h4>Clinical Diagnosis from the Discharge Summary Report</h4>
-<%= wrapped_spans(:abstract,:discharge_summary) %>
+<%= wrapped_spans(:abstract,:discharge_summary,
+	:label_text => "Discharge Diagnosis" ) %>
 
 <%= abstract_pages(@abstract) %>
