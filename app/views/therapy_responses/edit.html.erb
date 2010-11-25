@@ -7,7 +7,6 @@
 
 <h4>Day 7: Bone Marrow Biopsy/Aspirate</h4>
 <%= f.wrapped_y_n_dk_select(:response_report_found_day_7,
-	:include_blank => true ,
 	:label_text => "Found?") %>
 <%= f.wrapped_date_text_field(:response_report_on_day_7,
 	:label_text => "Date") %>
@@ -22,7 +21,6 @@
 
 <h4>Day 14: Bone Marrow Biopsy/Aspirate</h4>
 <%= f.wrapped_y_n_dk_select(:response_report_found_day_14,
-	:include_blank => true,
 	:label_text => "Found?" ) %>
 <%= f.wrapped_date_text_field(:response_report_on_day_14,
 	:label_text => "Date") %>
@@ -37,7 +35,6 @@
 
 <h4>Day 28: Bone Marrow Biopsy/Aspirate</h4>
 <%= f.wrapped_y_n_dk_select(:response_report_found_day_28,
-	:include_blank => true,
 	:label_text => "Found?" ) %>
 <%= f.wrapped_date_text_field(:response_report_on_day_28,
 	:label_text => "Date") %>
@@ -51,7 +48,6 @@
 	:label_text => "Units") %>
 
 <%= f.wrapped_y_n_dk_select(:response_day30_is_in_remission,
-	:include_blank => true,
 	:label_text => "At the end of induction (30 days), was the child in clinical remission?" ) %>
 
 <p>* If no diagnosis date is entered, count will remain 0</p>

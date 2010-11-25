@@ -99,7 +99,7 @@ module ApplicationHelper
 			options={}, html_options={})
 		select(object_name, method,
 			[['Positive',1],['Negative',2]],
-			options, html_options)
+			{:include_blank => true}.merge(options), html_options)
 	end
 
 	def _wrapped_pos_neg_spans(object_name,method,options={})

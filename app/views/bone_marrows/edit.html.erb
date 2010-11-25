@@ -1,7 +1,6 @@
 <% form_for(@abstract,:url => abstract_bone_marrow_path(@abstract)) do |f| %>
 
 <%= f.wrapped_y_n_dk_select(:marrow_biopsy_report_found,
-	:include_blank => true,
 	:label_text => "Biopsy Found?") %>
 <%= f.wrapped_date_text_field(:marrow_biopsy_on,
 	:label_text => "Date") %>
@@ -10,7 +9,6 @@
 	:label_text => "Diag/Intrep") %>
 
 <%= f.wrapped_y_n_dk_select(:marrow_aspirate_report_found,
-	:include_blank => true,
 	:label_text => "Aspiration Found?") %>
 <%= f.wrapped_date_text_field(:marrow_aspirate_taken_on,
 	:label_text => "Date") %>
