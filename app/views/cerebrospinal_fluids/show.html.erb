@@ -1,5 +1,6 @@
 <%= edit_link() %>
 
+<div class='cerebrospinal_fluid'>
 <%= wrapped_y_n_dk_spans(:abstract,:cerebrospinal_fluid_report_found,
 	:label_text => "Found?" ) %>
 <%= wrapped_date_spans(:abstract,:csf_report_on,
@@ -23,6 +24,7 @@
 	:label_text => "PB contamination" ) %>
 <%= wrapped_spans(:abstract,:csf_comment,
 	:label_text => "Cytology" ) %>
+</div><!-- class='cerebrospinal_fluid' -->
 
 <p>* Enter Numerical data only</p>
 

@@ -242,7 +242,9 @@
 </div><!-- class='column' -->
 </div><!-- class='columns' -->
 
-<p>Remarks: <%= f.text_area :flow_cyto_remarks %></p>
+<%= f.wrapped_text_area :flow_cyto_remarks,
+	:class => 'autosize',
+	:label_text => 'Remarks:' %>
 
 <p>
 <%= button_link_to "Cancel", :action => 'show' %>&nbsp;

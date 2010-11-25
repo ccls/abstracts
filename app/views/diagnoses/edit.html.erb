@@ -1,4 +1,6 @@
-<% form_for(@abstract,:url => abstract_diagnosis_path(@abstract)) do |f| %>
+<% form_for(@abstract,
+	:url => abstract_diagnosis_path(@abstract),
+	:html => { :class => 'edit_abstract diagnosis' } ) do |f| %>
 
 <h4>Sources of responses on this page -- reviewing Oncologist's report</h4>
 <div class='columns'>

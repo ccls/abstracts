@@ -1,3 +1,6 @@
+def random_pos_neg
+	[nil,1,2][rand(3)]
+end
 def random_true_or_false
 	[true,false][rand(2)]
 end
@@ -249,7 +252,7 @@ Factory.define :complete_abstract, :class => 'Abstract' do |f|
 	f.tdt_often_found_flow_cytometry random_yndk()
 	f.tdt_report_found random_yndk()
 	f.tdt_report_on random_date()
-	f.sequence(:tdt_positive_or_negative){|n| n }
+	f.tdt_positive_or_negative random_pos_neg()
 	f.sequence(:tdt_numerical_result){|n| n }
 	f.tdt_found_in_flow_cyto_chart [true,false][rand(2)]
 	f.tdt_found_in_separate_report [true,false][rand(2)]

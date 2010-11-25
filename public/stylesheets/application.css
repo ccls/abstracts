@@ -133,16 +133,98 @@ fieldset {
 	font-size: 8pt;
 }
 
-div.number_of_blasts,
-div.csf_red_blood_count_text,
-div.csf_white_blood_count_text {
+
+/*
+	Checklist views
+*/
+div.checklist .column:nth-child(2),
+form.checklist .column:nth-child(2) {
+	padding-left: 50px;
+}
+/*
+	END Checklist views
+*/
+
+/*
+	Diagnosis views
+*/
+div.diagnosis .field_wrapper .label,
+form.diagnosis .field_wrapper label {
+	width: 180px;
+}
+div.diagnosis .column:nth-child(2),
+form.diagnosis .column:nth-child(2) {
+	padding-left: 50px;
+}
+div.diagnosis #abstract_diagnosis_all_type_id,
+div.diagnosis #abstract_diagnosis_aml_type_id,
+form.diagnosis #abstract_diagnosis_all_type_id,
+form.diagnosis #abstract_diagnosis_aml_type_id {
+	width: 100px;
+}
+/*
+	END Diagnosis views
+*/
+
+/*
+	CerebrospinalFluid views
+*/
+div.cerebrospinal_fluid .field_wrapper .label,
+form.cerebrospinal_fluid .field_wrapper label {
+	width: 200px;
+}
+form.cerebrospinal_fluid div.number_of_blasts,
+form.cerebrospinal_fluid div.csf_red_blood_count_text,
+form.cerebrospinal_fluid div.csf_white_blood_count_text,
+div.cerebrospinal_fluid div.number_of_blasts,
+div.cerebrospinal_fluid div.csf_red_blood_count_text,
+div.cerebrospinal_fluid div.csf_white_blood_count_text {
 	clear:none;
 }
-div.number_of_blasts > label,
-div.csf_red_blood_count_text > label,
-div.csf_white_blood_count_text > label {
+form.cerebrospinal_fluid div.number_of_blasts > label,
+form.cerebrospinal_fluid div.csf_red_blood_count_text > label,
+form.cerebrospinal_fluid div.csf_white_blood_count_text > label,
+div.cerebrospinal_fluid div.number_of_blasts > .label,
+div.cerebrospinal_fluid div.csf_red_blood_count_text > .label,
+div.cerebrospinal_fluid div.csf_white_blood_count_text > .label {
 	width: auto;
 }
+form.cerebrospinal_fluid div.number_of_blasts.field_wrapper label,
+div.cerebrospinal_fluid div.number_of_blasts.field_wrapper .label {
+	padding:0 10px;
+}
+/*
+	END CerebrospinalFluid views
+*/
+
+/*
+	CBC views
+*/
+div.cbc .field_wrapper .label,
+form.cbc .field_wrapper label {
+	width: 200px;
+}
+div.cbc div div.cbc_percent_blasts,
+div.cbc div h4,
+div.cbc div div.cbc_number_blasts,
+form.cbc div div.cbc_percent_blasts,
+form.cbc div h4,
+form.cbc div div.cbc_number_blasts {
+	float:left;
+}
+div.cbc div div.cbc_number_blasts,
+form.cbc div div.cbc_number_blasts {
+	clear:none;
+}
+div.cbc div h4,
+form.cbc div h4 {
+	margin:0;
+	margin-bottom: 15px;
+	padding: 0 15px;
+}
+/*
+	END CBC views
+*/
 
 .columns.small .column .field_wrapper .label,
 .columns.small .column .field_wrapper .value,

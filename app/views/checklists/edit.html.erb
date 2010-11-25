@@ -1,32 +1,54 @@
-<% form_for(@abstract,:url => abstract_checklist_path(@abstract)) do |f| %>
+<% form_for(@abstract,
+	:url => abstract_checklist_path(@abstract),
+	:html => { :class => 'edit_abstract checklist' }) do |f| %>
 
+<div class='columns'>
+<div class='column'>
 <%= f.wrapped_y_n_dk_select(:received_bone_marrow_biopsy,
+	:label_text => "Bone Marrow Biopsy",
 	:include_blank => true) %>
 <%= f.wrapped_y_n_dk_select(:received_bone_marrow_aspirate,
+	:label_text => "Bone Marrow Aspirate",
 	:include_blank => true) %>
 <%= f.wrapped_y_n_dk_select(:received_flow_cytometry,
+	:label_text => "Flow Cytometry",
 	:include_blank => true) %>
 <%= f.wrapped_y_n_dk_select(:received_hla_typing,
+	:label_text => "HLA-Typing",
 	:include_blank => true) %>
 <%= f.wrapped_y_n_dk_select(:received_cytogenetics,
+	:label_text => "Cytogenetics",
 	:include_blank => true) %>
 <%= f.wrapped_y_n_dk_select(:received_cbc,
+	:label_text => "CBC",
 	:include_blank => true) %>
 <%= f.wrapped_y_n_dk_select(:received_csf,
+	:label_text => "CSF",
 	:include_blank => true) %>
+</div><!-- class='column' -->
+<div class='column'>
 <%= f.wrapped_y_n_dk_select(:received_chest_xray,
+	:label_text => "Chest X-Ray",
 	:include_blank => true) %>
 <%= f.wrapped_y_n_dk_select(:received_h_and_p,
+	:label_text => "Admitting H&amp;P",
 	:include_blank => true) %>
 <%= f.wrapped_y_n_dk_select(:received_chemo_protocol,
+	:label_text => "Clinical Chemo Protocol",
 	:include_blank => true) %>
 <%= f.wrapped_y_n_dk_select(:received_discharge_summary,
+	:label_text => "Discharge Summary",
 	:include_blank => true) %>
 <%= f.wrapped_y_n_dk_select(:received_resp_to_therapy,
+	:label_text => "Response to Therapy",
 	:include_blank => true) %>
+</div><!-- class='column' -->
+</div><!-- class='columns' -->
 <%= f.wrapped_y_n_dk_select(:received_other_reports,
+	:label_text => "Other Reports",
 	:include_blank => true) %>
 <%= f.wrapped_text_area(:received_specify_other_reports,
+	:class => 'autosize',
 	:label_text => 'Specify:') %>
 
 <p>

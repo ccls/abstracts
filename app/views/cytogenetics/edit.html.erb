@@ -17,12 +17,16 @@
 	:label_text => "UCB Fish done?" ) %>
 
 <%= f.wrapped_text_area(:conventional_karyotype_results,
+	:class => 'autosize',
 	:label_text => "Conventional Karyotype Results:") %>
 <%= f.wrapped_text_area(:hospital_fish_results,
+	:class => 'autosize',
 	:label_text => "FISH Results:" ) %>
 <%= f.wrapped_text_area(:ucb_fish_results,
+	:class => 'autosize',
 	:label_text => "UCB FISH Results:" ) %>
 <%= f.wrapped_text_area(:cytogen_comment,
+	:class => 'autosize',
 	:label_text => "Comments:" ) %>
 <%= f.wrapped_y_n_dk_select(:cytogen_is_hyperdiploidy,
 	:include_blank => true ,
