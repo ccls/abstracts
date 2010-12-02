@@ -6,7 +6,7 @@ versions/
 
 /address_types.csv
 /config/homex.yml
-/config/database.yml
+/config/*database.yml
 /config/fed_ex.yml
 /config/initializers/mail.rb
 /config/initializers/session_store.rb
@@ -16,6 +16,7 @@ versions/
 /db/*.yml
 /db/*.sqlite3
 /db/*.sqlite3-journal
+/db/test_*_schema.rb
 /doc/
 /*.war
 /log/
