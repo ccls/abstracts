@@ -48,7 +48,7 @@ Rails::Initializer.run do |config|
 
 	# config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
-#	config.frameworks -= [ :active_resource ]
+	config.frameworks -= [ :active_resource ]
 
 	# Set Time.zone default to the specified zone and make Active Record 
 	#	auto-convert to this zone.

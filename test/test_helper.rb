@@ -10,8 +10,6 @@ require 'partial_abstract_controller_test_helper'
 
 class ActiveSupport::TestCase
 
-	self.use_transactional_fixtures = true
-	self.use_instantiated_fixtures  = false
 	fixtures :all
 
 end
