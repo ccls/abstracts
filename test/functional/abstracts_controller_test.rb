@@ -10,7 +10,9 @@ class AbstractsControllerTest < ActionController::TestCase
 		:method_for_create => :create_abstract
 	}
 	def factory_attributes(options={})
-		Factory.attributes_for(:abstract,options)
+		#	:abstract worked yesterday, but not today???
+		#	updates were not updating
+		Factory.attributes_for(:complete_abstract,options)	
 	end
 
 	assert_access_with_login({ 
