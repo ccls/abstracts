@@ -45,9 +45,6 @@ Rails::Initializer.run do |config|
 	config.gem 'jakewendt-simply_pages',
 		:lib    => 'simply_pages'
 
-	config.gem 'jakewendt-html_test',
-		:lib    => 'html_test'
-
 	config.gem "chronic"   #		http://chronic.rubyforge.org/
 	config.gem 'will_paginate'
 	config.gem 'fastercsv'
