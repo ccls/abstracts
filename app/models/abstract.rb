@@ -1,5 +1,7 @@
 class Abstract < ActiveRecord::Base
 
+	belongs_to :subject
+
 	with_options :allow_blank => true do |b|
 		b.with_options :maximum => 2 do |o|
 			o.validates_length_of( :response_classification_day_14 )

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class AbstractTest < ActiveSupport::TestCase
-#	assert_should_belong_to :subject
+	assert_should_belong_to :subject
 
 	assert_should_not_require( :response_classification_day_14 )
 	assert_should_not_require( :response_classification_day_28 )
@@ -48,7 +48,7 @@ class AbstractTest < ActiveSupport::TestCase
 	assert_should_not_require( :response_cd7a_day_14 )
 	assert_should_not_require( :response_cd8a_day_14 )
 	assert_should_not_require( :chest_imaging_report_found )
-	assert_should_not_require( :mediastial_mass_present )
+	assert_should_not_require( :mediastinal_mass_present )
 	assert_should_not_require( :chest_imaging_comment )
 	assert_should_not_require( :received_chest_ct )
 	assert_should_not_require( :chest_ct_taken_on )
@@ -232,6 +232,8 @@ class AbstractTest < ActiveSupport::TestCase
 	assert_should_not_require( :response_fab_subtype )
 	assert_should_not_require( :response_tdt_day_14 )
 	assert_should_not_require( :response_tdt_day_7 )
+	assert_should_not_require( :height_at_diagnosis )
+	assert_should_not_require( :weight_at_diagnosis )
 
 	with_options :maximum => 2 do |o|
 		o.assert_should_require_length( :response_classification_day_14 )

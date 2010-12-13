@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101213230533) do
+ActiveRecord::Schema.define(:version => 20101213231210) do
 
   create_table "abstracts", :force => true do |t|
     t.integer  "subject_id"
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(:version => 20101213230533) do
     t.integer  "response_day30_is_in_remission"
     t.integer  "chest_imaging_report_found"
     t.date     "chest_imaging_report_on"
-    t.integer  "mediastial_mass_present"
+    t.integer  "mediastinal_mass_present"
     t.text     "chest_imaging_comment"
     t.integer  "received_chest_ct"
     t.date     "chest_ct_taken_on"

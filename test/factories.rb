@@ -10,6 +10,9 @@ end
 def random_date
 	Date.jd(2440000+rand(15000))
 end
+def random_float
+	rand * 100
+end
 Factory.define :abstract do |f|
 	f.updated_at Time.now	#	to make it dirty
 end
@@ -109,7 +112,7 @@ Factory.define :complete_abstract, :class => 'Abstract' do |f|
 	f.response_day30_is_in_remission random_yndk()
 	f.chest_imaging_report_found	random_yndk()
 	f.chest_imaging_report_on random_date()
-	f.mediastial_mass_present random_yndk()
+	f.mediastinal_mass_present random_yndk()
 	f.sequence(:chest_imaging_comment){|n| "#{n}"}
 	f.received_chest_ct random_yndk()
 	f.chest_ct_taken_on random_date()
@@ -341,4 +344,6 @@ Factory.define :complete_abstract, :class => 'Abstract' do |f|
 	f.sequence(:response_tdt_day_7){|n| "#{n}"}
 #	f.sequence(:abstract_version_description){|n| "#{n}"}
 	f.sequence(:abstract_version_id){|n| n }
+	f.height_at_diagnosis rand_float()
+	f.weight_at_diagnosis rand_float()
 end
