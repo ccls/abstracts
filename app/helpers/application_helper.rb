@@ -118,12 +118,15 @@ module ApplicationHelper
 
 end
 
-
-ActionView::Helpers::FormBuilder.class_eval do
-	def pos_neg_select(method,options={},html_options={})
-		@template.pos_neg_select(
-			@object_name, method, 
-				objectify_options(options),
-				html_options)
-	end
-end
+#
+#	I never call f.pos_neg_select
+#	I do call f.wrapped_pos_neg_select which skips this
+#
+#ActionView::Helpers::FormBuilder.class_eval do
+#	def pos_neg_select(method,options={},html_options={})
+#		@template.pos_neg_select(
+#			@object_name, method, 
+#				objectify_options(options),
+#				html_options)
+#	end
+#end

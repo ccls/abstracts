@@ -1,5 +1,4 @@
-# full path NEEDED for rake test:coverage to find test_helper
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 
 class AbstractsControllerTest < ActionController::TestCase
 
