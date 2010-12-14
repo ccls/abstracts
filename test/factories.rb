@@ -344,6 +344,6 @@ Factory.define :complete_abstract, :class => 'Abstract' do |f|
 	f.sequence(:response_tdt_day_7){|n| "#{n}"}
 #	f.sequence(:abstract_version_description){|n| "#{n}"}
 	f.sequence(:abstract_version_id){|n| n }
-	f.height_at_diagnosis rand_float()
-	f.weight_at_diagnosis rand_float()
+	f.height_at_diagnosis random_float()
+	f.weight_at_diagnosis random_float()
 end
