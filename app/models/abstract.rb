@@ -243,14 +243,31 @@ class Abstract < ActiveRecord::Base
 		end
 	end
 
-
 	attr_accessor :current_user
 
 	before_create :set_user
 
+	def ignorable_columns
+		@@ignorable_columns ||= ['id','created_at','updated_at']
+	end
+
+	def comparable_attributes
+		attributes.reject {|k,v| ignorable_columns.include?(k)}
+	end
+
+	def is_the_same_as?(another_abstract)
+		aa = Abstract.find(another_abstract)
+		(self.comparable_attributes.diff(aa.comparable_attributes)).blank?
+	end
+
+	def diff(another_abstract)
+		aa = Abstract.find(another_abstract)
+		self.comparable_attributes.diff(aa.comparable_attributes)
+	end
+
 protected
 
-	#	Set verified time and user if given
+	#	Set user if given
 	def set_user
 		self.user_id = current_user.try(:id)||0
 	end
