@@ -1,5 +1,10 @@
-<p>Abstract for subject ... ???</p>
-<ul>
+<p class='center'>
+<span class='left'>Abstract for subject:<%= @abstract.subject %>
+</span>
+<%= link_to( "Edit", edit_abstract_path(@abstract), :class => 'right' ) %>
+</p>
+
+<ul style="clear:both;">
 <li><%= link_to "Identifying Data", abstract_identifying_data_path(@abstract) %></li>
 <li><%= link_to "Bone Marrow", abstract_bone_marrow_path(@abstract) %></li>
 <li><%= link_to "Flow Cytometry", abstract_flow_cytometry_path(@abstract) %></li>
