@@ -244,7 +244,7 @@ class Abstract < ActiveRecord::Base
 		end
 	end
 
-	attr_accessor :current_user
+	attr_accessor :current_user, :weight_units, :height_units
 
 	before_create :set_user
 

@@ -146,6 +146,22 @@ form.checklist .column:nth-child(2) {
 */
 
 /*
+	Discharge views
+*/
+div.height_units,
+div.weight_units {
+	clear:none;
+}
+div.height_units label,
+div.weight_units label {
+	display:none;
+}
+
+/*
+	END Discharge views
+*/
+
+/*
 	Diagnosis views
 */
 div.diagnosis .field_wrapper .label,
