@@ -225,6 +225,7 @@ class Abstract < ActiveRecord::Base
 			o.validates_length_of( :chemo_protocol_name )
 			o.validates_length_of( :conventional_karyotype_results )
 			o.validates_length_of( :hospital_fish_results )
+			o.validates_length_of( :hyperdiploidy_by )
 		end
 		b.with_options :maximum => 65000 do |o|
 			o.validates_length_of( :marrow_biopsy_diagnosis )

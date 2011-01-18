@@ -234,6 +234,7 @@ class AbstractTest < ActiveSupport::TestCase
 	assert_should_not_require( :response_tdt_day_7 )
 	assert_should_not_require( :height_at_diagnosis )
 	assert_should_not_require( :weight_at_diagnosis )
+	assert_should_not_require( :hyperdiploidy_by )
 
 	with_options :maximum => 2 do |o|
 		o.assert_should_require_length( :response_classification_day_14 )
@@ -456,6 +457,7 @@ class AbstractTest < ActiveSupport::TestCase
 		o.assert_should_require_length( :chemo_protocol_name )
 		o.assert_should_require_length( :conventional_karyotype_results )
 		o.assert_should_require_length( :hospital_fish_results )
+		o.assert_should_require_length( :hyperdiploidy_by )
 	end
 	with_options :maximum => 65000 do |o|
 		o.assert_should_require_length( :marrow_biopsy_diagnosis )
