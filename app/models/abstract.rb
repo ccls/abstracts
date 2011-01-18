@@ -247,6 +247,8 @@ class Abstract < ActiveRecord::Base
 	attr_accessor :current_user, :weight_units, :height_units
 
 	before_create :set_user
+	before_save   :convert_height_to_cm
+	before_save   :convert_weight_to_kg
 
 	def ignorable_columns
 		@@ignorable_columns ||= ['id','created_at','updated_at']
@@ -267,6 +269,20 @@ class Abstract < ActiveRecord::Base
 	end
 
 protected
+
+	def convert_height_to_cm
+		if( !height_units.nil? && height_units.match(/in/i) )
+			self.height_units = nil
+			self.height_at_diagnosis *= 2.54
+		end
+	end
+
+	def convert_weight_to_kg
+		if( !weight_units.nil? && weight_units.match(/lb/i) )
+			self.weight_units = nil
+			self.weight_at_diagnosis /= 2.2046
+		end
+	end
 
 	#	Set user if given
 	def set_user

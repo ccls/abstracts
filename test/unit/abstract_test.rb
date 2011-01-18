@@ -482,4 +482,40 @@ class AbstractTest < ActiveSupport::TestCase
 		assert_not_nil abstract.reload.user_id
 	end
 
+	test "should not convert weight if weight_units is null" do
+		abstract = Factory(:abstract,:weight_at_diagnosis => 100)
+		assert_equal 100, abstract.reload.weight_at_diagnosis
+	end
+
+	test "should not convert weight if weight_units is kg" do
+		abstract = Factory(:abstract,:weight_at_diagnosis => 100, :weight_units => 'kg')
+		assert_equal 100, abstract.reload.weight_at_diagnosis
+	end
+
+	test "should convert weight to kg if weight_units is lb" do
+		abstract = Factory(:abstract,:weight_at_diagnosis => 100, :weight_units => 'lb')
+		abstract.reload
+		assert_nil       abstract.weight_units
+		assert_not_equal 100,   abstract.weight_at_diagnosis
+		assert_in_delta   45.3, abstract.weight_at_diagnosis, 0.1
+	end
+
+	test "should not convert height if height_units is null" do
+		abstract = Factory(:abstract,:height_at_diagnosis => 100)
+		assert_equal 100, abstract.reload.height_at_diagnosis
+	end
+
+	test "should not convert height if height_units is cm" do
+		abstract = Factory(:abstract,:height_at_diagnosis => 100, :height_units => 'cm')
+		assert_equal 100, abstract.reload.height_at_diagnosis
+	end
+
+	test "should convert height to cm if height_units is in" do
+		abstract = Factory(:abstract,:height_at_diagnosis => 100, :height_units => 'in')
+		abstract.reload
+		assert_nil       abstract.height_units
+		assert_not_equal 100, abstract.height_at_diagnosis
+		assert_in_delta  254, abstract.height_at_diagnosis, 0.1
+	end
+
 end
