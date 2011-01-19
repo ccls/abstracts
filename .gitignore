@@ -17,7 +17,8 @@ versions/
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /db/test_*_schema.rb
-/doc/
+/doc/app
+/doc/plugins
 /*.war
 /log/
 /packages_updated.*
