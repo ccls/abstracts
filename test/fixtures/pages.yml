@@ -6,3 +6,11 @@ pages_1:
   hide_menu: false
   body_en: Home Page
   title_en: Abstracts
+pages_2: 
+  position: 2
+  menu_en: About
+  id: 2
+  path: /about
+  hide_menu: false
+  body_en: About Page
+  title_en: About Abstracts

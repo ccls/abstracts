@@ -13,23 +13,17 @@ Subject.class_eval do
 	has_many :abstracts
 
 	def abstracts_the_same?
-		if abstracts.length == 2
-			#	abstracts.inject(:is_the_same_as?) was nice
-			#	but using inject is ruby >= 1.8.7
-			return abstracts[0].is_the_same_as?(abstracts[1])
-		else
-			raise Subject::NotTwoAbstracts
-		end
+		raise Subject::NotTwoAbstracts unless abstracts.length == 2
+		#	abstracts.inject(:is_the_same_as?) was nice
+		#	but using inject is ruby >= 1.8.7
+		return abstracts[0].is_the_same_as?(abstracts[1])
 	end
 
 	def abstract_diffs
-		if abstracts.length == 2
-			#	abstracts.inject(:diff) was nice
-			#	but using inject is ruby >= 1.8.7
-			return abstracts[0].diff(abstracts[1])
-		else
-			raise Subject::NotTwoAbstracts
-		end
+		raise Subject::NotTwoAbstracts unless abstracts.length == 2
+		#	abstracts.inject(:diff) was nice
+		#	but using inject is ruby >= 1.8.7
+		return abstracts[0].diff(abstracts[1])
 	end
 
 end

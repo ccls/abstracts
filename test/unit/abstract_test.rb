@@ -518,4 +518,41 @@ class AbstractTest < ActiveSupport::TestCase
 		assert_in_delta  254, abstract.height_at_diagnosis, 0.1
 	end
 
+	test "should return an array of ignorable columns" do
+		abstract = Factory(:abstract)
+		assert_equal abstract.ignorable_columns,
+			['id','created_at','updated_at']
+	end
+
+	test "should return hash of comparable attributes" do
+		abstract = Factory(:abstract)
+		assert abstract.comparable_attributes.is_a?(Hash)
+	end
+
+	test "should return true if abstracts are the same" do
+		abstract1 = Factory(:abstract)
+		abstract2 = Factory(:abstract)
+		assert abstract1.is_the_same_as?(abstract2)
+	end
+
+	test "should return false if abstracts are not the same" do
+		abstract1 = Factory(:abstract)
+		abstract2 = Factory(:abstract, :height_at_diagnosis => 100 )
+		assert !abstract1.is_the_same_as?(abstract2)
+	end
+
+	test "should return empty hash if abstracts are the same" do
+		abstract1 = Factory(:abstract)
+		abstract2 = Factory(:abstract)
+		assert_equal Hash.new, abstract1.diff(abstract2)
+		assert       abstract1.diff(abstract2).empty?
+	end
+
+	test "should return hash if abstracts are not the same" do
+		abstract1 = Factory(:abstract)
+		abstract2 = Factory(:abstract, :height_at_diagnosis => 100 )
+		assert !abstract1.diff(abstract2).empty?
+		assert  abstract1.diff(abstract2).has_key?('height_at_diagnosis')
+	end
+
 end
