@@ -10,11 +10,11 @@
 <%= yield :head %>
 </head>
 <body>
-<center><h2><%= @page_title || "Abstracts" -%></h2></center>
 <div id='container'>
 <div id='menu'>
-<% application_root_menu() do %>
-<li><%= link_to "Abstracts", abstracts_path %></li>
+<%= link_to "Abstracts", root_path, :id => 'home_link' %>
+<% application_root_menu() do -%>
+<li><%= link_to "Browse", abstracts_path %></li>
 <li><%= link_to "Pages", pages_path %></li>
 <li><%= link_to "Users", users_path %></li>
 <% end %>

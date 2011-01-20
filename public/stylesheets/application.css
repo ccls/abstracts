@@ -1,6 +1,7 @@
 @import url('shared.css');
 body {
 	font-family:Verdana,Arial,Helvetica,sans-serif;
+	padding: 0px;
 	margin: 0px;
 	background-color: #F0F0FF;
 /*
@@ -13,10 +14,11 @@ div#container {
 	margin: 0 auto;
 }
 
-div#header {
 /* Darker blue 2A71CC */
 /* Even darker 1629f2 */
 /* EVEN DARKER 0057AE */
+/*
+div#header {
 	margin: 10px auto;
 	background-image: url('../images/menu_normal.png');
 	background-repeat: repeat-x;
@@ -24,14 +26,36 @@ div#header {
 	margin-bottom: 1px;
 	padding-bottom: 5px;
 }
+*/
 div#header, div#footer {
 	/* keep the header and footer backgrounds 
 		from cutting off on super zoom */
 	min-width: 900px;
 }
-
+#menu {
+	margin: 0px;
+	padding: 0px 20px;
+}
+#menu a {
+	text-decoration:none;
+}
+#menu a#home_link {
+	font-size: 24pt;
+	float:left;
+}
+#menu #rootmenu {
+	float:right;
+	text-align:right;
+	margin:0px;
+}
 #rootmenu li {
+	float:left;
 	display:inline;
+	padding: 0px 13px 0px 12px;
+	border-right: 1px solid gray;
+}
+#rootmenu li:last-child {
+	border-right: none;
 }
 /*
 div#rootmenu {

@@ -3,6 +3,7 @@ module ApplicationHelper
 	def application_root_menu(*args,&block)
 		s = "<ul id='rootmenu'>\n"
 		Page.roots.each do |page|
+			next if page.path == '/'
 			s << "<li>" << link_to( page.menu(session[:locale]), 
 				ActionController::Base.relative_url_root.to_s + page.path,
 				:id => "menu_#{dom_id(page)}",
