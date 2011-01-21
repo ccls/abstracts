@@ -244,8 +244,13 @@ class Abstract < ActiveRecord::Base
 		end
 	end
 
-	attr_accessor :current_user, :weight_units, :height_units
+	attr_accessor :current_user
+	attr_accessor :weight_units, :height_units
+	attr_accessor :patid
 
+	validate :valid_patid, :on => :create
+
+	before_create :set_subject
 	before_create :set_user
 	before_save   :convert_height_to_cm
 	before_save   :convert_weight_to_kg
@@ -287,6 +292,23 @@ protected
 	#	Set user if given
 	def set_user
 		self.user_id = current_user.try(:id)||0
+	end
+
+	def set_subject
+		unless patid.blank?
+			self.subject_id = Subject.search(:patid => patid, :types => 'Case').first.id
+		end
+	end
+
+	def valid_patid
+		unless patid.blank?
+			subjects = Subject.search(:patid => patid, :types => 'Case',:paginate => false)
+			if subjects.length == 1
+				self.subject_id = subjects.first.id
+			else
+				errors.add(:patid,"#{patid} matches #{subjects.length} case subjects")
+			end
+		end
 	end
 
 end

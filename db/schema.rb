@@ -57,10 +57,10 @@ ActiveRecord::Schema.define(:version => 20110118210521) do
     t.integer  "response_marrow_lambda_day_7"
     t.integer  "cbc_report_found"
     t.date     "cbc_report_on"
-    t.decimal  "cbc_white_blood_count"
+    t.integer  "cbc_white_blood_count",             :limit => 10,  :precision => 10, :scale => 0
     t.integer  "cbc_percent_blasts"
     t.integer  "cbc_number_blasts"
-    t.decimal  "cbc_hemoglobin_level"
+    t.integer  "cbc_hemoglobin_level",              :limit => 10,  :precision => 10, :scale => 0
     t.integer  "cbc_platelet_count"
     t.integer  "cerebrospinal_fluid_report_found"
     t.date     "csf_report_on"

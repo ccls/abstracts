@@ -55,7 +55,31 @@ class AbstractsControllerTest < ActionController::TestCase
 			assert_equal u.id, assigns(:abstract).user_id
 		end
 
-	end
+		test "should create abstract with #{cu} login " <<
+				"and valid patid" do
+			u = send(cu)
+			login_as u
+			subject = create_case_subject_with_patid(1234)
+			assert_difference "Abstract.count", 1 do
+				post :create, :abstract => { :patid => subject.patid }
+				assert assigns(:abstract)
+				assert_nil flash[:error]
+				assert_not_nil flash[:notice]
+				assert_redirected_to abstract_path(assigns(:abstract))
+				assert_equal subject.id, assigns(:abstract).subject_id
+			end
+		end
 
+		test "should not create abstract with #{cu} login " <<
+				"and invalid patid" do
+			u = send(cu)
+			login_as u
+			post :create, :abstract => { :patid => 0 }
+			assert_not_nil flash[:error]
+			assert_response :success
+			assert_template :new
+		end
+
+	end
 
 end

@@ -1,10 +1,16 @@
 <h4>Abstracts:</h4>
+<ul>
+<li><%= link_to "Create first abstract for subject", new_abstract_path %></li>
+<li><%= link_to "Subjects awaiting second entry (coming soon)", new_abstract_path %></li>
+<li><%= link_to "Subjects awaiting abstract merging (coming soon)", new_abstract_path %></li>
+<li><%= link_to "Merged Abstracts (coming soon)", new_abstract_path %></li>
+</ul>
 <% unless @abstracts.empty? %>
-<table id='abstracts'><tbody>
+<table id='abstracts'><thead>
+<tr><th>ID</th><th>Pat ID</th><th>&nbsp;</th></tr>
+</thead><tbody>
 <%= render @abstracts %>
 </tbody></table>
 <% else %>
 Sorry, no abstracts yet.
 <% end %>
-
-<p><%= button_link_to 'Create new abstract', new_abstract_path %></p>

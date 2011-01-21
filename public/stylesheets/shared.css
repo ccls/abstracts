@@ -60,6 +60,7 @@ table {
 	border-collapse:collapse;
 	width: 100%;
 }
+thead tr th,
 tr.row td {
 	padding: 6px;
 }

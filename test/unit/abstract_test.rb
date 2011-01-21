@@ -235,6 +235,8 @@ class AbstractTest < ActiveSupport::TestCase
 	assert_should_not_require( :height_at_diagnosis )
 	assert_should_not_require( :weight_at_diagnosis )
 	assert_should_not_require( :hyperdiploidy_by )
+	assert_should_not_require( :patid )
+	assert_should_not_require( :current_user )
 
 	with_options :maximum => 2 do |o|
 		o.assert_should_require_length( :response_classification_day_14 )
@@ -480,6 +482,22 @@ class AbstractTest < ActiveSupport::TestCase
 		assert_nil abstract.user_id
 		abstract.save
 		assert_not_nil abstract.reload.user_id
+		assert_equal 0, abstract.reload.user_id
+	end
+
+	test "should set subject_id on create with valid patid" do
+		subject = create_case_subject_with_patid(1234)
+		assert_difference "Abstract.count", 1 do
+			abstract = Factory(:abstract, :patid => subject.patid )
+			assert_not_nil abstract.reload.subject_id
+		end
+	end
+
+	test "should require valid patid if provided" do
+		assert_difference "Abstract.count",0 do
+			object = create_object(:patid => 9999)
+			assert object.errors.on(:patid)
+		end
 	end
 
 	test "should not convert weight if weight_units is null" do
@@ -554,5 +572,15 @@ class AbstractTest < ActiveSupport::TestCase
 		assert !abstract1.diff(abstract2).empty?
 		assert  abstract1.diff(abstract2).has_key?('height_at_diagnosis')
 	end
+
+#protected 
+#
+#	def create_case_subject_with_patid(patid)
+#		subject = create_subject( :subject_type => SubjectType['Case'] )
+#		Factory(:identifier,
+#			:subject => subject,
+#			:patid   => patid )
+#		subject
+#	end
 
 end
