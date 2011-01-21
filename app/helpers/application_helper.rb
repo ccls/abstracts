@@ -56,8 +56,10 @@ module ApplicationHelper
 			['IdentifyingData', :abstract_identifying_data_path],
 			['BoneMarrow', :abstract_bone_marrow_path],
 			['FlowCytometry', :abstract_flow_cytometry_path],
-#			['TDT', :abstract_tdt_path],
-#			['Histocompatibility', :abstract_histocompatibility_path],
+
+			['TDT', :abstract_tdt_path],
+			['Histocompatibility', :abstract_histocompatibility_path],
+
 			['Cytogenetics', :abstract_cytogenetic_path],
 			['CBC', :abstract_cbc_path],
 			['CerebrospinalFluid', :abstract_cerebrospinal_fluid_path],
