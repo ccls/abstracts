@@ -22,6 +22,8 @@ ActionController::Routing::Routes.draw do |map|
 		abstract.resource :therapy_response, :only => [:edit,:update,:show]
 	end
 
+	map.resources :subjects, :only => :index
+
 #	map.resources :home_page_pics, :collection => { 
 #		:random => :get,
 #		:activate => :post }
