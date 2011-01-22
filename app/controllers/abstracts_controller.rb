@@ -4,10 +4,15 @@ class AbstractsController < ApplicationController
 
 	resourceful
 
+	skip_before_filter :get_new
 	skip_before_filter :get_all
 
 	def index
 		@abstracts = Abstract.all
+	end
+
+	def new
+		@abstract = Abstract.new(params[:abstract])
 	end
 
 	#	override's resourceful create

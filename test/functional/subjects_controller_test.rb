@@ -25,6 +25,19 @@ class SubjectsControllerTest < ActionController::TestCase
 	assert_no_route(:delete,:destroy,:id => 0)
 
 	%w( superuser admin ).each do |cu|
+
+		test "should get index of only case subjects with #{cu} login " do
+			Factory(:case_subject)
+			login_as send(cu)
+			get :index
+			assert_response :success
+			assert_template :index
+			assert assigns(:subjects)
+			assert assigns(:subjects).length > 0
+			assigns(:subjects).each do |subject|
+				assert_equal 'Case', subject.subject_type.to_s
+			end
+		end
 			
 	end
 

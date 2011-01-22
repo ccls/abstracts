@@ -1,1 +1,12 @@
+<% if @subjects.length > 0 %>
+<table id='subjects'><thead><tr>
+<th><%= sort_link('PatID') -%></th>
+<th><%= sort_link('Abstracts_Count') -%></th>
+</tr></thead><tbody>
+<%= render :partial => 'subject', :collection => @subjects %>
+</tbody></table>
+<% else %>
+<p>There are no subjects.</p>
+<% end %>
 
+<%= will_paginate @subjects %>

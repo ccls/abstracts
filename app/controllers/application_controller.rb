@@ -25,4 +25,14 @@ protected
 		end
 	end
 
+	def record_or_recall_sort_order
+		%w( dir order ).map(&:to_sym).each do |param|
+			if params[param].blank? && !session[param].blank?
+				params[param] = session[param]	#	recall
+			elsif !params[param].blank?
+				session[param] = params[param]	#	record
+			end
+		end
+	end
+
 end

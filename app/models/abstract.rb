@@ -1,6 +1,6 @@
 class Abstract < ActiveRecord::Base
 
-	belongs_to :subject
+	belongs_to :subject, :counter_cache => true
 
 	with_options :allow_blank => true do |b|
 		b.with_options :maximum => 2 do |o|
