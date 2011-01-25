@@ -14,9 +14,9 @@ private #	REQUIRED!
 	def abstracts_count_conditions
 		unless @abstracts_count.blank?
 			case @abstracts_count
-				when 0 then ["abstracts_count <= 0"]
-				when 1 then ["abstracts_count = 1"]
-				when 2 then ["abstracts_count >= 2"]
+				when '0' then ["abstracts_count <= 0"]
+				when '1' then ["abstracts_count = 1"]
+				when '2' then ["abstracts_count >= 2"]
 			end
 		end
 	end
