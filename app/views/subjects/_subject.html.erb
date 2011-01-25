@@ -6,6 +6,10 @@
 <%= subject.abstracts_count -%>
 </td>
 <td class='create'>
+<% if subject.abstracts_count >= 2 %>
+<%= link_to "Merge Abstracts", merge_subject_path(subject) -%>
+<% else %>
 <%= link_to "New Abstract", new_abstract_path(:abstract=>{:patid => subject.patid}) -%>
+<% end %>
 </td>
 <% end %><%# content_tag_for %>

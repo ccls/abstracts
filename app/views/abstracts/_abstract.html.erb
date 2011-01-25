@@ -9,7 +9,7 @@
 	<%= button_link_to "Show", abstract_path(abstract) %>&nbsp;
 	<%= button_link_to 'Edit', edit_abstract_path(abstract) %>&nbsp;
 	<% destroy_link_to 'Destroy', abstract_path(abstract) do %>
-		<%= hidden_field_tag 'confirm', "Destroy abstract '#{abstract}'?", :id => nil %>
+		<%= hidden_field_tag 'confirm', "Destroy abstract '#{abstract.id}'?", :id => nil %>
 	<% end %>
 </td>
 <% end %>

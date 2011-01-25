@@ -22,7 +22,8 @@ ActionController::Routing::Routes.draw do |map|
 		abstract.resource :therapy_response, :only => [:edit,:update,:show]
 	end
 
-	map.resources :subjects, :only => :index
+	map.resources :subjects, :only => :index,
+		:member => { :merge => :get }
 
 #	map.resources :home_page_pics, :collection => { 
 #		:random => :get,

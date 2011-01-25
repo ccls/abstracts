@@ -8,7 +8,7 @@ class AbstractsController < ApplicationController
 	skip_before_filter :get_all
 
 	def index
-		@abstracts = Abstract.all
+		@abstracts = Abstract.all(:include => [:subject => :identifier])
 	end
 
 	def new
