@@ -2,6 +2,10 @@ class AbstractsController < ApplicationController
 
 	before_filter :append_current_user_to_params, :only => :create
 
+#	abstracts shallow sub route of subjects?
+#	subject can't have more than one abstract and a NOT merged
+#	before_filter :subject_can_not_have_more_than_one_already, :only => [:new,:create]
+
 	resourceful
 
 	skip_before_filter :get_new
