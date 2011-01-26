@@ -4,6 +4,7 @@ class SubjectSearchTest < ActiveSupport::TestCase
 
 #	case_subject / subject is irrelevant here
 #	added :types => 'Case'
+#	It is now
 
 	test "should include subjects by abstracts_count = 0" do
 		s1 = Factory(:case_subject)
@@ -11,8 +12,8 @@ class SubjectSearchTest < ActiveSupport::TestCase
 		s2 = Factory(:subject)
 		assert_equal 0, s2.abstracts_count
 		subjects = Subject.search(:abstracts_count => 0, :types => 'Case')
-		assert subjects.include?(s1)
-		assert subjects.include?(s2)
+		assert  subjects.include?(s1)
+		assert !subjects.include?(s2)
 	end
 
 	test "should include subjects by abstracts_count = 1" do
