@@ -256,6 +256,7 @@ class Abstract < ActiveRecord::Base
 	before_save   :convert_weight_to_kg
 
 	def ignorable_columns
+#	should add the entry_1_by_id and entry_2_by_id fields when they exist
 		@@ignorable_columns ||= ['id','created_at','updated_at']
 	end
 
@@ -271,6 +272,10 @@ class Abstract < ActiveRecord::Base
 	def diff(another_abstract)
 		aa = Abstract.find(another_abstract)
 		self.comparable_attributes.diff(aa.comparable_attributes)
+	end
+
+	def self.search(params={})
+		AbstractSearch.new(params).abstracts
 	end
 
 protected
