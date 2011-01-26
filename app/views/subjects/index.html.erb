@@ -10,3 +10,10 @@
 <% end %>
 
 <%= will_paginate @subjects %>
+
+<% form_tag( url_for(:controller => params[:controller]),
+	:method => :get) do %>
+	<%= label_tag :q, "Simple Simon's Simple Subject Search" %>
+	<%= text_field_tag :q, params[:q], :id => nil  %>
+	<%= submit_tag 'find' %>
+<% end %>
