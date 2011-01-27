@@ -31,76 +31,88 @@ class AbstractSearchTest < ActiveSupport::TestCase
 
 	test "should NOT order by bogus column with dir" do
 		Abstract.destroy_all
-		g1,g2,g3 = create_abstracts(3)
+		a1,a2,a3 = create_abstracts(3)
 		abstracts = Abstract.search(
 			:order => 'whatever', :dir => 'asc')
-		assert_equal [g1,g2,g3], abstracts
+		assert_equal [a1,a2,a3], abstracts
 	end
 
 	test "should NOT order by bogus column" do
 		Abstract.destroy_all
-		g1,g2,g3 = create_abstracts(3)
+		a1,a2,a3 = create_abstracts(3)
 		abstracts = Abstract.search(:order => 'whatever')
-		assert_equal [g1,g2,g3], abstracts
+		assert_equal [a1,a2,a3], abstracts
 	end
 
-#	test "should order by id asc by default" do
-#		Abstract.destroy_all
-#		g1,g2,g3 = create_abstracts_with_childids(9,3,6)
-#		abstracts = Abstract.search(
-#			:order => 'id')
-#		assert_equal [g1,g2,g3], abstracts
-#	end
-#
-#	test "should order by id asc" do
-#		Abstract.destroy_all
-#		g1,g2,g3 = create_abstracts_with_childids(9,3,6)
-#		abstracts = Abstract.search(
-#			:order => 'id', :dir => 'asc')
-#		assert_equal [g1,g2,g3], abstracts
-#	end
-#
-#	test "should order by id desc" do
-#		Abstract.destroy_all
-#		g1,g2,g3 = create_abstracts_with_childids(9,3,6)
-#		abstracts = Abstract.search(
-#			:order => 'id', :dir => 'desc')
-#		assert_equal [g3,g2,g1], abstracts
-#	end
-#
-#	test "should include abstract by q first_name" do
-#		g1,g2 = create_abstracts_with_first_names('Michael','Bob')
-#		abstracts = Abstract.search(:q => 'mi ch ha')
-#		assert  abstracts.include?(g1)
-#		assert !abstracts.include?(g2)
-#	end
-#
-#	test "should include abstract by q last_name" do
-#		g1,g2 = create_abstracts_with_last_names('Michael','Bob')
-#		abstracts = Abstract.search(:q => 'cha ael')
-#		assert  abstracts.include?(g1)
-#		assert !abstracts.include?(g2)
-#	end
-#
-#	test "should include abstract by q childid" do
-#		g1,g2 = create_abstracts_with_childids(999999,'1')
-#		abstracts = Abstract.search(:q => g1.subject.identifier.childid)
-#		assert  abstracts.include?(g1)
-#		assert !abstracts.include?(g2)
-#	end
-#
-#	test "should include abstract by q patid" do
-#		g1,g2 = create_abstracts_with_patids(999999,'1')
-#		abstracts = Abstract.search(:q => g1.subject.identifier.patid)
-#		assert  abstracts.include?(g1)
-#		assert !abstracts.include?(g2)
-#	end
-#
+	test "should order by id asc by default" do
+		Abstract.destroy_all
+		a1,a2,a3 = create_abstracts(3)
+		abstracts = Abstract.search(
+			:order => 'id')
+		assert_equal [a1,a2,a3], abstracts
+	end
+
+	test "should order by id asc" do
+		Abstract.destroy_all
+		a1,a2,a3 = create_abstracts(3)
+		abstracts = Abstract.search(
+			:order => 'id', :dir => 'asc')
+		assert_equal [a1,a2,a3], abstracts
+	end
+
+	test "should order by id desc" do
+		Abstract.destroy_all
+		a1,a2,a3 = create_abstracts(3)
+		abstracts = Abstract.search(
+			:order => 'id', :dir => 'desc')
+		assert_equal [a3,a2,a1], abstracts
+	end
+
+#	Can't search across multiple databases.
+#	So doing a double search.
+
+	test "should include abstract by q first_name" do
+		a1,a2 = create_abstracts_with_first_names('Michael','Bob')
+		assert_equal 'Michael', a1.subject.first_name
+		abstracts = Abstract.search(:q => 'mi ch ha')
+		assert  abstracts.include?(a1)
+		assert !abstracts.include?(a2)
+	end
+
+	test "should include abstract by q last_name" do
+		a1,a2 = create_abstracts_with_last_names('Michael','Bob')
+		assert_equal 'Michael', a1.subject.last_name
+		abstracts = Abstract.search(:q => 'cha ael')
+		assert  abstracts.include?(a1)
+		assert !abstracts.include?(a2)
+	end
+
+	test "should include abstract by q childid" do
+		a1,a2 = create_abstracts_with_childids(999999,'1')
+		assert_equal 999999, a1.subject.childid
+		abstracts = Abstract.search(:q => a1.subject.identifier.childid)
+		assert  abstracts.include?(a1)
+		assert !abstracts.include?(a2)
+	end
+
+	test "should include abstract by q patid" do
+		a1,a2 = create_abstracts_with_patids(999999,'1')
+		assert_equal 999999, a1.subject.patid
+		abstracts = Abstract.search(:q => a1.subject.identifier.patid)
+		assert  abstracts.include?(a1)
+		assert !abstracts.include?(a2)
+	end
+
 #	test "should include abstract by q number" do
-#		g1,g2 = create_abstracts_with_numbers('9999','1111')
-#		abstracts = Abstract.search(:q => g1.number)
-#		assert  abstracts.include?(g1)
-#		assert !abstracts.include?(g2)
+#		a1,a2 = create_abstracts_with_numbers('9999','1111')
+#		abstracts = Abstract.search(:q => a1.number)
+#		assert  abstracts.include?(a1)
+#		assert !abstracts.include?(a2)
 #	end
+
+	test "should find abstracts that are merged" do
+
+		pending
+	end
 
 end

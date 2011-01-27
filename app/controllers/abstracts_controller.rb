@@ -12,7 +12,8 @@ class AbstractsController < ApplicationController
 	skip_before_filter :get_all
 
 	def index
-		@abstracts = Abstract.all(:include => [:subject => :identifier])
+#		@abstracts = Abstract.all(:include => [:subject => :identifier])
+		@abstracts = Abstract.search(params)
 	end
 
 	def new

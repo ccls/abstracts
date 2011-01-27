@@ -15,6 +15,40 @@ class ActiveSupport::TestCase
 		subject
 	end
 
+	def create_abstracts(count=0,options={})
+		abstracts = []
+		count.times{ abstracts.push(create_abstract(options)) }
+		return abstracts
+	end
+
+	def create_abstract_with_first_name(first_name)
+		subject  = create_subject_with_first_name(first_name)
+		abstract = create_abstract
+		subject.abstracts << abstract
+		abstract
+	end
+
+	def create_abstract_with_last_name(last_name)
+		subject  = create_subject_with_last_name(last_name)
+		abstract = create_abstract
+		subject.abstracts << abstract
+		abstract
+	end
+
+	def create_abstract_with_childid(childid)
+		subject  = create_subject_with_childid(childid)
+		abstract = create_abstract
+		subject.abstracts << abstract
+		abstract
+	end
+
+	def create_abstract_with_patid(patid)
+		subject  = create_subject_with_patid(patid)
+		abstract = create_abstract
+		subject.abstracts << abstract
+		abstract
+	end
+
 end
 
 class ActionController::TestCase
