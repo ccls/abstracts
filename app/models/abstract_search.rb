@@ -8,7 +8,7 @@ class AbstractSearch < Search
 #		:last_name => 'piis.last_name',
 #		:first_name => 'piis.first_name',
 #		:studyid => 'identifiers.patid',
-		:id => nil
+		:id => 'abstracts.id'
 	})
 
 	def abstracts
