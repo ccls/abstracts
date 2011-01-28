@@ -3,7 +3,8 @@ class AbstractSearch < Search
 
 	self.searchable_attributes += [ :q, :merged ]
 
-	self.valid_orders.merge!({
+#	self.valid_orders.merge!({	#	NO!
+	self.valid_orders = self.valid_orders.merge({
 #		:childid => 'identifiers.childid',
 #		:last_name => 'piis.last_name',
 #		:first_name => 'piis.first_name',
