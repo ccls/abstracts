@@ -1,3 +1,4 @@
+#	Subject controller
 class SubjectsController < ApplicationController
 
 	resourceful

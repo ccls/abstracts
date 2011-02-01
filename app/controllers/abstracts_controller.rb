@@ -1,3 +1,4 @@
+#	Abstract controller
 class AbstractsController < ApplicationController
 
 	before_filter :append_current_user_to_params, :only => :create
