@@ -75,18 +75,16 @@ module ApplicationHelper
 		current_index = order.find_index{|i| i[0] =~ /^#{current}$/i }
 
 		s = "<p class='center'>"
-		if !current_index.nil? && current_index > 0
-			s << "<span class='left'>"
-			s << link_to( "&laquo; #{order[current_index-1][0]}", 
-				send(order[current_index-1][1],abstract) )
-			s << "</span>"
+		s << if !current_index.nil? && current_index > 0
+			"<span class='left'>" << 
+				link_to( "&laquo; #{order[current_index-1][0]}", 
+					send(order[current_index-1][1],abstract) ) << "</span>"
 		end
 		s << link_to( "Back to Abstract", abstract_path(abstract) )
-		if !current_index.nil? && current_index < ( order.length - 1 )
-			s << "<span class='right'>"
-			s << link_to( "#{order[current_index+1][0]} &raquo;", 
-				send(order[current_index+1][1],abstract) )
-			s << "</span>"
+		s << if !current_index.nil? && current_index < ( order.length - 1 )
+			"<span class='right'>" << 
+				link_to( "#{order[current_index+1][0]} &raquo;", 
+					send(order[current_index+1][1],abstract) ) << "</span>"
 		end
 		s << "</p>"
 	end
