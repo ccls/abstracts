@@ -1,3 +1,4 @@
+#	Abstract model
 class Abstract < ActiveRecord::Base
 
 	belongs_to :subject, :counter_cache => true

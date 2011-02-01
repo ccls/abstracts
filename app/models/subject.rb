@@ -3,6 +3,7 @@ require 'ccls_engine'
 require g.full_gem_path + '/app/models/subject'
 end
 
+#	Not Two Abstracts Error
 class Subject::NotTwoAbstracts < StandardError; end
 
 Subject.class_eval do

@@ -1,3 +1,4 @@
+#	User model
 class User < ActiveRecord::Base
 	ucb_authenticated
 

@@ -22,10 +22,11 @@ class SubjectsController < ApplicationController
 protected
 
 	def two_abstracts_required
-		if @subject.abstracts_count > 2 ||
-			@subject.abstracts_count < 2
+		abstracts_count = @subject.abstracts_count
+		if abstracts_count > 2 ||
+			abstracts_count < 2
 			access_denied("Must complete 2 abstracts before merging. " <<
-				":#{@subject.abstracts_count}:")
+				":#{abstracts_count}:")
 		end
 	end
 
