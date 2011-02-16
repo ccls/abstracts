@@ -29,7 +29,7 @@ UC Berkeley, School of Public Health, California Childhood Leukemia Study
 * paperclip
 * {ccls-ccls_engine}[http://github.com/ccls/ucb_ccls_engine]
 * {jakewendt-simply_helpful}[http://github.com/jakewendt/simply_helpful]
-* {jakewendt-calnet_authenticated}[http://github.com/jakewendt/calnet_authenticated]
+* {ccls-calnet_authenticated}[http://github.com/ccls/calnet_authenticated]
 * {jakewendt-simply_authorized}[http://github.com/jakewendt/simply_authorized]
 * {jakewendt-simply_pages}[http://github.com/jakewendt/simply_pages]
 * {jakewendt-rails_extension}[http://github.com/jakewendt/rails_extension]
