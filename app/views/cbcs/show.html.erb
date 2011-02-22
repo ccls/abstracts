@@ -10,6 +10,8 @@
 <% end %>
 
 <div>
+<%= wrapped_yes_or_no_spans(:abstract,:cbc_percent_blasts_known,
+	:label_text => "% Blasts Known?" ) %>
 <% wrapped_spans(:abstract,:cbc_percent_blasts,
 	:label_text => "% Blasts" ) do %>
 <span>%</span>
