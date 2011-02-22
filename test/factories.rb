@@ -333,12 +333,17 @@ Factory.define :complete_abstract, :class => 'Abstract' do |f|
 	f.sequence(:cytogen_t1517){|n| "#{n}"}
 	f.sequence(:cytogen_is_hyperdiploidy){|n| "#{n}"}
 	f.sequence(:cytogen_chromosome_number){|n| "#{n}"}
+	f.sequence(:cytogen_t922){|n| "#{n}"}
 	f.sequence(:cytogen_other_trans_1){|n| "#{n}"}
 	f.sequence(:cytogen_other_trans_2){|n| "#{n}"}
 	f.sequence(:cytogen_other_trans_3){|n| "#{n}"}
-	f.sequence(:cytogen_t922){|n| "#{n}"}
 	f.sequence(:cytogen_other_trans_4){|n| "#{n}"}
 	f.sequence(:cytogen_other_trans_5){|n| "#{n}"}
+	f.sequence(:cytogen_other_trans_6){|n| "#{n}"}
+	f.sequence(:cytogen_other_trans_7){|n| "#{n}"}
+	f.sequence(:cytogen_other_trans_8){|n| "#{n}"}
+	f.sequence(:cytogen_other_trans_9){|n| "#{n}"}
+	f.sequence(:cytogen_other_trans_10){|n| "#{n}"}
 	f.sequence(:response_fab_subtype){|n| "#{n}"}
 	f.sequence(:response_tdt_day_14){|n| "#{n}"}
 	f.sequence(:response_tdt_day_7){|n| "#{n}"}

@@ -157,6 +157,11 @@ class Abstract < ActiveRecord::Base
 			o.validates_length_of( :cytogen_other_trans_3 )
 			o.validates_length_of( :cytogen_other_trans_4 )
 			o.validates_length_of( :cytogen_other_trans_5 )
+			o.validates_length_of( :cytogen_other_trans_6 )
+			o.validates_length_of( :cytogen_other_trans_7 )
+			o.validates_length_of( :cytogen_other_trans_8 )
+			o.validates_length_of( :cytogen_other_trans_9 )
+			o.validates_length_of( :cytogen_other_trans_10 )
 		end
 		b.with_options :maximum => 50 do |o|
 			o.validates_length_of( :flow_cyto_igm_text )

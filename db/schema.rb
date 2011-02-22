@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110121225730) do
+ActiveRecord::Schema.define(:version => 20110222182437) do
 
   create_table "abstracts", :force => true do |t|
     t.integer  "subject_id"
@@ -342,6 +342,11 @@ ActiveRecord::Schema.define(:version => 20110121225730) do
     t.float    "height_at_diagnosis"
     t.float    "weight_at_diagnosis"
     t.string   "hyperdiploidy_by"
+    t.string   "cytogen_other_trans_6",             :limit => 35
+    t.string   "cytogen_other_trans_7",             :limit => 35
+    t.string   "cytogen_other_trans_8",             :limit => 35
+    t.string   "cytogen_other_trans_9",             :limit => 35
+    t.string   "cytogen_other_trans_10",            :limit => 35
   end
 
   create_table "pages", :force => true do |t|
