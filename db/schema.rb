@@ -57,10 +57,10 @@ ActiveRecord::Schema.define(:version => 20110222184715) do
     t.integer  "response_marrow_lambda_day_7"
     t.integer  "cbc_report_found"
     t.date     "cbc_report_on"
-    t.integer  "cbc_white_blood_count",             :limit => 10,  :precision => 10, :scale => 0
+    t.decimal  "cbc_white_blood_count"
     t.integer  "cbc_percent_blasts"
     t.integer  "cbc_number_blasts"
-    t.integer  "cbc_hemoglobin_level",              :limit => 10,  :precision => 10, :scale => 0
+    t.decimal  "cbc_hemoglobin_level"
     t.integer  "cbc_platelet_count"
     t.integer  "cerebrospinal_fluid_report_found"
     t.date     "csf_report_on"
@@ -347,7 +347,7 @@ ActiveRecord::Schema.define(:version => 20110222184715) do
     t.string   "cytogen_other_trans_8",             :limit => 35
     t.string   "cytogen_other_trans_9",             :limit => 35
     t.string   "cytogen_other_trans_10",            :limit => 35
-    t.boolean  "cbc_percent_blasts_known",                                                        :default => false
+    t.boolean  "cbc_percent_blasts_known",                         :default => false
   end
 
   create_table "pages", :force => true do |t|
