@@ -64,6 +64,7 @@ Factory.define :complete_abstract, :class => 'Abstract' do |f|
 	f.cbc_report_on random_date()
 	f.cbc_white_blood_count rand*1000
 	f.sequence(:cbc_percent_blasts){|n| n }
+	f.cbc_percent_blasts_unknown random_true_or_false()
 	f.sequence(:cbc_number_blasts){|n| n }
 	f.cbc_hemoglobin_level rand*1000
 	f.sequence(:cbc_platelet_count){|n| n }

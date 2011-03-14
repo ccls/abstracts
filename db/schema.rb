@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110222184715) do
+ActiveRecord::Schema.define(:version => 20110314191439) do
 
   create_table "abstracts", :force => true do |t|
     t.integer  "subject_id"
@@ -347,7 +347,7 @@ ActiveRecord::Schema.define(:version => 20110222184715) do
     t.string   "cytogen_other_trans_8",             :limit => 35
     t.string   "cytogen_other_trans_9",             :limit => 35
     t.string   "cytogen_other_trans_10",            :limit => 35
-    t.boolean  "cbc_percent_blasts_known",                         :default => false
+    t.boolean  "cbc_percent_blasts_unknown",                       :default => false
   end
 
   create_table "pages", :force => true do |t|
