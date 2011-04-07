@@ -19,9 +19,35 @@ require File.join(File.dirname(__FILE__), 'boot')
 #	for controlling the path to documents.
 RAILS_APP_NAME = 'abstracts'
 
-Rails::Initializer.run do |config|
+#	Why?
+#	Why do I NEED to require i18n here and nowhere else? Why? Why? Why?!  WTF
+#	What happened and where?  This app hasn't changed in about a month.
+#	Homex and ODMS work fine.?  WTF?
+#	I don't need it with script/server as it runs fine, but script/console
+#		and testing ....
+#/Library/Ruby/Gems/1.8/gems/activerecord-2.3.11/lib/active_record.rb:83: uninitialized constant I18n (NameError)
+#	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:54:in `gem_original_require'
+#	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:54:in `require'
+#	from /Library/Ruby/Gems/1.8/gems/rails-2.3.11/lib/initializer.rb:268:in `require_frameworks'
+#	from /Library/Ruby/Gems/1.8/gems/rails-2.3.11/lib/initializer.rb:268:in `each'
+#	from /Library/Ruby/Gems/1.8/gems/rails-2.3.11/lib/initializer.rb:268:in `require_frameworks'
+#	from /Library/Ruby/Gems/1.8/gems/rails-2.3.11/lib/initializer.rb:134:in `process'
+#	from /Library/Ruby/Gems/1.8/gems/rails-2.3.11/lib/initializer.rb:113:in `send'
+#	from /Library/Ruby/Gems/1.8/gems/rails-2.3.11/lib/initializer.rb:113:in `run'
+#	from /Users/jakewendt/github_repo/ccls/abstracts/config/environment.rb:22
+#	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:36:in `gem_original_require'
+#	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:36:in `require'
+#	from ./test/test_helper.rb:2
+#	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:36:in `gem_original_require'
+#	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:36:in `require'
+#	from ./test/functional/histocompatibilities_controller_test.rb:1
+#	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:36:in `gem_original_require'
+#	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:36:in `require'
+#	from -e:1
+#
+require 'i18n'
 
-#	config.gem 'RedCloth', :version => '!= 4.2.6', :lib => 'redcloth'
+Rails::Initializer.run do |config|
 
 	if RUBY_PLATFORM =~ /java/
 		config.gem 'activerecord-jdbcsqlite3-adapter',
@@ -33,7 +59,6 @@ Rails::Initializer.run do |config|
 		config.gem 'jruby-openssl', :lib => 'openssl'
 	else
 		config.gem 'mysql'
-#		config.gem "sqlite3-ruby", :lib => "sqlite3"
 		config.gem "sqlite3"
 	end
 
