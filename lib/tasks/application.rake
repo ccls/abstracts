@@ -4,7 +4,6 @@ namespace :app do
 	task :update => :environment do
 #			pages
 		fixtures = %w(
-			pages
 			roles
 		)
 		ENV['FIXTURES'] = fixtures.join(',')
@@ -14,12 +13,12 @@ namespace :app do
 
 	desc "Load some fixtures and users to database for application"
 	task :setup => :update do
-		Rake::Task["app:add_users"].invoke
+		Rake::Task["ccls:add_users"].invoke
 		ENV['uid'] = '859908'
-		Rake::Task["app:deputize"].invoke
+		Rake::Task["ccls:deputize"].invoke
 		ENV['uid'] = '228181'
-		Rake::Task["app:deputize"].reenable	#	<- this is stupid!
-		Rake::Task["app:deputize"].invoke
+		Rake::Task["ccls:deputize"].reenable	#	<- this is stupid!
+		Rake::Task["ccls:deputize"].invoke
 	end
 
 end
