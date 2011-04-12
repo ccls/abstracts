@@ -69,7 +69,5 @@ User icons from {Gravatar}[http://gravatar.com]
 
 {Background image gradients}[http://gradients.glrzad.com/]
 
-{Equal column height example}[http://www.positioniseverything.net/articles/onetruelayout/equalheight]
-
 
 Copyright (c) 2010 [Jake Wendt], released under the MIT license
