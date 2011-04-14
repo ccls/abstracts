@@ -260,6 +260,7 @@ class Abstract < ActiveRecord::Base
 	before_create :set_user
 	before_save   :convert_height_to_cm
 	before_save   :convert_weight_to_kg
+	before_save   :set_days_since_fields
 
 	def ignorable_columns
 #	should add the entry_1_by_id and entry_2_by_id fields when they exist
@@ -285,6 +286,36 @@ class Abstract < ActiveRecord::Base
 	end
 
 protected
+
+	def set_days_since_fields
+		#	must explicitly convert these DateTimes to Date so that the
+		#	difference is in days and not seconds
+		#	I really only need to do this if something changes,
+		#	but for now, just do it and make sure that
+		#	it is tested.  Optimize and refactor later.
+		unless diagnosed_on.nil?
+			self.response_day_7_days_since_diagnosis = (
+				response_report_on_day_7.to_date - diagnosed_on.to_date 
+				) unless response_report_on_day_7.nil?
+			self.response_day_14_days_since_diagnosis = (
+				response_report_on_day_14.to_date - diagnosed_on.to_date 
+				) unless response_report_on_day_14.nil?
+			self.response_day_28_days_since_diagnosis = (
+				response_report_on_day_28.to_date - diagnosed_on.to_date 
+				) unless response_report_on_day_28.nil?
+		end
+		unless treatment_began_on.nil?
+			self.response_day_7_days_since_treatment_began = (
+				response_report_on_day_7.to_date - treatment_began_on.to_date 
+				) unless response_report_on_day_7.nil?
+			self.response_day_14_days_since_treatment_began = (
+				response_report_on_day_14.to_date - treatment_began_on.to_date 
+				) unless response_report_on_day_14.nil?
+			self.response_day_28_days_since_treatment_began = (
+				response_report_on_day_28.to_date - treatment_began_on.to_date 
+				) unless response_report_on_day_28.nil?
+		end
+	end
 
 	def convert_height_to_cm
 		if( !height_units.nil? && height_units.match(/in/i) )

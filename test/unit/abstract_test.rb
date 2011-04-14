@@ -244,6 +244,12 @@ class AbstractTest < ActiveSupport::TestCase
 	assert_should_not_require( :hyperdiploidy_by )
 	assert_should_not_require( :patid )
 	assert_should_not_require( :current_user )
+	assert_should_not_require( :response_day_7_days_since_treatment_began )
+	assert_should_not_require( :response_day_7_days_since_diagnosis )
+	assert_should_not_require( :response_day_14_days_since_treatment_began )
+	assert_should_not_require( :response_day_14_days_since_diagnosis )
+	assert_should_not_require( :response_day_28_days_since_treatment_began )
+	assert_should_not_require( :response_day_28_days_since_diagnosis )
 
 	with_options :maximum => 2 do |o|
 		o.assert_should_require_length( :response_classification_day_14 )
@@ -584,6 +590,78 @@ class AbstractTest < ActiveSupport::TestCase
 		assert !abstract1.diff(abstract2).empty?
 		assert  abstract1.diff(abstract2).has_key?('height_at_diagnosis')
 	end
+
+	test "should NOT set days since diagnosis fields on create without diagnosed_on" do
+		abstract = Factory(:abstract)
+		assert_nil abstract.diagnosed_on
+		assert_nil abstract.response_day_7_days_since_diagnosis
+		assert_nil abstract.response_day_14_days_since_diagnosis
+		assert_nil abstract.response_day_28_days_since_diagnosis
+	end
+
+	test "should NOT set days since diagnosis fields on create without response_report_on" do
+		abstract = Factory(:abstract,:diagnosed_on => Chronic.parse('10 days ago'),
+			:response_report_on_day_7  => nil,
+			:response_report_on_day_14 => nil,
+			:response_report_on_day_28 => nil
+		)
+		assert_not_nil abstract.diagnosed_on
+		assert_nil abstract.response_day_7_days_since_diagnosis
+		assert_nil abstract.response_day_14_days_since_diagnosis
+		assert_nil abstract.response_day_28_days_since_diagnosis
+	end
+
+	test "should set days since diagnosis fields on create with diagnosed_on" do
+		abstract = Factory(:abstract,:diagnosed_on => Chronic.parse('40 days ago'),
+			:response_report_on_day_7  => Chronic.parse('30 days ago'),
+			:response_report_on_day_14 => Chronic.parse('20 days ago'),
+			:response_report_on_day_28 => Chronic.parse('10 days ago')
+		)
+		assert_not_nil abstract.diagnosed_on
+		assert_not_nil abstract.response_day_7_days_since_diagnosis
+		assert_equal 10, abstract.response_day_7_days_since_diagnosis
+		assert_not_nil abstract.response_day_14_days_since_diagnosis
+		assert_equal 20, abstract.response_day_14_days_since_diagnosis
+		assert_not_nil abstract.response_day_28_days_since_diagnosis
+		assert_equal 30, abstract.response_day_28_days_since_diagnosis
+	end
+
+	test "should NOT set days since treatment_began fields on create without treatment_began_on" do
+		abstract = Factory(:abstract)
+		assert_nil abstract.treatment_began_on
+		assert_nil abstract.response_day_7_days_since_treatment_began
+		assert_nil abstract.response_day_14_days_since_treatment_began
+		assert_nil abstract.response_day_28_days_since_treatment_began
+	end
+
+	test "should NOT set days since treatment_began fields on create without response_report_on" do
+		abstract = Factory(:abstract,:treatment_began_on => Chronic.parse('10 days ago'),
+			:response_report_on_day_7  => nil,
+			:response_report_on_day_14 => nil,
+			:response_report_on_day_28 => nil
+		)
+		assert_not_nil abstract.treatment_began_on
+		assert_nil abstract.response_day_7_days_since_treatment_began
+		assert_nil abstract.response_day_14_days_since_treatment_began
+		assert_nil abstract.response_day_28_days_since_treatment_began
+	end
+
+	test "should set days since treatment_began fields on create with treatment_began_on" do
+		abstract = Factory(:abstract,:treatment_began_on => Chronic.parse('40 days ago'),
+			:response_report_on_day_7  => Chronic.parse('30 days ago'),
+			:response_report_on_day_14 => Chronic.parse('20 days ago'),
+			:response_report_on_day_28 => Chronic.parse('10 days ago')
+		)
+		assert_not_nil abstract.treatment_began_on
+		assert_not_nil abstract.response_day_7_days_since_treatment_began
+		assert_equal 10, abstract.response_day_7_days_since_treatment_began
+		assert_not_nil abstract.response_day_14_days_since_treatment_began
+		assert_equal 20, abstract.response_day_14_days_since_treatment_began
+		assert_not_nil abstract.response_day_28_days_since_treatment_began
+		assert_equal 30, abstract.response_day_28_days_since_treatment_began
+	end
+
+
 
 #protected 
 #
