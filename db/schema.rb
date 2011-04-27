@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110414173237) do
+ActiveRecord::Schema.define(:version => 20110426221806) do
 
   create_table "abstracts", :force => true do |t|
     t.integer  "subject_id"
@@ -354,6 +354,9 @@ ActiveRecord::Schema.define(:version => 20110414173237) do
     t.integer  "response_day_14_days_since_diagnosis"
     t.integer  "response_day_28_days_since_treatment_began"
     t.integer  "response_day_28_days_since_diagnosis"
+    t.string   "entry_1_by_uid"
+    t.string   "entry_2_by_uid"
+    t.string   "merged_by_uid"
   end
 
   create_table "pages", :force => true do |t|

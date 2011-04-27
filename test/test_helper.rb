@@ -53,4 +53,20 @@ end
 
 class ActionController::TestCase
 	setup :turn_https_on
+
+	def self.site_administrators
+		@site_administrators ||= %w( superuser administrator )
+	end
+
+	def self.site_editors
+		@site_editors ||= %w( superuser administrator editor )
+	end
+
+	def self.site_readers
+		@site_readers ||= %w( superuser administrator editor interviewer reader )
+	end
+
 end
+
+ALL_TEST_ROLES = %w( superuser administrator editor interviewer reader active_user )
+

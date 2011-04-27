@@ -3,6 +3,12 @@ class Abstract < ActiveRecord::Base
 
 	belongs_to :subject, :counter_cache => true
 
+	with_options :class_name => 'User', :primary_key => 'uid' do |u|
+		u.belongs_to :entry_1_by, :foreign_key => 'entry_1_by_uid'
+		u.belongs_to :entry_2_by, :foreign_key => 'entry_2_by_uid'
+		u.belongs_to :merged_by,  :foreign_key => 'merged_by_uid'
+	end
+
 	with_options :allow_blank => true do |b|
 		b.with_options :maximum => 2 do |o|
 			o.validates_length_of( :response_classification_day_14 )
@@ -257,7 +263,8 @@ class Abstract < ActiveRecord::Base
 	validate :valid_patid, :on => :create
 
 	before_create :set_subject
-	before_create :set_user
+#	don't know if, how, when we'll use this
+#	before_create :set_user
 	before_save   :convert_height_to_cm
 	before_save   :convert_weight_to_kg
 	before_save   :set_days_since_fields

@@ -15,9 +15,9 @@ class AbstractsControllerTest < ActionController::TestCase
 	end
 
 	assert_access_with_login({ 
-		:logins => [:superuser,:admin] })
+		:logins => site_administrators })
 	assert_no_access_with_login({ 
-		:logins => [:editor,:interviewer,:reader,:active_user] })
+		:logins => ( ALL_TEST_ROLES - site_administrators ) })
 	assert_no_access_without_login
 
 	assert_access_with_https
@@ -36,7 +36,7 @@ class AbstractsControllerTest < ActionController::TestCase
 		:destroy => { :id => 0 }
 	)
 
-	%w( superuser admin ).each do |cu|
+	site_administrators.each do |cu|
 			
 		test "should set user_id on creation with #{cu} login" <<
 				" without abstract hash" do
@@ -44,7 +44,8 @@ class AbstractsControllerTest < ActionController::TestCase
 			login_as u
 			post :create
 			assert assigns(:abstract)
-			assert_equal u.id, assigns(:abstract).user_id
+pending
+#			assert_equal u.id, assigns(:abstract).user_id
 		end
 
 		test "should set user_id on creation with #{cu} login" do
@@ -52,7 +53,48 @@ class AbstractsControllerTest < ActionController::TestCase
 			login_as u
 			post :create, :abstract => factory_attributes
 			assert assigns(:abstract)
-			assert_equal u.id, assigns(:abstract).user_id
+pending
+#			assert_equal u.id, assigns(:abstract).user_id
+		end
+
+		test "should set entry_1_by on creation if subject's first abstract " <<
+				"with #{cu} login" do
+			u = send(cu)
+			login_as u
+#	include subject's patid
+			assert_difference('Abstract.count',1) {
+				post :create, :abstract => factory_attributes
+			}
+			assert assigns(:abstract)
+pending
+#			assert_equal u, assigns(:abstract).entry_1_by
+		end
+
+		test "should set entry_2_by on creation if subject's second abstract " <<
+				"with #{cu} login" do
+			u = send(cu)
+			login_as u
+#	create an abstract for subject and then ....
+#	include subject's patid
+			assert_difference('Abstract.count',1) {
+				post :create, :abstract => factory_attributes
+			}
+			assert assigns(:abstract)
+pending
+#			assert_equal u, assigns(:abstract).entry_2_by
+		end
+
+		test "should set merged_by on merge of subject's abstracts with #{cu} login" do
+			u = send(cu)
+			login_as u
+#			assert_difference('Abstract.count', -1) {
+#				adds 1 new abstract and destroys 2 others
+#			post :merge, :patid => ???
+#			post :create, :abstract => factory_attributes
+#			}
+#			assert assigns(:abstract)
+pending
+#			assert_equal u, assigns(:abstract).merged_by
 		end
 
 		test "should create abstract with #{cu} login " <<
