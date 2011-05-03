@@ -2,6 +2,8 @@
 	:url => abstract_cbc_path(@abstract),
 	:html => { :class => "edit_abstract cbc" } ) do |f| %>
 
+<fieldset><legend><%= @page_title %></legend>
+
 <%= f.wrapped_y_n_dk_select(:cbc_report_found,
 	:label_text => "Found" ) %>
 <%= f.wrapped_date_text_field(:cbc_report_on,
@@ -31,6 +33,8 @@
 	:label_text => "Platelet count" ) do %>
 <span>K/mm<span class='superscript'>3</span></span>
 <% end %>
+
+</fieldset>
 
 <p>
 <%= button_link_to "Cancel", :action => 'show' %>&nbsp;

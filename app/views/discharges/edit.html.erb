@@ -1,5 +1,7 @@
 <% form_for(@abstract,:url => abstract_discharge_path(@abstract)) do |f| %>
 
+<fieldset><legend><%= @page_title %></legend>
+
 <p>Check relevant report(s):</p>
 
 <%= f.wrapped_y_n_dk_select(:h_and_p_reports_found,
@@ -42,6 +44,8 @@
 <%= f.wrapped_text_area(:discharge_summary,
 	:class => 'autosize',
 	:label_text => "Discharge Diagnosis") %>
+
+</fieldset>
 
 <p>
 <%= button_link_to "Cancel", :action => 'show' %>&nbsp;

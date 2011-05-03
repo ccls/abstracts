@@ -1,6 +1,10 @@
 <% form_for(@abstract,:url => abstract_identifying_data_path(@abstract)) do |f| %>
+
+<fieldset><legend><%= @page_title %></legend>
+
 <p>IMPORTANT: When entering new abstract information, review each screen and remove any 'default' 0(zero) values that appear in any fields.</p>
 
+<div class='table'>
 <div class='columns'>
 <div class='column'>
 <div class='first_name field_wrapper'>
@@ -40,8 +44,11 @@
 	:label_text => "Treatment Began") %>
 </div><!-- class='column' -->
 </div><!-- class='columns' -->
+</div><!-- class='table' -->
 
 <p>* At data entry, verify that these data are correct.  If not, please notify Barbara Rizzo of data discrepancies between the a stract information and case data.</p>
+
+</fieldset>
 
 <p>
 <%= button_link_to "Cancel", :action => 'show' %>&nbsp;

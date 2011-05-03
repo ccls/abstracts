@@ -2,7 +2,10 @@
 	:url => abstract_diagnosis_path(@abstract),
 	:html => { :class => 'edit_abstract diagnosis' } ) do |f| %>
 
+<fieldset><legend><%= @page_title %></legend>
+
 <h4>Sources of responses on this page -- reviewing Oncologist's report</h4>
+<div class='table'>
 <div class='columns'>
 <div class='column'>
 <%= f.wrapped_y_n_dk_select(:diagnosis_is_all,
@@ -27,6 +30,7 @@
 	:label_text => "T Lineage") %>
 </div><!-- class='column' -->
 </div><!-- class='columns' -->
+</div><!-- class='table' -->
 
 <h4>ICDO Code(s)...</h4>
 <p>No matching fields? 1990 ICDO #, 2000 ICDO #</p>
@@ -39,6 +43,8 @@
 	:label_text => "ICDO Description" ) %>
 
 <p>* The following fields are set to 'read only' to permit viewing of ICDO data in records added before the ICDO Code(s)... section above was added.</p>
+
+</fieldset>
 
 <p>
 <%= button_link_to "Cancel", :action => 'show' %>&nbsp;

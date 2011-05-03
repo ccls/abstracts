@@ -1,5 +1,7 @@
 <% form_for(@abstract,:url => abstract_histocompatibility_path(@abstract)) do |f| %>
 
+<fieldset><legend><%= @page_title %></legend>
+
 <%= f.wrapped_y_n_dk_select(:histo_report_found,
 	:label_text => "Found?") %>
 <%= f.wrapped_date_text_field(:histo_report_on,
@@ -7,6 +9,8 @@
 <%= f.wrapped_text_area(:histo_report_results,
 	:class => 'autosize',
 	:label_text => "Results") %>
+
+</fieldset>
 
 <p>
 <%= button_link_to "Cancel", :action => 'show' %>&nbsp;

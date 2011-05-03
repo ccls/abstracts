@@ -1,5 +1,7 @@
 <% form_for(@abstract,:url => abstract_therapy_response_path(@abstract)) do |f| %>
 
+<fieldset><legend><%= @page_title %></legend>
+
 <%= f.wrapped_text_field(:response_fab_subtype,
 	:label_text => "Diagnosed Subtype:") %>
 
@@ -51,6 +53,8 @@
 	:label_text => "At the end of induction (30 days), was the child in clinical remission?" ) %>
 
 <p>* If no diagnosis date is entered, count will remain 0</p>
+
+</fieldset>
 
 <p>
 <%= button_link_to "Cancel", :action => 'show' %>&nbsp;

@@ -2,6 +2,9 @@
 	:url => abstract_checklist_path(@abstract),
 	:html => { :class => 'edit_abstract checklist' }) do |f| %>
 
+<fieldset><legend><%= @page_title %></legend>
+
+<div class='table'>
 <div class='columns'>
 <div class='column'>
 <%= f.wrapped_y_n_dk_select(:received_bone_marrow_biopsy,
@@ -32,11 +35,14 @@
 	:label_text => "Response to Therapy") %>
 </div><!-- class='column' -->
 </div><!-- class='columns' -->
+</div><!-- class='table' -->
 <%= f.wrapped_y_n_dk_select(:received_other_reports,
 	:label_text => "Other Reports") %>
 <%= f.wrapped_text_area(:received_specify_other_reports,
 	:class => 'autosize',
 	:label_text => 'Specify:') %>
+
+</fieldset>
 
 <p>
 <%= button_link_to "Cancel", :action => 'show' %>&nbsp;

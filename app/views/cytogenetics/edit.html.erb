@@ -1,5 +1,7 @@
 <% form_for(@abstract,:url => abstract_cytogenetic_path(@abstract)) do |f| %>
 
+<fieldset><legend><%= @page_title %></legend>
+
 <%= f.wrapped_y_n_dk_select(:cytogen_report_found,
 	:label_text => "Found?") %>
 <%= f.wrapped_date_text_field(:cytogen_report_on,
@@ -33,6 +35,7 @@
 	:label_text => "How many?" ) %>
 
 <hr/>
+<div class='table'>
 <div class='columns small'>
 <div class='column'>
 <%= f.wrapped_text_field(:cytogen_t1221,
@@ -65,9 +68,11 @@
 	:label_text => "Trisomy 21" ) %>
 </div><!-- class='column' -->
 </div><!-- class='columns' -->
+</div><!-- class='table' -->
 
 <hr/>
 
+<div class='table'>
 <div class='columns'>
 <div class='column'>
 <%= f.wrapped_text_field(:cytogen_other_trans_1,
@@ -92,6 +97,9 @@
 	:label_text => "Other 10:" ) %>
 </div><!-- class='column' -->
 </div><!-- class='columns' -->
+</div><!-- class='table' -->
+
+</fieldset>
 
 <p>
 <%= button_link_to "Cancel", :action => 'show' %>&nbsp;

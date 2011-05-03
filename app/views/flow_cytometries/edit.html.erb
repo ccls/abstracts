@@ -1,5 +1,7 @@
 <% form_for(@abstract,:url => abstract_flow_cytometry_path(@abstract)) do |f| %>
 
+<fieldset><legend><%= @page_title %></legend>
+
 <%= f.wrapped_y_n_dk_select(:flow_cyto_report_found,
 	:label_text => "Found?") %>
 
@@ -13,6 +15,7 @@
 <p>* If two values are provided, enter their mean.</p>
 <p>Enter numeric values only in the "Value" fields and related text('&lt;','%',etc.) in "Comments" fields</p>
 
+<div class='table'>
 <div class='columns'>
 <div class='column'>
 <table><thead>
@@ -101,8 +104,10 @@
 </tr></tbody></table>
 </div><!-- class='column' -->
 </div><!-- class='columns' -->
+</div><!-- class='table' -->
 <hr/>
 
+<div class='table'>
 <div class='columns'>
 <div class='column'>
 <table><thead>
@@ -239,10 +244,13 @@
 </tr></tbody></table>
 </div><!-- class='column' -->
 </div><!-- class='columns' -->
+</div><!-- class='table' -->
 
 <%= f.wrapped_text_area :flow_cyto_remarks,
 	:class => 'autosize',
 	:label_text => 'Remarks:' %>
+
+</fieldset>
 
 <p>
 <%= button_link_to "Cancel", :action => 'show' %>&nbsp;

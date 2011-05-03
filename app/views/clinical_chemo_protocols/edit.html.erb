@@ -1,5 +1,7 @@
 <% form_for(@abstract,:url => abstract_clinical_chemo_protocol_path(@abstract)) do |f| %>
 
+<fieldset><legend><%= @page_title %></legend>
+
 <%= f.wrapped_y_n_dk_select(:chemo_protocol_report_found,
 	:label_text => "Found?:") %>
 <%= f.wrapped_y_n_dk_select(:patient_on_chemo_protocol,
@@ -15,6 +17,9 @@
 	:class => 'autosize',
 	:label_text => "&nbsp;" ) %>
 -->
+
+</fieldset>
+
 <p>
 <%= button_link_to "Cancel", :action => 'show' %>&nbsp;
 <%= f.submit 'Save Changes',:name => nil %>

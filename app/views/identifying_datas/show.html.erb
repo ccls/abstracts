@@ -2,19 +2,20 @@
 
 <p>IMPORTANT: When entering new abstract information, review each screen and remove any 'default' 0(zero) values that appear in any fields.</p>
 
+<div class='table'>
 <div class='columns'>
 <div class='column'>
 <div class='first_name field_wrapper'>
 <span class='label'>* Patient First Name</span>
-<span class='value'>&nbsp;</span>
+<span class='value'><%= @abstract.try(:subject).try(:first_name) || '&nbsp;' %></span>
 </div><!-- class='first_name' -->
 <div class='middle_name field_wrapper'>
 <span class='label'>* Patient Middle Name</span>
-<span class='value'>&nbsp;</span>
+<span class='value'><%= @abstract.try(:subject).try(:pii).try(:middle_name) || '&nbsp;' %></span>
 </div><!-- class='middle_name' -->
 <div class='last_name field_wrapper'>
 <span class='label'>* Patient Last Name</span>
-<span class='value'>&nbsp;</span>
+<span class='value'><%= @abstract.try(:subject).try(:last_name) || '&nbsp;' %></span>
 </div><!-- class='last_name' -->
 <div class='institution field_wrapper'>
 <span class='label'>* Treatment Institution</span>
@@ -41,6 +42,7 @@
 	:label_text => "Treatment Began") %>
 </div><!-- class='column' -->
 </div><!-- class='columns' -->
+</div><!-- class='table' -->
 
 <p>* At data entry, verify that these data are correct.  If not, please notify Barbara Rizzo of data discrepancies between the a stract information and case data.</p>
 
