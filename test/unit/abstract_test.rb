@@ -495,14 +495,14 @@ class AbstractTest < ActiveSupport::TestCase
 		o.assert_should_require_length( :response_comment )
 	end
 
-	test "should set user_id on create" do
-		abstract = Factory.build(:abstract)
-		assert_nil abstract.user_id
-		abstract.save
-pending
-#		assert_not_nil abstract.reload.user_id
-#		assert_equal 0, abstract.reload.user_id
-	end
+#	test "should set user_id on create" do
+#		abstract = Factory.build(:abstract)
+#		assert_nil abstract.user_id
+#		abstract.save
+#pending
+##		assert_not_nil abstract.reload.user_id
+##		assert_equal 0, abstract.reload.user_id
+#	end
 
 	test "should set subject_id on create with valid patid" do
 		subject = create_case_subject_with_patid(1234)

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110426221806) do
+ActiveRecord::Schema.define(:version => 20110503203004) do
 
   create_table "abstracts", :force => true do |t|
     t.integer  "subject_id"
@@ -112,7 +112,6 @@ ActiveRecord::Schema.define(:version => 20110426221806) do
     t.integer  "received_chest_ct"
     t.date     "chest_ct_taken_on"
     t.integer  "chest_ct_medmass_present"
-    t.integer  "user_id"
     t.integer  "cytogen_trisomy10"
     t.integer  "cytogen_trisomy17"
     t.integer  "cytogen_trisomy21"
