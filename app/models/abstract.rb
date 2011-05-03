@@ -264,14 +264,25 @@ class Abstract < ActiveRecord::Base
 
 	before_create :set_subject
 #	don't know if, how, when we'll use this
-#	before_create :set_user
+	before_create :set_user
 	before_save   :convert_height_to_cm
 	before_save   :convert_weight_to_kg
 	before_save   :set_days_since_fields
 
+#	def self.field_names
+#		column_names - %w( id subject_id entry_1_by_uid entry_2_by_uid merged_by_uid
+#			created_at updated_at )
+#	end
+#
+#	def field_names
+#		self.class.field_names
+#	end
+
 	def ignorable_columns
-#	should add the entry_1_by_id and entry_2_by_id fields when they exist
-		@@ignorable_columns ||= ['id','created_at','updated_at']
+#		@@ignorable_columns ||= %w( id subject_id 
+		@@ignorable_columns ||= %w( id 
+			entry_1_by_uid entry_2_by_uid merged_by_uid
+			created_at updated_at )
 	end
 
 	def comparable_attributes
@@ -340,7 +351,9 @@ protected
 
 	#	Set user if given
 	def set_user
-		self.user_id = current_user.try(:id)||0
+#		self.user_id = current_user.try(:id)||0
+#		determine which abstract this is (1st, 2nd or merged)
+#		and set the appropriate
 	end
 
 	def set_subject
@@ -353,6 +366,9 @@ protected
 		unless patid.blank?
 			subjects = Subject.search(:patid => patid, :types => 'Case',:paginate => false)
 			if subjects.length == 1
+#	TODO
+#	why do I set this here AND in set_subject
+#	probably can skip this one as set_subject will do it
 				self.subject_id = subjects.first.id
 			else
 				errors.add(:patid,"#{patid} matches #{subjects.length} case subjects")

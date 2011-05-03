@@ -558,7 +558,7 @@ class AbstractTest < ActiveSupport::TestCase
 	test "should return an array of ignorable columns" do
 		abstract = Factory(:abstract)
 		assert_equal abstract.ignorable_columns,
-			['id','created_at','updated_at']
+			["id", "entry_1_by_uid", "entry_2_by_uid", "merged_by_uid", "created_at", "updated_at"]
 	end
 
 	test "should return hash of comparable attributes" do
