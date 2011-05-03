@@ -256,6 +256,11 @@ class Abstract < ActiveRecord::Base
 		end
 	end
 
+	attr_protected :subject_id
+	attr_protected :entry_1_by_uid
+	attr_protected :entry_2_by_uid
+	attr_protected :merged_by_uid
+
 	attr_accessor :current_user
 	attr_accessor :weight_units, :height_units
 	attr_accessor :patid

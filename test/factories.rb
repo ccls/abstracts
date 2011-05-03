@@ -118,7 +118,7 @@ Factory.define :complete_abstract, :class => 'Abstract' do |f|
 	f.received_chest_ct random_yndk()
 	f.chest_ct_taken_on random_date()
 	f.chest_ct_medmass_present random_yndk()
-	f.sequence(:user_id){|n| n }
+#	f.sequence(:user_id){|n| n }
 	f.cytogen_trisomy10 random_yndk()
 	f.cytogen_trisomy17 random_yndk()
 	f.cytogen_trisomy21 random_yndk()

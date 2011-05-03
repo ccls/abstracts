@@ -3,6 +3,11 @@ require 'test_helper'
 class AbstractTest < ActiveSupport::TestCase
 	assert_should_belong_to :subject
 
+	assert_should_protect( :subject_id )
+	assert_should_protect( :entry_1_by_uid )
+	assert_should_protect( :entry_2_by_uid )
+	assert_should_protect( :merged_by_uid )
+
 	assert_should_not_require( :cbc_percent_blasts_unknown )
 	assert_should_not_require( :cbc_percent_blasts )
 	assert_should_not_require( :response_classification_day_14 )
