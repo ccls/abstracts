@@ -88,6 +88,12 @@ div.pagination {
 }
 
 
+.table {
+	clear:both;
+	/* this holds the table-row open, otherwise shrinks to whatever */
+	display:table;
+	width:100%;
+}
 .columns {
 	clear:both;
 	/* this holds the div open to the size of the contents */
