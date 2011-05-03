@@ -35,5 +35,6 @@ protected
 			end
 		end
 	end
+	alias_method :recall_or_record_sort_order, :record_or_recall_sort_order
 
 end
