@@ -11,23 +11,19 @@ class Subject < Ccls::Subject
 		:conditions => [
 			"entry_1_by_uid IS NOT NULL AND " <<
 			"entry_2_by_uid IS NULL AND " <<
-			"merged_by_uid IS NULL"
+			"merged_by_uid  IS NULL"
 	]
 
 	has_one :second_abstract, :class_name => 'Abstract',
 		:conditions => [
-			"entry_1_by_uid IS NOT NULL AND " <<
 			"entry_2_by_uid IS NOT NULL AND " <<
-			"merged_by_uid IS NULL"
+			"merged_by_uid  IS NULL"
 	]
 
 	has_one :merged_abstract, :class_name => 'Abstract',
 		:conditions => [
-			"entry_1_by_uid IS NOT NULL AND " <<
-			"entry_2_by_uid IS NOT NULL AND " <<
 			"merged_by_uid IS NOT NULL"
 	]
-
 
 	def abstracts_the_same?
 		raise Subject::NotTwoAbstracts unless abstracts.length == 2

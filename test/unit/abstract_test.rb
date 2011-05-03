@@ -691,6 +691,78 @@ class AbstractTest < ActiveSupport::TestCase
 		} }
 	end
 
+	test "should create first abstract for subject with patid and current_user" do
+		assert_difference('Identifier.count',1) {
+		assert_difference('Subject.count',1) {
+			@subject = create_case_subject_with_patid(1234)
+			assert_equal 1234, @subject.patid
+		} }
+		@current_user = Factory(:user)
+		assert_difference('Abstract.count',1) {
+			abstract = create_abstract(:current_user => @current_user,
+				:patid => @subject.patid)
+			assert_equal abstract.entry_1_by, @current_user
+			assert_equal abstract.subject, @subject
+		}
+	end
+
+	test "should create second abstract for subject with patid and current_user" do
+		assert_difference('Identifier.count',1) {
+		assert_difference('Subject.count',1) {
+			@subject = create_case_subject_with_patid(1234)
+			assert_equal 1234, @subject.patid
+		} }
+		@current_user = Factory(:user)
+		abstract = create_abstract(:current_user => @current_user,
+			:patid => @subject.patid)
+		assert_difference('Abstract.count',1) {
+			abstract = create_abstract(:current_user => @current_user,
+				:patid => @subject.patid)
+			assert_equal abstract.entry_2_by, @current_user
+			assert_equal abstract.subject, @subject
+		}
+	end
+
+	test "should NOT create third abstract for subject with patid and current_user " <<
+			"without merging flag" do
+		assert_difference('Identifier.count',1) {
+		assert_difference('Subject.count',1) {
+			@subject = create_case_subject_with_patid(1234)
+			assert_equal 1234, @subject.patid
+		} }
+		@current_user = Factory(:user)
+		abstract = create_abstract(:current_user => @current_user,
+			:patid => @subject.patid)
+		abstract = create_abstract(:current_user => @current_user,
+			:patid => @subject.patid)
+		assert_difference('Abstract.count',0) {
+			abstract = create_abstract(:current_user => @current_user,
+				:patid => @subject.patid)
+			assert abstract.errors.on(:subject_id)
+		}
+	end
+
+	test "should create third abstract for subject with patid and current_user " <<
+			"with merging flag" do
+		assert_difference('Identifier.count',1) {
+		assert_difference('Subject.count',1) {
+			@subject = create_case_subject_with_patid(1234)
+			assert_equal 1234, @subject.patid
+		} }
+		@current_user = Factory(:user)
+		abstract = create_abstract(:current_user => @current_user,
+			:patid => @subject.patid)
+		abstract = create_abstract(:current_user => @current_user,
+			:patid => @subject.patid)
+		assert_difference('Abstract.count',1) {
+			abstract = create_abstract(:current_user => @current_user,
+				:patid => @subject.patid, :merging => true)
+			assert_equal abstract.merged_by, @current_user
+			assert_equal abstract.subject, @subject
+		}
+	end
+
+
 #protected 
 #
 #	def create_case_subject_with_patid(patid)

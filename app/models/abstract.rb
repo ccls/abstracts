@@ -264,27 +264,20 @@ class Abstract < ActiveRecord::Base
 	attr_accessor :current_user
 	attr_accessor :weight_units, :height_units
 	attr_accessor :patid
+	attr_accessor :merging	#	flag to be used to skip 2 abstract limitation
 
+	#	valid_patid sets the subject so needs to be first
 	validate :valid_patid, :on => :create
+	validate :subject_has_less_than_three_abstracts, :on => :create
+	validate :subject_has_no_merged_abstract, :on => :create
 
-	before_create :set_subject
-#	don't know if, how, when we'll use this
+#	before_create :set_subject
 	before_create :set_user
 	before_save   :convert_height_to_cm
 	before_save   :convert_weight_to_kg
 	before_save   :set_days_since_fields
 
-#	def self.field_names
-#		column_names - %w( id subject_id entry_1_by_uid entry_2_by_uid merged_by_uid
-#			created_at updated_at )
-#	end
-#
-#	def field_names
-#		self.class.field_names
-#	end
-
 	def ignorable_columns
-#		@@ignorable_columns ||= %w( id subject_id 
 		@@ignorable_columns ||= %w( id 
 			entry_1_by_uid entry_2_by_uid merged_by_uid
 			created_at updated_at )
@@ -356,28 +349,45 @@ protected
 
 	#	Set user if given
 	def set_user
-#		self.user_id = current_user.try(:id)||0
-#		determine which abstract this is (1st, 2nd or merged)
-#		and set the appropriate
-	end
-
-	def set_subject
-		unless patid.blank?
-			self.subject_id = Subject.search(:patid => patid, :types => 'Case').first.id
+#		if self.subject
+		if subject
+#			case self.subject.abstracts.length
+			case subject.abstracts.length
+				when 0 then self.entry_1_by_uid = current_user.try(:uid)||0
+				when 1 then self.entry_2_by_uid = current_user.try(:uid)||0
+				when 2 then self.merged_by_uid  = current_user.try(:uid)||0
+			end
 		end
 	end
+
+#	def set_subject
+#		unless patid.blank?
+#			self.subject_id = Subject.search(:patid => patid, :types => 'Case').first.id
+#		end
+#	end
 
 	def valid_patid
 		unless patid.blank?
 			subjects = Subject.search(:patid => patid, :types => 'Case',:paginate => false)
 			if subjects.length == 1
-#	TODO
-#	why do I set this here AND in set_subject
-#	probably can skip this one as set_subject will do it
-				self.subject_id = subjects.first.id
+				self.subject_id = Subject.search(:patid => patid, :types => 'Case').first.id
 			else
 				errors.add(:patid,"#{patid} matches #{subjects.length} case subjects")
 			end
+		end
+	end
+
+	def subject_has_less_than_three_abstracts
+#		if self.subject and self.subject.abstracts.length >= 2
+		if subject and subject.abstracts.length >= 2
+			errors.add(:subject_id,"Subject can only have 2 abstracts." ) unless merging
+		end
+	end
+
+	def subject_has_no_merged_abstract
+#		if self.subject and self.subject.merged_abstract
+		if subject and subject.merged_abstract
+			errors.add(:subject_id,"Subject already has a merged abstract." )
 		end
 	end
 
