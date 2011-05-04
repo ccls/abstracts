@@ -2,6 +2,8 @@
 	:url => abstract_diagnosis_path(@abstract),
 	:html => { :class => 'edit_abstract diagnosis' } ) do |f| %>
 
+<%= f.error_messages %>
+
 <fieldset><legend><%= @page_title %></legend>
 
 <h4>Sources of responses on this page -- reviewing Oncologist's report</h4>
@@ -46,8 +48,5 @@
 
 </fieldset>
 
-<p>
-<%= button_link_to "Cancel", :action => 'show' %>&nbsp;
-<%= f.submit 'Save Changes',:name => nil %>
-</p>
+<%= f.submit_bar %>
 <% end %>

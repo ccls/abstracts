@@ -91,7 +91,7 @@ module ApplicationHelper
 	def edit_link
 		s =  "<p class='center'>"
 #		s << "<span class='left'>#{controller.class.name.gsub(/Controller$/,'').singularize}</span>"
-		s << link_to( "Edit", params.update(:action => 'edit'), :class => 'right' )
+		s << link_to( "Edit", params.update(:action => 'edit'), :class => 'right button' )
 		s << "</p>"
 	end
 
@@ -140,15 +140,15 @@ module ApplicationHelper
 
 end
 
-#
-#	I never call f.pos_neg_select
-#	I do call f.wrapped_pos_neg_select which skips this
-#
-#ActionView::Helpers::FormBuilder.class_eval do
-#	def pos_neg_select(method,options={},html_options={})
-#		@template.pos_neg_select(
-#			@object_name, method, 
-#				objectify_options(options),
-#				html_options)
-#	end
-#end
+
+ActionView::Helpers::FormBuilder.class_eval do
+
+	def submit_bar()
+		s = "<p class='submit_bar'>"
+ 		s << @template.link_to( "Cancel", { :action => 'show' }, { :class => 'button' } )
+		s << "&nbsp;\n"
+		s << @template.submit_link_to( 'Save Changes',:name => nil )
+		s << "</p>"
+	end
+
+end

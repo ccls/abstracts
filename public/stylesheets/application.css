@@ -274,3 +274,6 @@ form.edit_abstract .columns.small .column .field_wrapper label {
 	text-align: right;
 	padding-right: 5px;
 }
+p.submit_bar {
+	text-align: center;
+}

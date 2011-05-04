@@ -1,5 +1,7 @@
 <% form_for(@abstract,:url => abstract_identifying_data_path(@abstract)) do |f| %>
 
+<%= f.error_messages %>
+
 <fieldset><legend><%= @page_title %></legend>
 
 <p>IMPORTANT: When entering new abstract information, review each screen and remove any 'default' 0(zero) values that appear in any fields.</p>
@@ -50,8 +52,5 @@
 
 </fieldset>
 
-<p>
-<%= button_link_to "Cancel", :action => 'show' %>&nbsp;
-<%= f.submit 'Save Changes',:name => nil %>
-</p>
+<%= f.submit_bar %>
 <% end %>

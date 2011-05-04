@@ -1,5 +1,7 @@
 <% form_for(@abstract,:url => abstract_flow_cytometry_path(@abstract)) do |f| %>
 
+<%= f.error_messages %>
+
 <fieldset><legend><%= @page_title %></legend>
 
 <%= f.wrapped_y_n_dk_select(:flow_cyto_report_found,
@@ -252,8 +254,5 @@
 
 </fieldset>
 
-<p>
-<%= button_link_to "Cancel", :action => 'show' %>&nbsp;
-<%= f.submit 'Save Changes',:name => nil %>
-</p>
+<%= f.submit_bar %>
 <% end %>

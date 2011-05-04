@@ -1,5 +1,7 @@
 <% form_for(@abstract,:url => abstract_name_path(@abstract)) do |f| %>
 
+<%= f.error_messages %>
+
 <fieldset><legend><%= @page_title %></legend>
 
 <%= f.wrapped_text_field(:abstractor_id,
@@ -20,8 +22,5 @@
 
 </fieldset>
 
-<p>
-<%= button_link_to "Cancel", :action => 'show' %>&nbsp;
-<%= f.submit 'Save Changes',:name => nil %>
-</p>
+<%= f.submit_bar %>
 <% end %>

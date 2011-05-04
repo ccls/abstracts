@@ -20,6 +20,7 @@ versions/
 /doc/app
 /doc/plugins
 /*.war
+*.swp
 /log/
 /packages_updated.*
 /public/bottom.html

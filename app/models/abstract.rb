@@ -266,16 +266,23 @@ class Abstract < ActiveRecord::Base
 	attr_accessor :patid
 	attr_accessor :merging	#	flag to be used to skip 2 abstract limitation
 
+	#	The :on => :create doesn't seem to work as described
+	#	validate_on_create is technically deprecated, but still works
 	#	valid_patid sets the subject so needs to be first
-	validate :valid_patid, :on => :create
-	validate :subject_has_less_than_three_abstracts, :on => :create
-	validate :subject_has_no_merged_abstract, :on => :create
+	validate_on_create :valid_patid	#, :on => :create
+	validate_on_create :subject_has_less_than_three_abstracts	#, :on => :create
+	validate_on_create :subject_has_no_merged_abstract	#, :on => :create
 
 #	before_create :set_subject
 	before_create :set_user
 	before_save   :convert_height_to_cm
 	before_save   :convert_weight_to_kg
 	before_save   :set_days_since_fields
+
+#	validate :failme
+#	def failme
+#			errors.add(:base,"Forced failure for testing." )
+#	end
 
 	def ignorable_columns
 		@@ignorable_columns ||= %w( id 
@@ -379,6 +386,7 @@ protected
 
 	def subject_has_less_than_three_abstracts
 #		if self.subject and self.subject.abstracts.length >= 2
+		#	because this abstract hasn't been created yet, we're comparing to 2, not 3
 		if subject and subject.abstracts.length >= 2
 			errors.add(:subject_id,"Subject can only have 2 abstracts." ) unless merging
 		end

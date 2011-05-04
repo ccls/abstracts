@@ -1,5 +1,7 @@
 <% form_for(@abstract,:url => abstract_discharge_path(@abstract)) do |f| %>
 
+<%= f.error_messages %>
+
 <fieldset><legend><%= @page_title %></legend>
 
 <p>Check relevant report(s):</p>
@@ -47,8 +49,5 @@
 
 </fieldset>
 
-<p>
-<%= button_link_to "Cancel", :action => 'show' %>&nbsp;
-<%= f.submit 'Save Changes',:name => nil %>
-</p>
+<%= f.submit_bar %>
 <% end %>

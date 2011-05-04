@@ -2,6 +2,8 @@
 	:url => abstract_cbc_path(@abstract),
 	:html => { :class => "edit_abstract cbc" } ) do |f| %>
 
+<%= f.error_messages %>
+
 <fieldset><legend><%= @page_title %></legend>
 
 <%= f.wrapped_y_n_dk_select(:cbc_report_found,
@@ -36,8 +38,5 @@
 
 </fieldset>
 
-<p>
-<%= button_link_to "Cancel", :action => 'show' %>&nbsp;
-<%= f.submit 'Save Changes',:name => nil %>
-</p>
+<%= f.submit_bar %>
 <% end %>
