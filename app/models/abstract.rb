@@ -308,6 +308,11 @@ class Abstract < ActiveRecord::Base
 		AbstractSearch.new(params).abstracts
 	end
 
+	def self.sections
+		@@sections ||= YAML::load(ERB.new(
+			IO.read('config/abstract_sections.yml')).result)
+	end
+
 protected
 
 	def set_days_since_fields

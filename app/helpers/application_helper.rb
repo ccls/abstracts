@@ -31,59 +31,20 @@ module ApplicationHelper
 #		s
 #	end
 
-
-#	def mdy(date)
-#		( date.nil? )?'&nbsp;':date.strftime("%m/%d/%Y")
-#	end
-#
-#	def y_n_dk(value)
-#		case value
-#			when 1   then 'Yes'
-#			when 2   then 'No'
-#			when 999 then "Don't Know"
-#			else '&nbsp;'
-#		end
-#	end
-#
-#	def _wrapped_y_n_dk_spans(object_name,method,options={})
-#		object = instance_variable_get("@#{object_name}")
-#		_wrapped_spans(object_name,method,options.update(
-#			:value => y_n_dk(object.send(method)) ) )
-#	end
-
 	def abstract_pages(abstract)
-		order = [
-			['IdentifyingData', :abstract_identifying_data_path],
-			['BoneMarrow', :abstract_bone_marrow_path],
-			['FlowCytometry', :abstract_flow_cytometry_path],
-
-			['TDT', :abstract_tdt_path],
-			['Histocompatibility', :abstract_histocompatibility_path],
-
-			['Cytogenetics', :abstract_cytogenetic_path],
-			['CBC', :abstract_cbc_path],
-			['CerebrospinalFluid', :abstract_cerebrospinal_fluid_path],
-			['ChestImaging', :abstract_chest_imaging_path],
-			['Discharge', :abstract_discharge_path],
-			['ClinicalChemoProtocol', :abstract_clinical_chemo_protocol_path],
-			['TherapyResponse', :abstract_therapy_response_path],
-			['Diagnosis', :abstract_diagnosis_path],
-			['Checklist', :abstract_checklist_path],
-			['Name', :abstract_name_path]
-		]
-		current = controller.class.name.gsub(/Controller$/,'').singularize
-		current_index = order.find_index{|i| i[0] =~ /^#{current}$/i }
+		sections = Abstract.sections
+		current_index = sections.find_index{|i| i[:controller] =~ /^#{controller.class.name}$/i }
 
 		s = "<p class='center'>"
 		s << (( !current_index.nil? && current_index > 0 ) ? "<span class='left'>" << 
-				link_to( "&laquo; #{order[current_index-1][0]}", 
-					send(order[current_index-1][1],abstract) ) << 
+				link_to( "&laquo; #{sections[current_index-1][:label]}", 
+					send(sections[current_index-1][:show],abstract) ) << 
 				"</span>" : '')
 		s << link_to( "Back to Abstract", abstract_path(abstract) )
-		s << (( !current_index.nil? && current_index < ( order.length - 1 ) ) ? "" <<
+		s << (( !current_index.nil? && current_index < ( sections.length - 1 ) ) ? "" <<
 				"<span class='right'>" << 
-				link_to( "#{order[current_index+1][0]} &raquo;", 
-					send(order[current_index+1][1],abstract) ) << 
+				link_to( "#{sections[current_index+1][:label]} &raquo;", 
+					send(sections[current_index+1][:show],abstract) ) << 
 				"</span>" : '' )
 		s << "</p>"
 	end
@@ -144,11 +105,18 @@ end
 ActionView::Helpers::FormBuilder.class_eval do
 
 	def submit_bar()
-		s = "<p class='submit_bar'>"
- 		s << @template.link_to( "Cancel", { :action => 'show' }, { :class => 'button' } )
+		s = "<div class='submit_bar'>"
+		s << "<p class='submit_bar'>"
+ 		s << @template.link_to( "Cancel and Show Section", { :action => 'show' }, { :class => 'button' } )
 		s << "&nbsp;\n"
-		s << @template.submit_link_to( 'Save Changes',:name => nil )
-		s << "</p>"
+		s << submit_link_to( 'Save and Show Section',:name => nil )
+		s << "</p>\n"
+		s << "<p class='submit_bar'>"
+		s << submit_link_to( 'Save and Edit Previous Section',:value => 'edit_previous')
+		s << "&nbsp;\n"
+		s << submit_link_to( 'Save and Edit Next Section', :value => 'edit_next')
+		s << "</p>\n"
+		s << "</div><!-- class='submit_bar' -->"
 	end
 
 end

@@ -5,22 +5,7 @@
 </p>
 
 <ul style="clear:both;">
-<li><%= link_to "Identifying Data", abstract_identifying_data_path(@abstract) %></li>
-<li><%= link_to "Bone Marrow", abstract_bone_marrow_path(@abstract) %></li>
-<li><%= link_to "Flow Cytometry", abstract_flow_cytometry_path(@abstract) %></li>
-
-<li><%= link_to "TDT", abstract_tdt_path(@abstract) %></li>
-<li><%= link_to "Histocompatibility", abstract_histocompatibility_path(@abstract) %></li>
-<!--
--->
-<li><%= link_to "Cytogenetics", abstract_cytogenetic_path(@abstract) %></li>
-<li><%= link_to "CBC", abstract_cbc_path(@abstract) %></li>
-<li><%= link_to "Cerebrospinal Fluid", abstract_cerebrospinal_fluid_path(@abstract) %></li>
-<li><%= link_to "Chest Imaging", abstract_chest_imaging_path(@abstract) %></li>
-<li><%= link_to "H&amp;P/Discharge", abstract_discharge_path(@abstract) %></li>
-<li><%= link_to "Clinical Chemo Protocol", abstract_clinical_chemo_protocol_path(@abstract) %></li>
-<li><%= link_to "Response to Therapy", abstract_therapy_response_path(@abstract) %></li>
-<li><%= link_to "Diagnosis", abstract_diagnosis_path(@abstract) %></li>
-<li><%= link_to "Checklist", abstract_checklist_path(@abstract) %></li>
-<li><%= link_to "Names", abstract_name_path(@abstract) %></li>
+<% Abstract.sections.each do |section| -%>
+<li><%= link_to section[:label], send(section[:show],@abstract) %></li>
+<% end -%>
 </ul>
