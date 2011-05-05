@@ -31,7 +31,8 @@ protected
 
 	def set_page_title
 		@page_title = "#{self.action_name.capitalize}: Abstract /" <<
-			" #{self.controller_name.singularize.titleize}"
+			" #{Abstract.sections.find{|a|a[:controller] == self.class.name}[:label]}"
+#			" #{self.controller_name.singularize.titleize}"
 	end
 
 end
