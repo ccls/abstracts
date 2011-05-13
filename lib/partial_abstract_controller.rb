@@ -17,7 +17,13 @@ module PartialAbstractController
 	def update
 		@abstract.update_attributes!(params[:abstract])
 		flash[:notice] = "Abstract updated"
-		redirect_to :action => 'show'	#abstract_path(@abstract)
+		sections = Abstract.sections
+		current_index = sections.find_index{|i| i[:controller] =~ /^#{self.class.name}$/i }
+		case params[:commit]
+			when 'edit_next'     then redirect_to send(sections[current_index+1][:edit],@abstract)
+			when 'edit_previous' then redirect_to send(sections[current_index-1][:edit],@abstract)
+			else redirect_to :action => 'show'	#@abstract
+		end
 	rescue ActiveRecord::RecordNotSaved, ActiveRecord::RecordInvalid
 		flash.now[:error] = "Abstract update failed"
 		render :action => 'edit'

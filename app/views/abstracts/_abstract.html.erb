@@ -5,6 +5,15 @@
 <td class='subject'>
 <%= abstract.subject.try(:patid) || '&nbsp;' %>
 </td>
+<td class='entry_1'>
+<%= abstract.try(:entry_1_by) || '&nbsp;' %>
+</td>
+<td class='entry_2'>
+<%= abstract.try(:entry_2_by) || '&nbsp;' %>
+</td>
+<td class='merged'>
+<%= abstract.try(:merged_by) || '&nbsp;' %>
+</td>
 <td class='manage'>
 	<%= button_link_to "Show", abstract_path(abstract) %>&nbsp;
 	<%= button_link_to 'Edit', edit_abstract_path(abstract) %>&nbsp;

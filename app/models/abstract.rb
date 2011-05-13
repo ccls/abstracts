@@ -263,66 +263,45 @@ class Abstract < ActiveRecord::Base
 
 	attr_accessor :current_user
 	attr_accessor :weight_units, :height_units
-#	attr_accessor :patid
 	attr_accessor :merging	#	flag to be used to skip 2 abstract limitation
 
 	#	The :on => :create doesn't seem to work as described
 	#	validate_on_create is technically deprecated, but still works
-	#	valid_patid sets the subject so needs to be first
-#	validate_on_create :valid_patid	#, :on => :create
 	validate_on_create :subject_has_less_than_three_abstracts	#, :on => :create
 	validate_on_create :subject_has_no_merged_abstract	#, :on => :create
 
-#	before_create :set_subject
 	before_create :set_user
 	before_save   :convert_height_to_cm
 	before_save   :convert_weight_to_kg
 	before_save   :set_days_since_fields
 
-#	validate :failme
-#	def failme
-#			errors.add(:base,"Forced failure for testing." )
-#	end
-
-
-
-
 	def self.fields
-#	make like abstract_sections as array for controlling order
-#	db: db field name
-#	human: humanized field
+		#	db: db field name
+		#	human: humanized field
 		@@fields ||= YAML::load(ERB.new(
 			IO.read('config/abstract_fields.yml')).result)
 	end
 
-
-
-
-
-	def self.comparable_columns
-		@@comparable_columns ||= column_names - %w( id 
-			entry_1_by_uid entry_2_by_uid merged_by_uid
-			created_at updated_at subject_id )
+	def fields
+		Abstract.fields
 	end
 
-	def ignorable_columns
-		@@ignorable_columns ||= %w( id 
-			entry_1_by_uid entry_2_by_uid merged_by_uid
-			created_at updated_at subject_id )
+	def db_fields
+		fields.collect{|f|f[:db]}
 	end
 
 	def comparable_attributes
-		attributes.reject {|k,v| ignorable_columns.include?(k)}
+		HashWithIndifferentAccess[attributes.select {|k,v| db_fields.include?(k)}]
 	end
 
 	def is_the_same_as?(another_abstract)
-		aa = Abstract.find(another_abstract)
-		(self.comparable_attributes.diff(aa.comparable_attributes)).blank?
+		self.diff(another_abstract).blank?
 	end
 
 	def diff(another_abstract)
-		aa = Abstract.find(another_abstract)
-		self.comparable_attributes.diff(aa.comparable_attributes)
+		a1 = self.comparable_attributes
+		a2 = Abstract.find(another_abstract).comparable_attributes
+		HashWithIndifferentAccess[a1.select{|k,v| a2[k] != v unless( a2[k].blank? && v.blank? ) }]
 	end
 
 	def self.search(params={})
@@ -386,44 +365,28 @@ protected
 
 	#	Set user if given
 	def set_user
-#		if self.subject
 		if subject
-#			case self.subject.abstracts.length
-			case subject.abstracts.length
+			case subject.abstracts_count
 				when 0 then self.entry_1_by_uid = current_user.try(:uid)||0
 				when 1 then self.entry_2_by_uid = current_user.try(:uid)||0
-				when 2 then self.merged_by_uid  = current_user.try(:uid)||0
+				when 2
+					self.entry_1_by_uid = subject.abstracts.collect(&:entry_1_by_uid).compact.first
+					self.entry_2_by_uid = subject.abstracts.collect(&:entry_2_by_uid).compact.first
+					self.merged_by_uid  = current_user.try(:uid)||0
+					#	use delete and not destroy to preserve the abstracts_count
+					subject.unmerged_abstracts.each{|a|a.delete}
 			end
 		end
 	end
 
-#	def set_subject
-#		unless patid.blank?
-#			self.subject_id = Subject.search(:patid => patid, :types => 'Case').first.id
-#		end
-#	end
-
-#	def valid_patid
-#		unless patid.blank?
-#			subjects = Subject.search(:patid => patid, :types => 'Case',:paginate => false)
-#			if subjects.length == 1
-#				self.subject_id = Subject.search(:patid => patid, :types => 'Case').first.id
-#			else
-#				errors.add(:patid,"#{patid} matches #{subjects.length} case subjects")
-#			end
-#		end
-#	end
-
 	def subject_has_less_than_three_abstracts
-#		if self.subject and self.subject.abstracts.length >= 2
 		#	because this abstract hasn't been created yet, we're comparing to 2, not 3
-		if subject and subject.abstracts.length >= 2
+		if subject and subject.abstracts_count >= 2
 			errors.add(:subject_id,"Subject can only have 2 abstracts." ) unless merging
 		end
 	end
 
 	def subject_has_no_merged_abstract
-#		if self.subject and self.subject.merged_abstract
 		if subject and subject.merged_abstract
 			errors.add(:subject_id,"Subject already has a merged abstract." )
 		end

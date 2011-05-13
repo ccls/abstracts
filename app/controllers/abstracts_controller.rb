@@ -3,7 +3,7 @@ class AbstractsController < ApplicationController
 
 	before_filter :may_create_abstracts_required, :only => [:compare,:merge]
 
-	before_filter :append_current_user_to_params, :only => :create
+	before_filter :append_current_user_to_params, :only => [:create,:merge]
 
 #	abstracts shallow sub route of subjects?
 #	subject can't have more than one abstract and a NOT merged
@@ -50,8 +50,16 @@ class AbstractsController < ApplicationController
 	end
 
 	def merge
+		@abstract = @subject.abstracts.new(params[:abstract].merge(:merging => true))
+		@abstract.save!
+		flash[:notice] = 'Success!'
+		redirect_to @abstract
+	rescue ActiveRecord::RecordNotSaved, ActiveRecord::RecordInvalid
+		flash.now[:error] = "There was a problem creating " <<
+			"the abstract"
 		@abstracts = @subject.abstracts
-		redirect_to root_path	#	@subject
+		@diffs = @subject.abstract_diffs
+		render :action => "compare"
 	end
 
 protected

@@ -104,17 +104,24 @@ end
 
 ActionView::Helpers::FormBuilder.class_eval do
 
-	def submit_bar()
+	def submit_bar(controller=nil)
 		s = "<div class='submit_bar'>"
 		s << "<p class='submit_bar'>"
- 		s << @template.link_to( "Cancel and Show Section", { :action => 'show' }, { :class => 'button' } )
+		s << @template.link_to( "Cancel and Show Section", 
+			{ :action => 'show' }, { :class => 'button' } )
 		s << "&nbsp;\n"
 		s << submit_link_to( 'Save and Show Section',:name => nil )
 		s << "</p>\n"
+		sections = Abstract.sections
+		ci = sections.find_index{|i| i[:controller] == controller }
 		s << "<p class='submit_bar'>"
-		s << submit_link_to( 'Save and Edit Previous Section',:value => 'edit_previous')
+		s << (( !ci.nil? && ci > 0 ) ? 
+			submit_link_to( "Save and Edit #{sections[ci-1][:label]}",
+				:value => 'edit_previous') : '' )
 		s << "&nbsp;\n"
-		s << submit_link_to( 'Save and Edit Next Section', :value => 'edit_next')
+		s << (( !ci.nil? && ci < ( sections.length - 1 ) ) ?
+			submit_link_to( "Save and Edit #{sections[ci+1][:label]}",
+				:value => 'edit_next') : '' )
 		s << "</p>\n"
 		s << "</div><!-- class='submit_bar' -->"
 	end

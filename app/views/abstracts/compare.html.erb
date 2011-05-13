@@ -3,18 +3,56 @@
 <% form_for Abstract.new,
 	:url => merge_subject_abstracts_path(@subject) do |f| %>
 
+<p>These are the fields in an abstract.  They are 'humanized' and sorted alphabetically
+which is probably not the favored order.  Please let Jake know what a more appropriate
+order would be and what more clear 'humanized' field names would be.</p>
+
 <table>
-<thead><tr><th>Field</th><th>1</th><th>2</th></tr></thead>
+<thead><tr><th>Field</th><th>&nbsp;</th></tr></thead>
 <tbody>
-<% Abstract.comparable_columns.each do |column| %>
-<tr>
-<td><%= column %></td>
-<td><%= @abstracts[0][column] %></td>
-<td><%= @abstracts[1][column] %></td>
-<td><%= @diffs[column] %></td>
-</tr>
+<% Abstract.fields.each do |column| %>
+<%	classes = ['row'];
+		classes.push('diff') if (@diffs[column[:db]])
+%>
+	<% content_tag( :tr, :class => classes.join(' ') ) do %>
+<td><%= column[:human] %></td>
+<td>
+<% if @diffs[column[:db]] -%>
+<%#
+	I don't know how the HER merge html was valid as I copied it here
+	and my tests are freakin out?
+
+	Also don't know how the :value worked for label as it doesn't here?
+
+	radio_button(object_name, method, tag_value, options = {})
+	label(object_name, method, content_or_options = nil, options = nil, &block)
+	text_field(object_name, method, options = {})
+
+
+||'s don't work if '', only if nil
+
+-%>
+	<%= f.radio_button( column[:db], @abstracts[0][column[:db]],
+		:checked => false, :id => "abstract_0_#{column[:db]}" ) %>
+	<%= f.label( column[:db], @abstracts[0][column[:db]] || 'BLANK',
+		:for => "abstract_0_#{column[:db]}" ) %>
+<br/>
+	<%= f.radio_button( column[:db], @abstracts[1][column[:db]],
+		:checked => true, :id => "abstract_1_#{column[:db]}" ) %>
+	<%= f.label( column[:db], @abstracts[1][column[:db]] || 'BLANK',
+		:for => "abstract_1_#{column[:db]}" ) %>
+<% else -%>
+	<%= f.text_field column[:db], :value => @abstracts[0][column[:db]],
+		:readonly => true %>
+<% end -%>
+</td>
+  <% end %>
 <% end %>
 </tbody>
 </table>
+
+<p class='submit_bar'><%= 
+	f.submit_link_to "Merge abstracts from selections", :name => nil, :id => nil 
+%></p>
 
 <% end %>

@@ -1,0 +1,1035 @@
+-
+  :db: abstract_version_id
+  :human: Abstract version
+-
+  :db: abstracted_on
+  :human: Abstracted on
+-
+  :db: abstractor_id
+  :human: Abstractor
+-
+  :db: blasts_are_present
+  :human: Blasts are present
+-
+  :db: cbc_hemoglobin_level
+  :human: Cbc hemoglobin level
+-
+  :db: cbc_number_blasts
+  :human: Cbc number blasts
+-
+  :db: cbc_percent_blasts
+  :human: Cbc percent blasts
+-
+  :db: cbc_percent_blasts_unknown
+  :human: Cbc percent blasts unknown
+-
+  :db: cbc_platelet_count
+  :human: Cbc platelet count
+-
+  :db: cbc_report_found
+  :human: Cbc report found
+-
+  :db: cbc_report_on
+  :human: Cbc report on
+-
+  :db: cbc_white_blood_count
+  :human: Cbc white blood count
+-
+  :db: cerebrospinal_fluid_report_found
+  :human: Cerebrospinal fluid report found
+-
+  :db: chemo_protocol_agent_description
+  :human: Chemo protocol agent description
+-
+  :db: chemo_protocol_name
+  :human: Chemo protocol name
+-
+  :db: chemo_protocol_report_found
+  :human: Chemo protocol report found
+-
+  :db: chest_ct_medmass_present
+  :human: Chest ct medmass present
+-
+  :db: chest_ct_taken_on
+  :human: Chest ct taken on
+-
+  :db: chest_imaging_comment
+  :human: Chest imaging comment
+-
+  :db: chest_imaging_report_found
+  :human: Chest imaging report found
+-
+  :db: chest_imaging_report_on
+  :human: Chest imaging report on
+-
+  :db: conventional_karyotype_results
+  :human: Conventional karyotype results
+#-
+#  :db: created_at
+#  :human: Created at
+-
+  :db: csf_comment
+  :human: Csf comment
+-
+  :db: csf_red_blood_count
+  :human: Csf red blood count
+-
+  :db: csf_red_blood_count_text
+  :human: Csf red blood count text
+-
+  :db: csf_report_on
+  :human: Csf report on
+-
+  :db: csf_white_blood_count
+  :human: Csf white blood count
+-
+  :db: csf_white_blood_count_text
+  :human: Csf white blood count text
+-
+  :db: cytogen_chromosome_number
+  :human: Cytogen chromosome number
+-
+  :db: cytogen_comment
+  :human: Cytogen comment
+-
+  :db: cytogen_hospital_fish_done
+  :human: Cytogen hospital fish done
+-
+  :db: cytogen_inv16
+  :human: Cytogen inv16
+-
+  :db: cytogen_is_hyperdiploidy
+  :human: Cytogen is hyperdiploidy
+-
+  :db: cytogen_karyotype_done
+  :human: Cytogen karyotype done
+-
+  :db: cytogen_other_trans_1
+  :human: Cytogen other trans 1
+-
+  :db: cytogen_other_trans_10
+  :human: Cytogen other trans 10
+-
+  :db: cytogen_other_trans_2
+  :human: Cytogen other trans 2
+-
+  :db: cytogen_other_trans_3
+  :human: Cytogen other trans 3
+-
+  :db: cytogen_other_trans_4
+  :human: Cytogen other trans 4
+-
+  :db: cytogen_other_trans_5
+  :human: Cytogen other trans 5
+-
+  :db: cytogen_other_trans_6
+  :human: Cytogen other trans 6
+-
+  :db: cytogen_other_trans_7
+  :human: Cytogen other trans 7
+-
+  :db: cytogen_other_trans_8
+  :human: Cytogen other trans 8
+-
+  :db: cytogen_other_trans_9
+  :human: Cytogen other trans 9
+-
+  :db: cytogen_report_found
+  :human: Cytogen report found
+-
+  :db: cytogen_report_on
+  :human: Cytogen report on
+-
+  :db: cytogen_t119
+  :human: Cytogen t119
+-
+  :db: cytogen_t1221
+  :human: Cytogen t1221
+-
+  :db: cytogen_t1517
+  :human: Cytogen t1517
+-
+  :db: cytogen_t821
+  :human: Cytogen t821
+-
+  :db: cytogen_t922
+  :human: Cytogen t922
+-
+  :db: cytogen_trisomy10
+  :human: Cytogen trisomy10
+-
+  :db: cytogen_trisomy17
+  :human: Cytogen trisomy17
+-
+  :db: cytogen_trisomy21
+  :human: Cytogen trisomy21
+-
+  :db: cytogen_trisomy4
+  :human: Cytogen trisomy4
+-
+  :db: cytogen_trisomy5
+  :human: Cytogen trisomy5
+-
+  :db: cytogen_ucb_fish_done
+  :human: Cytogen ucb fish done
+-
+  :db: data_entry_done_on
+  :human: Data entry done on
+-
+  :db: diagnosed_on
+  :human: Diagnosed on
+-
+  :db: diagnosis_all_type_id
+  :human: Diagnosis all type
+-
+  :db: diagnosis_aml_type_id
+  :human: Diagnosis aml type
+-
+  :db: diagnosis_icdo_description
+  :human: Diagnosis icdo description
+-
+  :db: diagnosis_icdo_number
+  :human: Diagnosis icdo number
+-
+  :db: diagnosis_is_all
+  :human: Diagnosis is all
+-
+  :db: diagnosis_is_aml
+  :human: Diagnosis is aml
+-
+  :db: diagnosis_is_b_all
+  :human: Diagnosis is b all
+-
+  :db: diagnosis_is_cll
+  :human: Diagnosis is cll
+-
+  :db: diagnosis_is_cml
+  :human: Diagnosis is cml
+-
+  :db: diagnosis_is_other
+  :human: Diagnosis is other
+-
+  :db: diagnosis_is_t_all
+  :human: Diagnosis is t all
+-
+  :db: discharge_summary
+  :human: Discharge summary
+-
+  :db: discharge_summary_found
+  :human: Discharge summary found
+-
+  :db: dna_index
+  :human: Dna index
+-
+  :db: dod
+  :human: Dod
+#-
+#  :db: entry_1_by_uid
+#  :human: Entry 1 by uid
+#-
+#  :db: entry_2_by_uid
+#  :human: Entry 2 by uid
+-
+  :db: fab_classification
+  :human: Fab classification
+-
+  :db: flow_cyto_bm_kappa
+  :human: Flow cyto bm kappa
+-
+  :db: flow_cyto_bm_kappa_text
+  :human: Flow cyto bm kappa text
+-
+  :db: flow_cyto_bm_lambda
+  :human: Flow cyto bm lambda
+-
+  :db: flow_cyto_bm_lambda_text
+  :human: Flow cyto bm lambda text
+-
+  :db: flow_cyto_cd10
+  :human: Flow cyto cd10
+-
+  :db: flow_cyto_cd10_19
+  :human: Flow cyto cd10 19
+-
+  :db: flow_cyto_cd10_19_text
+  :human: Flow cyto cd10 19 text
+-
+  :db: flow_cyto_cd10_text
+  :human: Flow cyto cd10 text
+-
+  :db: flow_cyto_cd11b
+  :human: Flow cyto cd11b
+-
+  :db: flow_cyto_cd11b_text
+  :human: Flow cyto cd11b text
+-
+  :db: flow_cyto_cd11c
+  :human: Flow cyto cd11c
+-
+  :db: flow_cyto_cd11c_text
+  :human: Flow cyto cd11c text
+-
+  :db: flow_cyto_cd13
+  :human: Flow cyto cd13
+-
+  :db: flow_cyto_cd13_text
+  :human: Flow cyto cd13 text
+-
+  :db: flow_cyto_cd14
+  :human: Flow cyto cd14
+-
+  :db: flow_cyto_cd14_text
+  :human: Flow cyto cd14 text
+-
+  :db: flow_cyto_cd15
+  :human: Flow cyto cd15
+-
+  :db: flow_cyto_cd15_text
+  :human: Flow cyto cd15 text
+-
+  :db: flow_cyto_cd16
+  :human: Flow cyto cd16
+-
+  :db: flow_cyto_cd16_text
+  :human: Flow cyto cd16 text
+-
+  :db: flow_cyto_cd19
+  :human: Flow cyto cd19
+-
+  :db: flow_cyto_cd19_text
+  :human: Flow cyto cd19 text
+-
+  :db: flow_cyto_cd1a
+  :human: Flow cyto cd1a
+-
+  :db: flow_cyto_cd1a_text
+  :human: Flow cyto cd1a text
+-
+  :db: flow_cyto_cd2
+  :human: Flow cyto cd2
+-
+  :db: flow_cyto_cd20
+  :human: Flow cyto cd20
+-
+  :db: flow_cyto_cd20_text
+  :human: Flow cyto cd20 text
+-
+  :db: flow_cyto_cd21
+  :human: Flow cyto cd21
+-
+  :db: flow_cyto_cd21_text
+  :human: Flow cyto cd21 text
+-
+  :db: flow_cyto_cd22
+  :human: Flow cyto cd22
+-
+  :db: flow_cyto_cd22_text
+  :human: Flow cyto cd22 text
+-
+  :db: flow_cyto_cd23
+  :human: Flow cyto cd23
+-
+  :db: flow_cyto_cd23_text
+  :human: Flow cyto cd23 text
+-
+  :db: flow_cyto_cd24
+  :human: Flow cyto cd24
+-
+  :db: flow_cyto_cd24_text
+  :human: Flow cyto cd24 text
+-
+  :db: flow_cyto_cd25
+  :human: Flow cyto cd25
+-
+  :db: flow_cyto_cd25_text
+  :human: Flow cyto cd25 text
+-
+  :db: flow_cyto_cd2_text
+  :human: Flow cyto cd2 text
+-
+  :db: flow_cyto_cd3
+  :human: Flow cyto cd3
+-
+  :db: flow_cyto_cd33
+  :human: Flow cyto cd33
+-
+  :db: flow_cyto_cd33_text
+  :human: Flow cyto cd33 text
+-
+  :db: flow_cyto_cd34
+  :human: Flow cyto cd34
+-
+  :db: flow_cyto_cd34_text
+  :human: Flow cyto cd34 text
+-
+  :db: flow_cyto_cd38
+  :human: Flow cyto cd38
+-
+  :db: flow_cyto_cd38_text
+  :human: Flow cyto cd38 text
+-
+  :db: flow_cyto_cd3_cd4
+  :human: Flow cyto cd3 cd4
+-
+  :db: flow_cyto_cd3_cd4_text
+  :human: Flow cyto cd3 cd4 text
+-
+  :db: flow_cyto_cd3_cd8
+  :human: Flow cyto cd3 cd8
+-
+  :db: flow_cyto_cd3_cd8_text
+  :human: Flow cyto cd3 cd8 text
+-
+  :db: flow_cyto_cd3_text
+  :human: Flow cyto cd3 text
+-
+  :db: flow_cyto_cd4
+  :human: Flow cyto cd4
+-
+  :db: flow_cyto_cd40
+  :human: Flow cyto cd40
+-
+  :db: flow_cyto_cd40_text
+  :human: Flow cyto cd40 text
+-
+  :db: flow_cyto_cd41
+  :human: Flow cyto cd41
+-
+  :db: flow_cyto_cd41_text
+  :human: Flow cyto cd41 text
+-
+  :db: flow_cyto_cd45
+  :human: Flow cyto cd45
+-
+  :db: flow_cyto_cd45_text
+  :human: Flow cyto cd45 text
+-
+  :db: flow_cyto_cd4_text
+  :human: Flow cyto cd4 text
+-
+  :db: flow_cyto_cd5
+  :human: Flow cyto cd5
+-
+  :db: flow_cyto_cd56
+  :human: Flow cyto cd56
+-
+  :db: flow_cyto_cd56_text
+  :human: Flow cyto cd56 text
+-
+  :db: flow_cyto_cd57
+  :human: Flow cyto cd57
+-
+  :db: flow_cyto_cd57_text
+  :human: Flow cyto cd57 text
+-
+  :db: flow_cyto_cd5_text
+  :human: Flow cyto cd5 text
+-
+  :db: flow_cyto_cd61
+  :human: Flow cyto cd61
+-
+  :db: flow_cyto_cd61_text
+  :human: Flow cyto cd61 text
+-
+  :db: flow_cyto_cd7
+  :human: Flow cyto cd7
+-
+  :db: flow_cyto_cd71
+  :human: Flow cyto cd71
+-
+  :db: flow_cyto_cd71_text
+  :human: Flow cyto cd71 text
+-
+  :db: flow_cyto_cd7_text
+  :human: Flow cyto cd7 text
+-
+  :db: flow_cyto_cd8
+  :human: Flow cyto cd8
+-
+  :db: flow_cyto_cd8_text
+  :human: Flow cyto cd8 text
+-
+  :db: flow_cyto_cd9
+  :human: Flow cyto cd9
+-
+  :db: flow_cyto_cd9_text
+  :human: Flow cyto cd9 text
+-
+  :db: flow_cyto_cdw65
+  :human: Flow cyto cdw65
+-
+  :db: flow_cyto_cdw65_text
+  :human: Flow cyto cdw65 text
+-
+  :db: flow_cyto_glycoa
+  :human: Flow cyto glycoa
+-
+  :db: flow_cyto_glycoa_text
+  :human: Flow cyto glycoa text
+-
+  :db: flow_cyto_hladr
+  :human: Flow cyto hladr
+-
+  :db: flow_cyto_hladr_text
+  :human: Flow cyto hladr text
+-
+  :db: flow_cyto_igm
+  :human: Flow cyto igm
+-
+  :db: flow_cyto_igm_text
+  :human: Flow cyto igm text
+-
+  :db: flow_cyto_num_results_available
+  :human: Flow cyto num results available
+-
+  :db: flow_cyto_other_marker_1
+  :human: Flow cyto other marker 1
+-
+  :db: flow_cyto_other_marker_1_name
+  :human: Flow cyto other marker 1 name
+-
+  :db: flow_cyto_other_marker_1_text
+  :human: Flow cyto other marker 1 text
+-
+  :db: flow_cyto_other_marker_2
+  :human: Flow cyto other marker 2
+-
+  :db: flow_cyto_other_marker_2_name
+  :human: Flow cyto other marker 2 name
+-
+  :db: flow_cyto_other_marker_2_text
+  :human: Flow cyto other marker 2 text
+-
+  :db: flow_cyto_other_marker_3
+  :human: Flow cyto other marker 3
+-
+  :db: flow_cyto_other_marker_3_name
+  :human: Flow cyto other marker 3 name
+-
+  :db: flow_cyto_other_marker_3_text
+  :human: Flow cyto other marker 3 text
+-
+  :db: flow_cyto_other_marker_4
+  :human: Flow cyto other marker 4
+-
+  :db: flow_cyto_other_marker_4_name
+  :human: Flow cyto other marker 4 name
+-
+  :db: flow_cyto_other_marker_4_text
+  :human: Flow cyto other marker 4 text
+-
+  :db: flow_cyto_other_marker_5
+  :human: Flow cyto other marker 5
+-
+  :db: flow_cyto_other_marker_5_name
+  :human: Flow cyto other marker 5 name
+-
+  :db: flow_cyto_other_marker_5_text
+  :human: Flow cyto other marker 5 text
+-
+  :db: flow_cyto_remarks
+  :human: Flow cyto remarks
+-
+  :db: flow_cyto_report_found
+  :human: Flow cyto report found
+-
+  :db: flow_cyto_report_on
+  :human: Flow cyto report on
+-
+  :db: flow_cyto_surface_ig
+  :human: Flow cyto surface ig
+-
+  :db: flow_cyto_surface_ig_text
+  :human: Flow cyto surface ig text
+-
+  :db: flow_cyto_tdt
+  :human: Flow cyto tdt
+-
+  :db: flow_cyto_tdt_text
+  :human: Flow cyto tdt text
+-
+  :db: h_and_p_reports_found
+  :human: H and p reports found
+-
+  :db: h_and_p_reports_on
+  :human: H and p reports on
+-
+  :db: height_at_diagnosis
+  :human: Height at diagnosis
+-
+  :db: hepatomegaly_present
+  :human: Hepatomegaly present
+-
+  :db: histo_report_found
+  :human: Histo report found
+-
+  :db: histo_report_on
+  :human: Histo report on
+-
+  :db: histo_report_results
+  :human: Histo report results
+-
+  :db: hospital_fish_results
+  :human: Hospital fish results
+-
+  :db: hyperdiploidy_by
+  :human: Hyperdiploidy by
+#-
+#  :db: id
+#  :human: Id
+-
+  :db: is_cytogen_hosp_fish_t1221_done
+  :human: Is cytogen hosp fish t1221 done
+-
+  :db: is_diploid
+  :human: Is diploid
+-
+  :db: is_down_syndrome_phenotype
+  :human: Is down syndrome phenotype
+-
+  :db: is_h_and_p_report_found
+  :human: Is h and p report found
+-
+  :db: is_hyperdiploid
+  :human: Is hyperdiploid
+-
+  :db: is_hypodiploid
+  :human: Is hypodiploid
+-
+  :db: is_karyotype_normal
+  :human: Is karyotype normal
+-
+  :db: is_verification_complete
+  :human: Is verification complete
+-
+  :db: marrow_aspirate_diagnosis
+  :human: Marrow aspirate diagnosis
+-
+  :db: marrow_aspirate_report_found
+  :human: Marrow aspirate report found
+-
+  :db: marrow_aspirate_taken_on
+  :human: Marrow aspirate taken on
+-
+  :db: marrow_biopsy_diagnosis
+  :human: Marrow biopsy diagnosis
+-
+  :db: marrow_biopsy_on
+  :human: Marrow biopsy on
+-
+  :db: marrow_biopsy_report_found
+  :human: Marrow biopsy report found
+-
+  :db: mediastinal_mass_present
+  :human: Mediastinal mass present
+#-
+#  :db: merged_by_uid
+#  :human: Merged by uid
+-
+  :db: normal_cytogen
+  :human: Normal cytogen
+-
+  :db: number_metaphase_tested_karyotype
+  :human: Number metaphase tested karyotype
+-
+  :db: number_normal_metaphase_karyotype
+  :human: Number normal metaphase karyotype
+-
+  :db: number_of_blasts
+  :human: Number of blasts
+-
+  :db: other_dna_measure
+  :human: Other dna measure
+-
+  :db: patient_on_chemo_protocol
+  :human: Patient on chemo protocol
+-
+  :db: peripheral_blood_in_csf
+  :human: Peripheral blood in csf
+-
+  :db: physical_gingival
+  :human: Physical gingival
+-
+  :db: physical_leukemic_skin
+  :human: Physical leukemic skin
+-
+  :db: physical_lymph
+  :human: Physical lymph
+-
+  :db: physical_neuro
+  :human: Physical neuro
+-
+  :db: physical_other_soft
+  :human: Physical other soft
+-
+  :db: physical_other_soft_2
+  :human: Physical other soft 2
+-
+  :db: physical_spleen
+  :human: Physical spleen
+-
+  :db: physical_testicle
+  :human: Physical testicle
+-
+  :db: ploidy_comment
+  :human: Ploidy comment
+-
+  :db: ploidy_report_found
+  :human: Ploidy report found
+-
+  :db: ploidy_report_on
+  :human: Ploidy report on
+-
+  :db: received_bone_marrow_aspirate
+  :human: Received bone marrow aspirate
+-
+  :db: received_bone_marrow_biopsy
+  :human: Received bone marrow biopsy
+-
+  :db: received_cbc
+  :human: Received cbc
+-
+  :db: received_chemo_protocol
+  :human: Received chemo protocol
+-
+  :db: received_chest_ct
+  :human: Received chest ct
+-
+  :db: received_chest_xray
+  :human: Received chest xray
+-
+  :db: received_csf
+  :human: Received csf
+-
+  :db: received_cytogenetics
+  :human: Received cytogenetics
+-
+  :db: received_discharge_summary
+  :human: Received discharge summary
+-
+  :db: received_flow_cyto_day_14
+  :human: Received flow cyto day 14
+-
+  :db: received_flow_cyto_day_7
+  :human: Received flow cyto day 7
+-
+  :db: received_flow_cytometry
+  :human: Received flow cytometry
+-
+  :db: received_h_and_p
+  :human: Received h and p
+-
+  :db: received_hla_typing
+  :human: Received hla typing
+-
+  :db: received_other_reports
+  :human: Received other reports
+-
+  :db: received_ploidy
+  :human: Received ploidy
+-
+  :db: received_resp_to_therapy
+  :human: Received resp to therapy
+-
+  :db: received_specify_other_reports
+  :human: Received specify other reports
+-
+  :db: response_blasts_day_14
+  :human: Response blasts day 14
+-
+  :db: response_blasts_day_28
+  :human: Response blasts day 28
+-
+  :db: response_blasts_day_7
+  :human: Response blasts day 7
+-
+  :db: response_blasts_units_day_14
+  :human: Response blasts units day 14
+-
+  :db: response_blasts_units_day_28
+  :human: Response blasts units day 28
+-
+  :db: response_blasts_units_day_7
+  :human: Response blasts units day 7
+-
+  :db: response_cd10_day_14
+  :human: Response cd10 day 14
+-
+  :db: response_cd10_day_7
+  :human: Response cd10 day 7
+-
+  :db: response_cd13_day_14
+  :human: Response cd13 day 14
+-
+  :db: response_cd13_day_7
+  :human: Response cd13 day 7
+-
+  :db: response_cd14_day_14
+  :human: Response cd14 day 14
+-
+  :db: response_cd14_day_7
+  :human: Response cd14 day 7
+-
+  :db: response_cd15_day_14
+  :human: Response cd15 day 14
+-
+  :db: response_cd15_day_7
+  :human: Response cd15 day 7
+-
+  :db: response_cd19_day_14
+  :human: Response cd19 day 14
+-
+  :db: response_cd19_day_7
+  :human: Response cd19 day 7
+-
+  :db: response_cd19cd10_day_14
+  :human: Response cd19cd10 day 14
+-
+  :db: response_cd19cd10_day_7
+  :human: Response cd19cd10 day 7
+-
+  :db: response_cd1a_day_14
+  :human: Response cd1a day 14
+-
+  :db: response_cd20_day_14
+  :human: Response cd20 day 14
+-
+  :db: response_cd20_day_7
+  :human: Response cd20 day 7
+-
+  :db: response_cd2a_day_14
+  :human: Response cd2a day 14
+-
+  :db: response_cd33_day_14
+  :human: Response cd33 day 14
+-
+  :db: response_cd33_day_7
+  :human: Response cd33 day 7
+-
+  :db: response_cd34_day_14
+  :human: Response cd34 day 14
+-
+  :db: response_cd34_day_7
+  :human: Response cd34 day 7
+-
+  :db: response_cd3_day_7
+  :human: Response cd3 day 7
+-
+  :db: response_cd3a_day_14
+  :human: Response cd3a day 14
+-
+  :db: response_cd4a_day_14
+  :human: Response cd4a day 14
+-
+  :db: response_cd56_day_14
+  :human: Response cd56 day 14
+-
+  :db: response_cd5a_day_14
+  :human: Response cd5a day 14
+-
+  :db: response_cd61_day_14
+  :human: Response cd61 day 14
+-
+  :db: response_cd7a_day_14
+  :human: Response cd7a day 14
+-
+  :db: response_cd8a_day_14
+  :human: Response cd8a day 14
+-
+  :db: response_classification_day_14
+  :human: Response classification day 14
+-
+  :db: response_classification_day_28
+  :human: Response classification day 28
+-
+  :db: response_classification_day_7
+  :human: Response classification day 7
+-
+  :db: response_comment
+  :human: Response comment
+-
+  :db: response_comment_day_14
+  :human: Response comment day 14
+-
+  :db: response_comment_day_7
+  :human: Response comment day 7
+-
+  :db: response_day14or28_flag
+  :human: Response day14or28 flag
+-
+  :db: response_day30_is_in_remission
+  :human: Response day30 is in remission
+-
+  :db: response_day_14_days_since_diagnosis
+  :human: Response day 14 days since diagnosis
+-
+  :db: response_day_14_days_since_treatment_began
+  :human: Response day 14 days since treatment began
+-
+  :db: response_day_28_days_since_diagnosis
+  :human: Response day 28 days since diagnosis
+-
+  :db: response_day_28_days_since_treatment_began
+  :human: Response day 28 days since treatment began
+-
+  :db: response_day_7_days_since_diagnosis
+  :human: Response day 7 days since diagnosis
+-
+  :db: response_day_7_days_since_treatment_began
+  :human: Response day 7 days since treatment began
+-
+  :db: response_fab_subtype
+  :human: Response fab subtype
+-
+  :db: response_flow_cyto_day_14_on
+  :human: Response flow cyto day 14 on
+-
+  :db: response_flow_cyto_day_7_on
+  :human: Response flow cyto day 7 on
+-
+  :db: response_hladr_day_14
+  :human: Response hladr day 14
+-
+  :db: response_hladr_day_7
+  :human: Response hladr day 7
+-
+  :db: response_in_remission_day_14
+  :human: Response in remission day 14
+-
+  :db: response_is_inconclusive_day_14
+  :human: Response is inconclusive day 14
+-
+  :db: response_is_inconclusive_day_21
+  :human: Response is inconclusive day 21
+-
+  :db: response_is_inconclusive_day_28
+  :human: Response is inconclusive day 28
+-
+  :db: response_is_inconclusive_day_7
+  :human: Response is inconclusive day 7
+-
+  :db: response_marrow_kappa_day_14
+  :human: Response marrow kappa day 14
+-
+  :db: response_marrow_kappa_day_7
+  :human: Response marrow kappa day 7
+-
+  :db: response_marrow_lambda_day_14
+  :human: Response marrow lambda day 14
+-
+  :db: response_marrow_lambda_day_7
+  :human: Response marrow lambda day 7
+-
+  :db: response_other1_name_day_14
+  :human: Response other1 name day 14
+-
+  :db: response_other1_name_day_7
+  :human: Response other1 name day 7
+-
+  :db: response_other1_value_day_14
+  :human: Response other1 value day 14
+-
+  :db: response_other1_value_day_7
+  :human: Response other1 value day 7
+-
+  :db: response_other2_name_day_14
+  :human: Response other2 name day 14
+-
+  :db: response_other2_name_day_7
+  :human: Response other2 name day 7
+-
+  :db: response_other2_value_day_14
+  :human: Response other2 value day 14
+-
+  :db: response_other2_value_day_7
+  :human: Response other2 value day 7
+-
+  :db: response_other3_name_day_14
+  :human: Response other3 name day 14
+-
+  :db: response_other3_value_day_14
+  :human: Response other3 value day 14
+-
+  :db: response_other4_name_day_14
+  :human: Response other4 name day 14
+-
+  :db: response_other4_value_day_14
+  :human: Response other4 value day 14
+-
+  :db: response_other5_name_day_14
+  :human: Response other5 name day 14
+-
+  :db: response_other5_value_day_14
+  :human: Response other5 value day 14
+-
+  :db: response_report_found_day_14
+  :human: Response report found day 14
+-
+  :db: response_report_found_day_28
+  :human: Response report found day 28
+-
+  :db: response_report_found_day_7
+  :human: Response report found day 7
+-
+  :db: response_report_on_day_14
+  :human: Response report on day 14
+-
+  :db: response_report_on_day_28
+  :human: Response report on day 28
+-
+  :db: response_report_on_day_7
+  :human: Response report on day 7
+-
+  :db: response_tdt_day_14
+  :human: Response tdt day 14
+-
+  :db: response_tdt_day_7
+  :human: Response tdt day 7
+-
+  :db: reviewed_on
+  :human: Reviewed on
+-
+  :db: reviewer_id
+  :human: Reviewer
+-
+  :db: splenomegaly_present
+  :human: Splenomegaly present
+#-
+#  :db: subject_id
+#  :human: Subject
+-
+  :db: tdt_found_in_flow_cyto_chart
+  :human: Tdt found in flow cyto chart
+-
+  :db: tdt_found_in_separate_report
+  :human: Tdt found in separate report
+-
+  :db: tdt_numerical_result
+  :human: Tdt numerical result
+-
+  :db: tdt_often_found_flow_cytometry
+  :human: Tdt often found flow cytometry
+-
+  :db: tdt_positive_or_negative
+  :human: Tdt positive or negative
+-
+  :db: tdt_report_found
+  :human: Tdt report found
+-
+  :db: tdt_report_on
+  :human: Tdt report on
+-
+  :db: treatment_began_on
+  :human: Treatment began on
+-
+  :db: ucb_fish_results
+  :human: Ucb fish results
+#-
+#  :db: updated_at
+#  :human: Updated at
+-
+  :db: vital_status_id
+  :human: Vital status
+-
+  :db: weight_at_diagnosis
+  :human: Weight at diagnosis

@@ -277,3 +277,7 @@ form.edit_abstract .columns.small .column .field_wrapper label {
 p.submit_bar {
 	text-align: center;
 }
+
+table tbody tr.diff:nth-child(2n)   { background-color: #EBB; }
+table tbody tr.diff:nth-child(2n+1) { background-color: #DBB; }
+
