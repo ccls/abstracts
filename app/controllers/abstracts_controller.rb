@@ -1,6 +1,8 @@
 #	Abstract controller
 class AbstractsController < ApplicationController
 
+	before_filter :may_create_abstracts_required, :only => [:compare,:merge]
+
 	before_filter :append_current_user_to_params, :only => :create
 
 #	abstracts shallow sub route of subjects?
@@ -12,18 +14,27 @@ class AbstractsController < ApplicationController
 	skip_before_filter :get_new
 	skip_before_filter :get_all
 
+	before_filter :valid_subject_id_required, 
+		:only => [:new,:create,:compare,:merge]
+
+	before_filter :two_abstracts_required, 
+		:only => [:compare,:merge]
+
+
 	def index
 #		@abstracts = Abstract.all(:include => [:subject => :identifier])
 		@abstracts = Abstract.search(params)
 	end
 
 	def new
-		@abstract = Abstract.new(params[:abstract])
+#		@abstract = Abstract.new(params[:abstract])
+		@abstract = @subject.abstracts.new(params[:abstract])
 	end
 
 	#	override's resourceful create
 	def create
-		@abstract = Abstract.new(params[:abstract])
+#		@abstract = Abstract.new(params[:abstract])
+		@abstract = @subject.abstracts.new(params[:abstract])
 		@abstract.save!
 		flash[:notice] = 'Success!'
 		redirect_to @abstract
@@ -33,7 +44,26 @@ class AbstractsController < ApplicationController
 		render :action => "new"
 	end
 
+	def compare
+		@abstracts = @subject.abstracts
+		@diffs = @subject.abstract_diffs
+	end
+
+	def merge
+		@abstracts = @subject.abstracts
+		redirect_to root_path	#	@subject
+	end
+
 protected
+
+	def two_abstracts_required
+		abstracts_count = @subject.abstracts_count
+#		if( abstracts_count > 2 || abstracts_count < 2 )
+		unless( abstracts_count == 2 )
+			access_denied("Must complete 2 abstracts before merging. " <<
+				":#{abstracts_count}:")
+		end
+	end
 
 	def append_current_user_to_params
 		params[:abstract] = {} unless params[:abstract]

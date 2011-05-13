@@ -12,6 +12,12 @@
 	:label_text => 'Data Entry Name' ) %>
 <%= wrapped_date_spans(:abstract,:data_entry_done_on,
 	:label_text => 'Data Entry Date' ) %>
+<%= wrapped_spans(:abstract,:entry_1_by,
+	:label_text => 'Data Entry 1 By' ) %>
+<%= wrapped_spans(:abstract,:entry_2_by,
+	:label_text => 'Data Entry 2 By' ) %>
+<%= wrapped_spans(:abstract,:merged_by,
+	:label_text => 'Data Merged By' ) %>
 <p>Abstract Version</p>
 
 <%= abstract_pages(@abstract) %>

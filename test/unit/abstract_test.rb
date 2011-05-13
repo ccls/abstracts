@@ -247,7 +247,7 @@ class AbstractTest < ActiveSupport::TestCase
 	assert_should_not_require( :height_at_diagnosis )
 	assert_should_not_require( :weight_at_diagnosis )
 	assert_should_not_require( :hyperdiploidy_by )
-	assert_should_not_require( :patid )
+#	assert_should_not_require( :patid )
 	assert_should_not_require( :current_user )
 	assert_should_not_require( :response_day_7_days_since_treatment_began )
 	assert_should_not_require( :response_day_7_days_since_diagnosis )
@@ -509,20 +509,20 @@ class AbstractTest < ActiveSupport::TestCase
 ##		assert_equal 0, abstract.reload.user_id
 #	end
 
-	test "should set subject_id on create with valid patid" do
-		subject = create_case_subject_with_patid(1234)
-		assert_difference "Abstract.count", 1 do
-			abstract = Factory(:abstract, :patid => subject.patid )
-			assert_not_nil abstract.reload.subject_id
-		end
-	end
+#	test "should set subject_id on create with valid patid" do
+#		subject = create_case_subject_with_patid(1234)
+#		assert_difference "Abstract.count", 1 do
+#			abstract = Factory(:abstract, :patid => subject.patid )
+#			assert_not_nil abstract.reload.subject_id
+#		end
+#	end
 
-	test "should require valid patid if provided" do
-		assert_difference "Abstract.count",0 do
-			object = create_object(:patid => 9999)
-			assert object.errors.on(:patid)
-		end
-	end
+#	test "should require valid patid if provided" do
+#		assert_difference "Abstract.count",0 do
+#			object = create_object(:patid => 9999)
+#			assert object.errors.on(:patid)
+#		end
+#	end
 
 	test "should not convert weight if weight_units is null" do
 		abstract = Factory(:abstract,:weight_at_diagnosis => 100)
@@ -563,7 +563,8 @@ class AbstractTest < ActiveSupport::TestCase
 	test "should return an array of ignorable columns" do
 		abstract = Factory(:abstract)
 		assert_equal abstract.ignorable_columns,
-			["id", "entry_1_by_uid", "entry_2_by_uid", "merged_by_uid", "created_at", "updated_at"]
+			["id", "entry_1_by_uid", "entry_2_by_uid", "merged_by_uid", 
+				"created_at", "updated_at", "subject_id"]
 	end
 
 	test "should return hash of comparable attributes" do
@@ -691,7 +692,8 @@ class AbstractTest < ActiveSupport::TestCase
 		} }
 	end
 
-	test "should create first abstract for subject with patid and current_user" do
+#	test "should create first abstract for subject with patid and current_user" do
+	test "should create first abstract for subject with current_user" do
 		assert_difference('Identifier.count',1) {
 		assert_difference('Subject.count',1) {
 			@subject = create_case_subject_with_patid(1234)
@@ -700,13 +702,15 @@ class AbstractTest < ActiveSupport::TestCase
 		@current_user = Factory(:user)
 		assert_difference('Abstract.count',1) {
 			abstract = create_abstract(:current_user => @current_user,
-				:patid => @subject.patid)
+				:subject => @subject)
+#				:patid => @subject.patid)
 			assert_equal abstract.entry_1_by, @current_user
 			assert_equal abstract.subject, @subject
 		}
 	end
 
-	test "should create second abstract for subject with patid and current_user" do
+#	test "should create second abstract for subject with patid and current_user" do
+	test "should create second abstract for subject with current_user" do
 		assert_difference('Identifier.count',1) {
 		assert_difference('Subject.count',1) {
 			@subject = create_case_subject_with_patid(1234)
@@ -714,16 +718,19 @@ class AbstractTest < ActiveSupport::TestCase
 		} }
 		@current_user = Factory(:user)
 		abstract = create_abstract(:current_user => @current_user,
-			:patid => @subject.patid)
+			:subject => @subject)
+#			:patid => @subject.patid)
 		assert_difference('Abstract.count',1) {
 			abstract = create_abstract(:current_user => @current_user,
-				:patid => @subject.patid)
+				:subject => @subject.reload)
+#				:patid => @subject.patid)
 			assert_equal abstract.entry_2_by, @current_user
 			assert_equal abstract.subject, @subject
 		}
 	end
 
-	test "should NOT create third abstract for subject with patid and current_user " <<
+#	test "should NOT create third abstract for subject with patid and current_user " <<
+	test "should NOT create third abstract for subject with current_user " <<
 			"without merging flag" do
 		assert_difference('Identifier.count',1) {
 		assert_difference('Subject.count',1) {
@@ -732,17 +739,21 @@ class AbstractTest < ActiveSupport::TestCase
 		} }
 		@current_user = Factory(:user)
 		abstract = create_abstract(:current_user => @current_user,
-			:patid => @subject.patid)
+			:subject => @subject)
+#			:patid => @subject.patid)
 		abstract = create_abstract(:current_user => @current_user,
-			:patid => @subject.patid)
+			:subject => @subject.reload)
+#			:patid => @subject.patid)
 		assert_difference('Abstract.count',0) {
 			abstract = create_abstract(:current_user => @current_user,
-				:patid => @subject.patid)
+				:subject => @subject.reload)
+#				:patid => @subject.patid)
 			assert abstract.errors.on(:subject_id)
 		}
 	end
 
-	test "should create third abstract for subject with patid and current_user " <<
+#	test "should create third abstract for subject with patid and current_user " <<
+	test "should create third abstract for subject with current_user " <<
 			"with merging flag" do
 		assert_difference('Identifier.count',1) {
 		assert_difference('Subject.count',1) {
@@ -751,12 +762,15 @@ class AbstractTest < ActiveSupport::TestCase
 		} }
 		@current_user = Factory(:user)
 		abstract = create_abstract(:current_user => @current_user,
-			:patid => @subject.patid)
+			:subject => @subject)
+#			:patid => @subject.patid)
 		abstract = create_abstract(:current_user => @current_user,
-			:patid => @subject.patid)
+			:subject => @subject.reload)
+#			:patid => @subject.patid)
 		assert_difference('Abstract.count',1) {
 			abstract = create_abstract(:current_user => @current_user,
-				:patid => @subject.patid, :merging => true)
+				:subject => @subject.reload, :merging => true)
+#				:patid => @subject.patid, :merging => true)
 			assert_equal abstract.merged_by, @current_user
 			assert_equal abstract.subject, @subject
 		}

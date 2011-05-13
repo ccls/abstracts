@@ -4,7 +4,9 @@ class AbstractsControllerTest < ActionController::TestCase
 
 	ASSERT_ACCESS_OPTIONS = {
 		:model => 'Abstract',
-		:actions => [:new,:create,:edit,:update,:show,:destroy,:index],
+#		:actions => [:new,:create,:edit,:update,:show,:destroy,:index],
+#		:actions => [:edit,:update,:show,:destroy,:index],
+		:actions => [:edit,:update,:show,:destroy,:index],
 		:attributes_for_create => :factory_attributes,
 		:method_for_create => :create_abstract
 	}
@@ -17,7 +19,7 @@ class AbstractsControllerTest < ActionController::TestCase
 	assert_access_with_login({ 
 		:logins => site_administrators })
 	assert_no_access_with_login({ 
-		:logins => ( ALL_TEST_ROLES - site_administrators ) })
+		:logins => ( all_test_roles - site_administrators ) })
 	assert_no_access_without_login
 
 	assert_access_with_https
@@ -36,92 +38,189 @@ class AbstractsControllerTest < ActionController::TestCase
 		:destroy => { :id => 0 }
 	)
 
+	assert_no_route(:get,:new)
+	assert_no_route(:post,:create)
+
+	setup :create_case_subject
+
 	site_administrators.each do |cu|
+
+		test "should NOT create abstract without subject_id with #{cu} login" do
+pending
+		end
 			
-		test "should set user_id on creation with #{cu} login" <<
+		test "should set entry_1_by_uid on creation with #{cu} login" <<
 				" without abstract hash" do
 			u = send(cu)
 			login_as u
-			post :create
+			post :create, :subject_id => @subject.id
 			assert assigns(:abstract)
-pending
-#			assert_equal u.id, assigns(:abstract).user_id
+			assert_equal u.uid, assigns(:abstract).entry_1_by_uid
 		end
 
-		test "should set user_id on creation with #{cu} login" do
+		test "should set entry_1_by_uid on creation with #{cu} login" do
 			u = send(cu)
 			login_as u
-			post :create, :abstract => factory_attributes
+			post :create, :subject_id => @subject.id,
+				:abstract => factory_attributes
 			assert assigns(:abstract)
-pending
-#			assert_equal u.id, assigns(:abstract).user_id
+			assert_equal u.uid, assigns(:abstract).entry_1_by_uid
 		end
 
 		test "should set entry_1_by on creation if subject's first abstract " <<
 				"with #{cu} login" do
 			u = send(cu)
 			login_as u
-#	include subject's patid
 			assert_difference('Abstract.count',1) {
-				post :create, :abstract => factory_attributes
+				post :create, :subject_id => @subject.id,
+					:abstract => factory_attributes
 			}
 			assert assigns(:abstract)
-pending
-#			assert_equal u, assigns(:abstract).entry_1_by
+			assert_equal u, assigns(:abstract).entry_1_by
 		end
 
 		test "should set entry_2_by on creation if subject's second abstract " <<
 				"with #{cu} login" do
 			u = send(cu)
 			login_as u
-#	create an abstract for subject and then ....
-#	include subject's patid
+			Factory(:abstract, :subject => @subject)
 			assert_difference('Abstract.count',1) {
-				post :create, :abstract => factory_attributes
+				post :create, :subject_id => @subject.id,
+					:abstract => factory_attributes
 			}
 			assert assigns(:abstract)
-pending
-#			assert_equal u, assigns(:abstract).entry_2_by
+			assert_equal u, assigns(:abstract).entry_2_by
+		end
+
+		test "should NOT get compare if subject only has 0 abstract with #{cu} login" do
+			u = send(cu)
+			login_as u
+			get :compare, :subject_id => @subject.id
+			assert_redirected_to root_path
+		end
+
+		test "should NOT get compare if subject only has 1 abstract with #{cu} login" do
+			u = send(cu)
+			login_as u
+			Factory(:abstract, :subject => @subject)
+			get :compare, :subject_id => @subject.id
+			assert_redirected_to root_path
+		end
+
+		test "should get compare if subject has 2 abstracts with #{cu} login" do
+			u = send(cu)
+			login_as u
+			Factory(:abstract, :subject => @subject)
+			Factory(:abstract, :subject => @subject.reload)
+			get :compare, :subject_id => @subject.id
+			assert assigns(:abstracts)
+		end
+
+		test "should NOT merge if subject only has 0 abstract with #{cu} login" do
+			u = send(cu)
+			login_as u
+			post :merge, :subject_id => @subject.id
+			assert_redirected_to root_path
+		end
+
+		test "should NOT merge if subject only has 1 abstract with #{cu} login" do
+			u = send(cu)
+			login_as u
+			Factory(:abstract, :subject => @subject)
+			post :merge, :subject_id => @subject.id
+			assert_redirected_to root_path
 		end
 
 		test "should set merged_by on merge of subject's abstracts with #{cu} login" do
 			u = send(cu)
 			login_as u
+			Factory(:abstract, :subject => @subject)
+			Factory(:abstract, :subject => @subject.reload)
 #			assert_difference('Abstract.count', -1) {
-#				adds 1 new abstract and destroys 2 others
-#			post :merge, :patid => ???
-#			post :create, :abstract => factory_attributes
+				post :merge, :subject_id => @subject.id
 #			}
-#			assert assigns(:abstract)
+			assert assigns(:abstracts)
 pending
+#			assert assigns(:abstract)
+#			assert !assigns(:abstracts).include?(assigns(:abstract))
 #			assert_equal u, assigns(:abstract).merged_by
+			assert_redirected_to root_path
 		end
 
-		test "should create abstract with #{cu} login " <<
-				"and valid patid" do
+		test "should merge subject's abstracts with #{cu} login" do
+pending
+		end
+
+		test "should remove subject's initial abstracts on merge with #{cu} login" do
+pending
+		end
+
+		test "should copy subject's initial entry_by's on merge with #{cu} login" do
+pending
+		end
+
+	end
+
+
+	non_site_administrators.each do |cu|
+
+		test "should NOT create abstract with #{cu} login" do
 			u = send(cu)
 			login_as u
-			subject = create_case_subject_with_patid(1234)
-			assert_difference "Abstract.count", 1 do
-				post :create, :abstract => { :patid => subject.patid }
-				assert assigns(:abstract)
-				assert_nil flash[:error]
-				assert_not_nil flash[:notice]
-				assert_redirected_to abstract_path(assigns(:abstract))
-				assert_equal subject.id, assigns(:abstract).subject_id
+			assert_difference('Abstract.count',0) do
+				post :create, :subject_id => @subject.id
 			end
+			assert_not_nil flash[:error]
+			assert_redirected_to root_path
 		end
 
-		test "should not create abstract with #{cu} login " <<
-				"and invalid patid" do
+		test "should NOT compare abstracts with #{cu} login" do
 			u = send(cu)
 			login_as u
-			post :create, :abstract => { :patid => 0 }
+			Factory(:abstract, :subject => @subject)
+			Factory(:abstract, :subject => @subject.reload)
+			get :compare, :subject_id => @subject.id
 			assert_not_nil flash[:error]
-			assert_response :success
-			assert_template :new
+			assert_redirected_to root_path
 		end
 
+		test "should NOT merge abstracts with #{cu} login" do
+			u = send(cu)
+			login_as u
+			Factory(:abstract, :subject => @subject)
+			Factory(:abstract, :subject => @subject.reload)
+			post :merge, :subject_id => @subject.id
+			assert_not_nil flash[:error]
+			assert_redirected_to root_path
+		end
+
+	end
+
+	test "should NOT create abstract without login" do
+		assert_difference('Abstract.count',0) do
+			post :create, :subject_id => @subject.id
+		end
+		assert_redirected_to_login
+	end
+
+	test "should NOT compare abstracts without login" do
+		Factory(:abstract, :subject => @subject)
+		Factory(:abstract, :subject => @subject.reload)
+		get :compare, :subject_id => @subject.id
+		assert_redirected_to_login
+	end
+
+	test "should NOT merge abstracts without login" do
+		Factory(:abstract, :subject => @subject)
+		Factory(:abstract, :subject => @subject.reload)
+		post :merge, :subject_id => @subject.id
+		assert_redirected_to_login
+	end
+
+protected
+
+	def create_case_subject
+		@subject = Factory(:case_subject)
 	end
 
 end

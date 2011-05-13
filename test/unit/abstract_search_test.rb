@@ -111,8 +111,14 @@ class AbstractSearchTest < ActiveSupport::TestCase
 #	end
 
 	test "should find abstracts that are merged" do
-
-		pending
+		a1,a2 = create_abstracts(2)
+		a1.merged_by = Factory(:user)
+		a1.save
+		assert  a1.merged?
+		assert !a2.merged?
+		abstracts = Abstract.search(:merged => true)
+		assert  abstracts.include?(a1)
+		assert !abstracts.include?(a2)
 	end
 
 end

@@ -9,9 +9,9 @@ class SubjectsControllerTest < ActionController::TestCase
 	}
 
 	assert_access_with_login({ 
-		:logins => [:superuser,:admin] })
+		:logins => site_administrators })
 	assert_no_access_with_login({ 
-		:logins => [:editor,:interviewer,:reader,:active_user] })
+		:logins => non_site_administrators })
 	assert_no_access_without_login
 
 	assert_access_with_https
@@ -24,7 +24,7 @@ class SubjectsControllerTest < ActionController::TestCase
 	assert_no_route(:put,:update,:id => 0)
 	assert_no_route(:delete,:destroy,:id => 0)
 
-	%w( superuser admin ).each do |cu|
+	site_administrators.each do |cu|
 
 		test "should get index of only case subjects with #{cu} login " do
 			Factory(:case_subject)

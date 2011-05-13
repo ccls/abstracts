@@ -263,13 +263,13 @@ class Abstract < ActiveRecord::Base
 
 	attr_accessor :current_user
 	attr_accessor :weight_units, :height_units
-	attr_accessor :patid
+#	attr_accessor :patid
 	attr_accessor :merging	#	flag to be used to skip 2 abstract limitation
 
 	#	The :on => :create doesn't seem to work as described
 	#	validate_on_create is technically deprecated, but still works
 	#	valid_patid sets the subject so needs to be first
-	validate_on_create :valid_patid	#, :on => :create
+#	validate_on_create :valid_patid	#, :on => :create
 	validate_on_create :subject_has_less_than_three_abstracts	#, :on => :create
 	validate_on_create :subject_has_no_merged_abstract	#, :on => :create
 
@@ -284,10 +284,31 @@ class Abstract < ActiveRecord::Base
 #			errors.add(:base,"Forced failure for testing." )
 #	end
 
+
+
+
+	def self.fields
+#	make like abstract_sections as array for controlling order
+#	db: db field name
+#	human: humanized field
+		@@fields ||= YAML::load(ERB.new(
+			IO.read('config/abstract_fields.yml')).result)
+	end
+
+
+
+
+
+	def self.comparable_columns
+		@@comparable_columns ||= column_names - %w( id 
+			entry_1_by_uid entry_2_by_uid merged_by_uid
+			created_at updated_at subject_id )
+	end
+
 	def ignorable_columns
 		@@ignorable_columns ||= %w( id 
 			entry_1_by_uid entry_2_by_uid merged_by_uid
-			created_at updated_at )
+			created_at updated_at subject_id )
 	end
 
 	def comparable_attributes
@@ -311,6 +332,10 @@ class Abstract < ActiveRecord::Base
 	def self.sections
 		@@sections ||= YAML::load(ERB.new(
 			IO.read('config/abstract_sections.yml')).result)
+	end
+
+	def merged?
+		!merged_by_uid.blank?
 	end
 
 protected
@@ -378,16 +403,16 @@ protected
 #		end
 #	end
 
-	def valid_patid
-		unless patid.blank?
-			subjects = Subject.search(:patid => patid, :types => 'Case',:paginate => false)
-			if subjects.length == 1
-				self.subject_id = Subject.search(:patid => patid, :types => 'Case').first.id
-			else
-				errors.add(:patid,"#{patid} matches #{subjects.length} case subjects")
-			end
-		end
-	end
+#	def valid_patid
+#		unless patid.blank?
+#			subjects = Subject.search(:patid => patid, :types => 'Case',:paginate => false)
+#			if subjects.length == 1
+#				self.subject_id = Subject.search(:patid => patid, :types => 'Case').first.id
+#			else
+#				errors.add(:patid,"#{patid} matches #{subjects.length} case subjects")
+#			end
+#		end
+#	end
 
 	def subject_has_less_than_three_abstracts
 #		if self.subject and self.subject.abstracts.length >= 2

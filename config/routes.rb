@@ -4,7 +4,8 @@ ActionController::Routing::Routes.draw do |map|
 
 #	map.resource  :calendar,   :only => [ :show ]
 
-	map.resources :abstracts do |abstract|
+#	map.resources :abstracts, :only => [:show,:index,:edit,:update,:destroy] do |abstract|
+	map.resources :abstracts, :except => [:new,:create] do |abstract|
 		abstract.resource :identifying_data, :only => [:edit,:update,:show]
 		abstract.resource :bone_marrow, :only => [:edit,:update,:show]
 		abstract.resource :cbc, :only => [:edit,:update,:show]
@@ -22,8 +23,19 @@ ActionController::Routing::Routes.draw do |map|
 		abstract.resource :therapy_response, :only => [:edit,:update,:show]
 	end
 
-	map.resources :subjects, :only => :index,
-		:member => { :merge => :get }
+#	map.resources :subjects, :only => :index,
+#		:member => { 
+#			:compare => :get,
+#			:merge => :post
+#		}
+	map.resources :subjects, :only => :index do |subject|
+#		subject.resources :abstracts, :only => [:new,:create],
+		subject.resources :abstracts, :only => [:create],
+			:collection => { 
+				:compare => :get,
+				:merge => :post
+			}
+	end
 
 #	map.resources :home_page_pics, :collection => { 
 #		:random => :get,

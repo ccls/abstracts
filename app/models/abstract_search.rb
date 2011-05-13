@@ -38,8 +38,7 @@ class AbstractSearch < Search
 private	#	THIS IS REQUIRED
 
 	def merged_conditions
-
-		return nil
+		['abstracts.merged_by_uid IS NOT NULL'] unless merged.blank?
 	end
 
 #	def q_conditions

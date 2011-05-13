@@ -17,7 +17,7 @@ Factory.define :abstract do |f|
 	f.updated_at Time.now	#	to make it dirty
 end
 Factory.define :complete_abstract, :class => 'Abstract' do |f|
-	f.sequence(:subject_id){|n| n }
+#	f.sequence(:subject_id){|n| n }
 	f.response_day14or28_flag random_yndk()
 	f.received_bone_marrow_biopsy random_yndk()
 	f.received_h_and_p random_yndk()

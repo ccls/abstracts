@@ -1,0 +1,20 @@
+<p>PatID: <%= @subject.patid %></p>
+
+<% form_for Abstract.new,
+	:url => merge_subject_abstracts_path(@subject) do |f| %>
+
+<table>
+<thead><tr><th>Field</th><th>1</th><th>2</th></tr></thead>
+<tbody>
+<% Abstract.comparable_columns.each do |column| %>
+<tr>
+<td><%= column %></td>
+<td><%= @abstracts[0][column] %></td>
+<td><%= @abstracts[1][column] %></td>
+<td><%= @diffs[column] %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+
+<% end %>

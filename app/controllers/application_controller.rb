@@ -17,6 +17,15 @@ class ApplicationController < ActionController::Base
 
 protected
 
+	def valid_subject_id_required
+		if !params[:subject_id].blank? and Subject.exists?(params[:subject_id])
+			@subject = Subject.find(params[:subject_id])
+		else
+			access_denied("Valid subject id required!", 
+				subjects_path)
+		end
+	end
+
 	def valid_abstract_id_required
 		if !params[:abstract_id].blank? and Abstract.exists?(params[:abstract_id])
 			@abstract = Abstract.find(params[:abstract_id])

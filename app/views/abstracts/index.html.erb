@@ -1,11 +1,13 @@
 <h4>Abstracts:</h4>
 <ul>
-<li><%= link_to "Create first abstract for subject", subjects_path %></li>
+<li><%= link_to "Subjects awaiting first entry", 
+	subjects_path(:abstracts_count => 0) %></li>
 <li><%= link_to "Subjects awaiting second entry", 
 	subjects_path(:abstracts_count => 1) %></li>
 <li><%= link_to "Subjects awaiting abstract merging", 
 	subjects_path(:abstracts_count => 2) %></li>
-<li><%= link_to "Merged Abstracts (coming soon)", abstracts_path %></li>
+<li><%= link_to "Merged Abstracts", 
+	abstracts_path(:merged => true) %></li>
 </ul>
 <% unless @abstracts.empty? %>
 <table id='abstracts'><thead>

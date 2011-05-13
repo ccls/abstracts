@@ -3,21 +3,24 @@ class SubjectsController < ApplicationController
 
 	resourceful
 
-	before_filter :valid_id_required, :only => :merge
-	before_filter :two_abstracts_required, :only => :merge
+#	before_filter :valid_id_required, :only => [:compare,:merge]
+#	before_filter :two_abstracts_required, :only => [:compare,:merge]
 
 #	skip_before_filter :get_new
 	skip_before_filter :get_all
 
 	def index
-		record_or_recall_sort_order
+		recall_or_record_sort_order
 		@subjects = Subject.search(params.merge({:types => 'Case'}))
 	end
 
-	def merge
-		@abstracts = @subject.abstracts
-		@diffs = @subject.abstract_diffs
-	end
+#	def compare
+#		@abstracts = @subject.abstracts
+#		@diffs = @subject.abstract_diffs
+#	end
+#
+#	def merge
+#	end
 
 protected
 

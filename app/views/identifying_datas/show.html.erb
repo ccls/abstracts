@@ -23,15 +23,15 @@
 </div><!-- class='institution' -->
 <div class='hospital_number field_wrapper'>
 <span class='label'>* Hospital Record #</span>
-<span class='value'>&nbsp;</span>
+<span class='value'><%= @abstract.try(:subject).try(:identifier).try(:hospital_no) || '&nbsp;' %></span>
 </div><!-- class='hospital_number' -->
 <div class='dob field_wrapper'>
 <span class='label'>* Patient Birth Date</span>
-<span class='value'>&nbsp;</span>
+<span class='value'><%=mdy @abstract.try(:subject).try(:dob) %></span>
 </div><!-- class='dob' -->
 <div class='admitted_on field_wrapper'>
 <span class='label'>* Admit Date</span>
-<span class='value'>&nbsp;</span>
+<span class='value'><%=mdy @abstract.try(:subject).try(:patient).try(:admit_date) %></span>
 </div><!-- class='admitted_on' -->
 </div><!-- class='column' -->
 
