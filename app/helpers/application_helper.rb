@@ -116,11 +116,11 @@ ActionView::Helpers::FormBuilder.class_eval do
 		ci = sections.find_index{|i| i[:controller] == controller }
 		s << "<p class='submit_bar'>"
 		s << (( !ci.nil? && ci > 0 ) ? 
-			submit_link_to( "Save and Edit #{sections[ci-1][:label]}",
+			submit_link_to( "Save and Edit '#{sections[ci-1][:label]}'",
 				:value => 'edit_previous') : '' )
 		s << "&nbsp;\n"
 		s << (( !ci.nil? && ci < ( sections.length - 1 ) ) ?
-			submit_link_to( "Save and Edit #{sections[ci+1][:label]}",
+			submit_link_to( "Save and Edit '#{sections[ci+1][:label]}'",
 				:value => 'edit_next') : '' )
 		s << "</p>\n"
 		s << "</div><!-- class='submit_bar' -->"

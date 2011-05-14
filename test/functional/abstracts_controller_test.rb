@@ -45,10 +45,6 @@ class AbstractsControllerTest < ActionController::TestCase
 
 	site_administrators.each do |cu|
 
-		test "should NOT create abstract without subject_id with #{cu} login" do
-pending
-		end
-			
 		test "should set entry_1_by_uid on creation with #{cu} login" <<
 				" without abstract hash" do
 			u = send(cu)
@@ -132,31 +128,100 @@ pending
 		end
 
 		test "should set merged_by on merge of subject's abstracts with #{cu} login" do
+			u1 = send(cu)
+			u2 = send(cu)
+			u3 = send(cu)
+			login_as u3
+			Factory(:abstract, :subject => @subject,:current_user => u1)
+			Factory(:abstract, :subject => @subject.reload,:current_user => u2)
+			assert_difference('Abstract.count', -1) {
+				post :merge, :subject_id => @subject.id
+			}
+			assert assigns(:abstracts)
+			assert assigns(:abstract)
+			assert !assigns(:abstracts).include?(assigns(:abstract))
+			assert_equal u1, assigns(:abstract).entry_1_by
+			assert_equal u2, assigns(:abstract).entry_2_by
+			assert_equal u3, assigns(:abstract).merged_by
+			assert_redirected_to abstract_path(assigns(:abstract))
+		end
+
+		test "should NOT create invalid abstract with #{cu} login" do
+			Abstract.any_instance.stubs(:valid?).returns(false)
 			u = send(cu)
 			login_as u
+			assert_difference('Abstract.count',0) do
+				post :create, :subject_id => @subject.id
+			end
+			assert_not_nil flash[:error]
+			assert_redirected_to abstracts_path
+		end
+
+		test "should NOT create abstract when save fails with #{cu} login" do
+			Abstract.any_instance.stubs(:create_or_update).returns(false)
+			u = send(cu)
+			login_as u
+			assert_difference('Abstract.count',0) do
+				post :create, :subject_id => @subject.id
+			end
+			assert_not_nil flash[:error]
+			assert_redirected_to abstracts_path
+		end
+
+		test "should NOT create merged invalid abstract with #{cu} login" do
 			Factory(:abstract, :subject => @subject)
 			Factory(:abstract, :subject => @subject.reload)
-#			assert_difference('Abstract.count', -1) {
+			Abstract.any_instance.stubs(:valid?).returns(false)
+			u = send(cu)
+			login_as u
+			assert_difference('Abstract.count',0) do
 				post :merge, :subject_id => @subject.id
-#			}
-			assert assigns(:abstracts)
-pending
-#			assert assigns(:abstract)
-#			assert !assigns(:abstracts).include?(assigns(:abstract))
-#			assert_equal u, assigns(:abstract).merged_by
-			assert_redirected_to root_path
+			end
+			assert_not_nil flash[:error]
+			assert_response :success
+			assert_template 'compare'
 		end
 
-		test "should merge subject's abstracts with #{cu} login" do
-pending
+		test "should NOT create merged abstract when save fails with #{cu} login" do
+			Factory(:abstract, :subject => @subject)
+			Factory(:abstract, :subject => @subject.reload)
+			Abstract.any_instance.stubs(:create_or_update).returns(false)
+			u = send(cu)
+			login_as u
+			assert_difference('Abstract.count',0) do
+				post :merge, :subject_id => @subject.id
+			end
+			assert_not_nil flash[:error]
+			assert_response :success
+			assert_template 'compare'
 		end
 
-		test "should remove subject's initial abstracts on merge with #{cu} login" do
-pending
+		test "should require valid subject_id on create with #{cu} login" do
+			u = send(cu)
+			login_as u
+			assert_difference('Abstract.count',0) do
+				post :create, :subject_id => 0
+			end
+			assert_not_nil flash[:error]
+			assert_redirected_to subjects_path
 		end
 
-		test "should copy subject's initial entry_by's on merge with #{cu} login" do
-pending
+		test "should require valid subject_id on compare with #{cu} login" do
+			u = send(cu)
+			login_as u
+			get :compare, :subject_id => 0
+			assert_not_nil flash[:error]
+			assert_redirected_to subjects_path
+		end
+
+		test "should require valid subject_id on merge with #{cu} login" do
+			u = send(cu)
+			login_as u
+			assert_difference('Abstract.count',0) do
+				post :merge, :subject_id => 0
+			end
+			assert_not_nil flash[:error]
+			assert_redirected_to subjects_path
 		end
 
 	end

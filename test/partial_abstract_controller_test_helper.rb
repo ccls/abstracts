@@ -105,6 +105,53 @@ module PartialAbstractControllerTestHelper
 					assert_not_nil flash[:error]
 				end
 
+				test "should update and redirect to edit next section " <<
+						"with #{cu} login and commit = 'edit_next'" do
+					abstract = create_abstract
+					login_as send(cu)
+					put :update, :abstract_id => abstract.id, :abstract => {},
+						:commit => 'edit_next'
+					assert assigns(:abstract)
+					sections = Abstract.sections
+					ci = sections.find_index{|i| i[:controller] == @controller.class.name }
+					if( !ci.nil? && ci < ( sections.length - 1 ) )
+						assert_redirected_to send(sections[ci+1][:edit],abstract)
+					end
+				end
+
+				test "should update and redirect to edit previous section " <<
+						"with #{cu} login and commit = 'edit_previous'" do
+					abstract = create_abstract
+					login_as send(cu)
+					put :update, :abstract_id => abstract.id, :abstract => {},
+						:commit => 'edit_previous'
+					assert assigns(:abstract)
+					sections = Abstract.sections
+					ci = sections.find_index{|i| i[:controller] == @controller.class.name }
+					if( !ci.nil? && ci > 0 )
+						assert_redirected_to send(sections[ci-1][:edit],abstract)
+					end
+				end
+
+				test "should update and redirect to show section " <<
+						"with #{cu} login and commit = 'anythingelse'" do
+					abstract = create_abstract
+					login_as send(cu)
+					put :update, :abstract_id => abstract.id, :abstract => {},
+						:commit => 'anythingelse'
+					assert assigns(:abstract)
+					assert_redirected_to :action => 'show'
+				end
+
+				test "should update and redirect to show section " <<
+						"with #{cu} login and commit not set" do
+					abstract = create_abstract
+					login_as send(cu)
+					put :update, :abstract_id => abstract.id, :abstract => {}
+					assert assigns(:abstract)
+					assert_redirected_to :action => 'show'
+				end
+
 			end
 			
 			non_site_administrators.each do |cu|

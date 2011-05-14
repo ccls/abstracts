@@ -20,33 +20,30 @@ class AbstractsController < ApplicationController
 	before_filter :two_abstracts_required, 
 		:only => [:compare,:merge]
 
+	before_filter :compare_abstracts,
+		:only => [:compare,:merge]
 
 	def index
-#		@abstracts = Abstract.all(:include => [:subject => :identifier])
 		@abstracts = Abstract.search(params)
 	end
 
-	def new
-#		@abstract = Abstract.new(params[:abstract])
-		@abstract = @subject.abstracts.new(params[:abstract])
-	end
+#	def new
+#		@abstract = @subject.abstracts.new(params[:abstract])
+#	end
 
 	#	override's resourceful create
 	def create
-#		@abstract = Abstract.new(params[:abstract])
 		@abstract = @subject.abstracts.new(params[:abstract])
 		@abstract.save!
 		flash[:notice] = 'Success!'
 		redirect_to @abstract
 	rescue ActiveRecord::RecordNotSaved, ActiveRecord::RecordInvalid
-		flash.now[:error] = "There was a problem creating " <<
-			"the abstract"
-		render :action => "new"
+		flash.now[:error] = "There was a problem creating the abstract"
+#		render :action => "new"	#	there is no 'new'
+		redirect_to abstracts_path
 	end
 
 	def compare
-		@abstracts = @subject.abstracts
-		@diffs = @subject.abstract_diffs
 	end
 
 	def merge
@@ -55,18 +52,19 @@ class AbstractsController < ApplicationController
 		flash[:notice] = 'Success!'
 		redirect_to @abstract
 	rescue ActiveRecord::RecordNotSaved, ActiveRecord::RecordInvalid
-		flash.now[:error] = "There was a problem creating " <<
-			"the abstract"
-		@abstracts = @subject.abstracts
-		@diffs = @subject.abstract_diffs
+		flash.now[:error] = "There was a problem merging the abstract"
 		render :action => "compare"
 	end
 
 protected
 
+	def compare_abstracts
+		@abstracts = @subject.abstracts
+		@diffs = @subject.abstract_diffs
+	end
+
 	def two_abstracts_required
 		abstracts_count = @subject.abstracts_count
-#		if( abstracts_count > 2 || abstracts_count < 2 )
 		unless( abstracts_count == 2 )
 			access_denied("Must complete 2 abstracts before merging. " <<
 				":#{abstracts_count}:")

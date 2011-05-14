@@ -730,11 +730,26 @@ class AbstractTest < ActiveSupport::TestCase
 			:subject => @subject)
 		abstract = create_abstract(:current_user => @current_user,
 			:subject => @subject.reload)
-		assert_difference('Abstract.count',1) {
+#	yes, when creating the merged, the other 2 go away
+		assert_difference('Abstract.count',-1) {
 			abstract = create_abstract(:current_user => @current_user,
 				:subject => @subject.reload, :merging => true)
 			assert_equal abstract.merged_by, @current_user
 			assert_equal abstract.subject, @subject
+		}
+	end
+
+	test "should NOT create merged abstract if subject already has one" do
+		subject = create_case_subject_with_patid(1234)
+		a1 = create_abstract(:subject => subject)
+		a1.merged_by = Factory(:user)
+		a1.save
+		assert_not_nil subject.reload.merged_abstract
+		assert_not_nil a1.reload.merged_by
+		assert a1.merged?
+		assert_difference('Abstract.count',0) {
+			a2 = create_abstract( :subject => subject, :merging => true)
+			assert a2.errors.on(:subject_id)
 		}
 	end
 

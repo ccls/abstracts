@@ -8,8 +8,4 @@ class User < Ccls::User
 		alias_method "may_destroy_#{resource}?".to_sym, :may_administrate?
 	end
 
-	def to_s
-		displayname
-	end
-
 end
