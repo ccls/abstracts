@@ -5,11 +5,21 @@
 <td class='count'>
 <%= subject.abstracts_count -%>
 </td>
-<td class='create'>
-<% if subject.abstracts_count >= 2 %>
-<%= link_to "Compare &amp; Merge Abstracts", compare_subject_abstracts_path(subject) -%>
+<td class='manage'>
+<% if subject.abstracts_count > 2 %>
+<%= link_to "View Merged Abstract", abstract_path(subject.merged_abstract),
+	:class => 'button' -%>
+<% elsif subject.abstracts_count == 2 %>
+<%= link_to "Compare &amp; Merge Abstracts", compare_subject_abstracts_path(subject),
+	:class => 'button' -%>
 <% else %>
-<%= form_link_to 'Create New Abstract', subject_abstracts_path(subject) %>
+<% if subject.abstracts_count == 1 %>
+<%= link_to "View First Abstract", abstract_path(subject.abstracts.first),
+	:class => 'button' -%>
+<% end %>
+<% form_link_to 'Create New Abstract', subject_abstracts_path(subject) do %>
+<%= submit_link_to('Create New Abstract') %>
+<% end %>
 <% end %>
 </td>
 <% end %><%# content_tag_for %>

@@ -678,6 +678,7 @@ class AbstractTest < ActiveSupport::TestCase
 			abstract = create_abstract(:current_user => @current_user,
 				:subject => @subject)
 			assert_equal abstract.entry_1_by, @current_user
+			assert_equal abstract.entry_2_by, @current_user
 			assert_equal abstract.subject, @subject
 		}
 	end
@@ -694,6 +695,7 @@ class AbstractTest < ActiveSupport::TestCase
 		assert_difference('Abstract.count',1) {
 			abstract = create_abstract(:current_user => @current_user,
 				:subject => @subject.reload)
+			assert_equal abstract.entry_1_by, @current_user
 			assert_equal abstract.entry_2_by, @current_user
 			assert_equal abstract.subject, @subject
 		}

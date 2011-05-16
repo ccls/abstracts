@@ -271,6 +271,7 @@ class Abstract < ActiveRecord::Base
 	validate_on_create :subject_has_no_merged_abstract	#, :on => :create
 
 	before_create :set_user
+	after_create  :delete_unmerged
 	before_save   :convert_height_to_cm
 	before_save   :convert_weight_to_kg
 	before_save   :set_days_since_fields
@@ -287,7 +288,7 @@ class Abstract < ActiveRecord::Base
 	end
 
 	def db_fields
-		fields.collect{|f|f[:db]}
+		@db_fields ||= fields.collect{|f|f[:db]}
 	end
 
 	def comparable_attributes
@@ -309,6 +310,10 @@ class Abstract < ActiveRecord::Base
 	end
 
 	def self.sections
+		#	:label: Cytogenetics
+		#	:controller: CytogeneticsController
+		#	:edit:  :edit_abstract_cytogenetic_path
+		#	:show:  :abstract_cytogenetic_path
 		@@sections ||= YAML::load(ERB.new(
 			IO.read('config/abstract_sections.yml')).result)
 	end
@@ -366,16 +371,31 @@ protected
 	#	Set user if given
 	def set_user
 		if subject
+			#	because it is possible to create the first, then the second
+			#	and then delete the first, and create another, first and
+			#	second kinda lose their meaning until the merge, so set them
+			#	both as the same until the merge
 			case subject.abstracts_count
-				when 0 then self.entry_1_by_uid = current_user.try(:uid)||0
-				when 1 then self.entry_2_by_uid = current_user.try(:uid)||0
+				when 0 
+					self.entry_1_by_uid = current_user.try(:uid)||0
+					self.entry_2_by_uid = current_user.try(:uid)||0
+				when 1 
+					self.entry_1_by_uid = current_user.try(:uid)||0
+					self.entry_2_by_uid = current_user.try(:uid)||0
 				when 2
-					self.entry_1_by_uid = subject.abstracts.collect(&:entry_1_by_uid).compact.first
-					self.entry_2_by_uid = subject.abstracts.collect(&:entry_2_by_uid).compact.first
+					abs = subject.abstracts
+					#	compact just in case a nil crept in
+					self.entry_1_by_uid = [abs[0].entry_1_by_uid,abs[0].entry_2_by_uid].compact.first
+					self.entry_2_by_uid = [abs[1].entry_1_by_uid,abs[1].entry_2_by_uid].compact.first
 					self.merged_by_uid  = current_user.try(:uid)||0
-					#	use delete and not destroy to preserve the abstracts_count
-					subject.unmerged_abstracts.each{|a|a.delete}
 			end
+		end
+	end
+
+	def delete_unmerged
+		if subject and !merged_by_uid.blank?
+			#	use delete and not destroy to preserve the abstracts_count
+			subject.unmerged_abstracts.each{|a|a.delete}
 		end
 	end
 

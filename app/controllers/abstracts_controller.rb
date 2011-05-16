@@ -5,10 +5,6 @@ class AbstractsController < ApplicationController
 
 	before_filter :append_current_user_to_params, :only => [:create,:merge]
 
-#	abstracts shallow sub route of subjects?
-#	subject can't have more than one abstract and a NOT merged
-#	before_filter :subject_can_not_have_more_than_one_already, :only => [:new,:create]
-
 	resourceful
 
 	skip_before_filter :get_new
@@ -27,10 +23,6 @@ class AbstractsController < ApplicationController
 		@abstracts = Abstract.search(params)
 	end
 
-#	def new
-#		@abstract = @subject.abstracts.new(params[:abstract])
-#	end
-
 	#	override's resourceful create
 	def create
 		@abstract = @subject.abstracts.new(params[:abstract])
@@ -39,7 +31,6 @@ class AbstractsController < ApplicationController
 		redirect_to @abstract
 	rescue ActiveRecord::RecordNotSaved, ActiveRecord::RecordInvalid
 		flash.now[:error] = "There was a problem creating the abstract"
-#		render :action => "new"	#	there is no 'new'
 		redirect_to abstracts_path
 	end
 

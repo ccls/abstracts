@@ -281,3 +281,15 @@ p.submit_bar {
 table tbody tr.diff:nth-child(2n)   { background-color: #EBB; }
 table tbody tr.diff:nth-child(2n+1) { background-color: #DBB; }
 
+th.manage,
+td.manage,
+th.count,
+td.count {
+	text-align:center;
+}
+.form_link_to {
+	display:inline;
+}
+form.subject_search {
+	text-align:center;
+}
