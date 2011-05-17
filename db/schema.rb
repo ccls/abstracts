@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110503203004) do
+ActiveRecord::Schema.define(:version => 20110517182433) do
 
   create_table "abstracts", :force => true do |t|
     t.integer  "subject_id"
@@ -356,6 +356,7 @@ ActiveRecord::Schema.define(:version => 20110503203004) do
     t.string   "entry_1_by_uid"
     t.string   "entry_2_by_uid"
     t.string   "merged_by_uid"
+    t.date     "discharge_summary_found_on"
   end
 
   create_table "pages", :force => true do |t|
