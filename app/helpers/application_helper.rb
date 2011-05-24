@@ -87,9 +87,9 @@ module ApplicationHelper
 		if params[:order] && params[:order] == order
 			classes.push('sorted')
 			arrow = if dir == 'desc'
-				"<span class='arrow'>&darr;</span>"
+				"<span class='down arrow'>&darr;</span>"
 			else
-				"<span class='arrow'>&uarr;</span>"
+				"<span class='up arrow'>&uarr;</span>"
 			end
 		end
 		s = "<div class='#{classes.join(' ')}'>"
