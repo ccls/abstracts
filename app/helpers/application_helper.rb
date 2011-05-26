@@ -15,22 +15,6 @@ module ApplicationHelper
 		( block_called_from_erb?(block) ) ? concat(s) : s
 	end
 
-#	#	NO SINGLE QUOTES OR CARRIAGE RETURNS(\n)
-#	#	This output is passed through javascript
-#	def application_user_menu
-#		s = ''
-#		if logged_in? and current_user.may_edit?
-# 			s << "<ul id=\"PrivateNav\">"
-# 			s << "<li>"  << link_to( "Pages", pages_path ) << "</li>"
-# 			s << "<li>"  << link_to( "Photos", photos_path ) << "</li>"
-# 			s << "<li>"  << link_to( "Users", users_path ) << "</li>"
-# 			s << "<li>"  << link_to( "Documents", documents_path ) << "</li>"
-# 			s << "<li>"  << link_to( "Logout", logout_path ) << "</li>"
-# 			s << "</ul><!-- id=PrivateNav -->"
-#		end
-#		s
-#	end
-
 	def abstract_pages(abstract)
 		sections = Abstract.sections
 		current_index = sections.find_index{|i| i[:controller] =~ /^#{controller.class.name}$/i }
@@ -76,28 +60,6 @@ module ApplicationHelper
 			else '&nbsp;'
 		end
 	end
-
-#	#	&uarr; and &darr;
-#	def sort_link(column,text=nil)
-#		order = column.to_s.downcase.gsub(/\s+/,'_')
-#		dir = ( params[:dir] && params[:dir] == 'asc' ) ? 'desc' : 'asc'
-#		link_text = text||column
-#		classes = []	#[order]
-#		arrow = ''
-#		if params[:order] && params[:order] == order
-#			classes.push('sorted')
-#			arrow = if dir == 'desc'
-#				"<span class='down arrow'>&darr;</span>"
-#			else
-#				"<span class='up arrow'>&uarr;</span>"
-#			end
-#		end
-#		s = "<div class='#{classes.join(' ')}'>"
-#		s << link_to(link_text,params.merge(:order => order,:dir => dir))
-#		s << arrow unless arrow.blank?
-#		s << "</div>"
-#		s
-#	end
 
 end
 
