@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110526192646) do
+ActiveRecord::Schema.define(:version => 20110628163901) do
 
   create_table "abstracts", :force => true do |t|
     t.integer  "subject_id"
@@ -393,18 +393,6 @@ ActiveRecord::Schema.define(:version => 20110526192646) do
 
   add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
   add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
-
-  create_table "user_invitations", :force => true do |t|
-    t.integer  "sender_id"
-    t.string   "email"
-    t.string   "token"
-    t.datetime "accepted_at"
-    t.integer  "recipient_id"
-    t.text     "message"
-    t.datetime "sent_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "users", :force => true do |t|
     t.string   "uid"
