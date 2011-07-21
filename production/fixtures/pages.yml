@@ -1,0 +1,35 @@
+--- 
+pages_1: 
+  body_en: Home Page
+  body_es: 
+  hide_menu: false
+  id: 1
+  menu_en: Home
+  menu_es: 
+  parent_id: 
+  path: /
+  position: 1
+  title_en: Abstracts
+  title_es: 
+pages_2: 
+  body_en: |-
+    h1. Give RedCloth a try!
+    
+    A *simple* paragraph with
+    a line break, some _emphasis_ and a "link":http://redcloth.org
+    
+    * an item
+    * and another
+    
+    # one
+    # two
+  body_es: 
+  hide_menu: false
+  id: 2
+  menu_en: About
+  menu_es: 
+  parent_id: 
+  path: /about
+  position: 2
+  title_en: About
+  title_es: 
