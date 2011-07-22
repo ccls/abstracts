@@ -7,6 +7,16 @@ class ApplicationController < ActionController::Base
 	# See ActionController::RequestForgeryProtection for details
 	protect_from_forgery
 
+protected
+
+	def ssl_allowed?
+		#	Gary has setup the genepi server to force https with its own redirection.
+		#	Forcing ssl in the application results in about 20 redirections back
+		#	to itself, so this tells the app to ignore it.
+		request.host == "abstracts.brg.berkeley.edu"
+	end
+
+#	TODO stop using this if possible
 	def redirections
 		@redirections ||= HashWithIndifferentAccess.new({
 			:not_be_user => {
@@ -14,8 +24,6 @@ class ApplicationController < ActionController::Base
 			}
 		})
 	end
-
-protected
 
 	def valid_subject_id_required
 		if !params[:subject_id].blank? and Subject.exists?(params[:subject_id])
