@@ -28,9 +28,9 @@ ActionController::Routing::Routes.draw do |map|
 #			:compare => :get,
 #			:merge => :post
 #		}
-	map.resources :subjects, :only => :index do |subject|
-#		subject.resources :abstracts, :only => [:new,:create],
-		subject.resources :abstracts, :only => [:create],
+	map.resources :study_subjects, :only => :index do |study_subject|
+#		study_subject.resources :abstracts, :only => [:new,:create],
+		study_subject.resources :abstracts, :only => [:create],
 			:collection => { 
 				:compare => :get,
 				:merge => :post

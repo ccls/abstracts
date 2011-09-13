@@ -16,13 +16,13 @@ Sorry, no abstracts yet.
 
 <ul>
 <li><%= link_to "Subjects", 
-	subjects_path() %></li>
+	study_subjects_path() %></li>
 <li><%= link_to "Subjects awaiting first entry", 
-	subjects_path(:abstracts_count => 0) %></li>
+	study_subjects_path(:abstracts_count => 0) %></li>
 <li><%= link_to "Subjects awaiting second entry", 
-	subjects_path(:abstracts_count => 1) %></li>
+	study_subjects_path(:abstracts_count => 1) %></li>
 <li><%= link_to "Subjects awaiting abstract merging", 
-	subjects_path(:abstracts_count => 2) %></li>
+	study_subjects_path(:abstracts_count => 2) %></li>
 <li><%= link_to "Merged Abstracts", 
 	abstracts_path(:merged => true) %></li>
 </ul>

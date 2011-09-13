@@ -1,7 +1,7 @@
-<p>PatID: <%= @subject.patid %></p>
+<p>PatID: <%= @study_subject.patid %></p>
 
 <% form_for Abstract.new,
-	:url => merge_subject_abstracts_path(@subject) do |f| %>
+	:url => merge_study_subject_abstracts_path(@study_subject) do |f| %>
 
 <p>These are the fields in an abstract.  They are 'humanized' and sorted alphabetically
 which is probably not the favored order.  Please let Jake know what a more appropriate

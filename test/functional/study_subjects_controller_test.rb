@@ -1,11 +1,11 @@
 require 'test_helper'
 
-class SubjectsControllerTest < ActionController::TestCase
+class StudySubjectsControllerTest < ActionController::TestCase
 
 	ASSERT_ACCESS_OPTIONS = {
-		:model => 'Subject',
+		:model => 'StudySubject',
 		:actions => [:index],
-		:method_for_create => :create_subject
+		:method_for_create => :create_study_subject
 	}
 
 	assert_access_with_login({ 
@@ -26,16 +26,16 @@ class SubjectsControllerTest < ActionController::TestCase
 
 	site_administrators.each do |cu|
 
-		test "should get index of only case subjects with #{cu} login " do
-			Factory(:case_subject)
+		test "should get index of only case study_subjects with #{cu} login " do
+			Factory(:case_study_subject)
 			login_as send(cu)
 			get :index
 			assert_response :success
 			assert_template :index
-			assert assigns(:subjects)
-			assert assigns(:subjects).length > 0
-			assigns(:subjects).each do |subject|
-				assert_equal 'Case', subject.subject_type.to_s
+			assert assigns(:study_subjects)
+			assert assigns(:study_subjects).length > 0
+			assigns(:study_subjects).each do |study_subject|
+				assert_equal 'Case', study_subject.subject_type.to_s
 			end
 		end
 			

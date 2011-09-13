@@ -1,18 +1,18 @@
-<% if @subjects.length > 0 %>
+<% if @study_subjects.length > 0 %>
 <table id='subjects'><thead><tr>
 <th><%= sort_link('PatID') -%></th>
 <th class='count'><%= sort_link('Abstracts_Count') -%></th>
 <th class='manage'>Manage</th>
 </tr></thead><tbody>
-<%= render :partial => 'subject', :collection => @subjects %>
+<%= render :partial => 'study_subject', :collection => @study_subjects %>
 </tbody></table>
 <% else %>
-<p>There are no subjects.</p>
+<p>There are no study_subjects.</p>
 <% end %>
 
-<%= will_paginate @subjects %>
+<%= will_paginate @study_subjects %>
 
-<% form_tag( subjects_path, :method => :get, :class => 'subject_search') do %>
+<% form_tag( study_subjects_path, :method => :get, :class => 'subject_search') do %>
 	<%= hidden_field_tag :abstracts_count, params[:abstracts_count], :id => nil  %>
 	<%= label_tag :q, "Simple Subject Search" %>
 	<%= text_field_tag :q, params[:q], :id => nil  %>

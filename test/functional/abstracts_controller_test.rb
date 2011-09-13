@@ -41,7 +41,7 @@ class AbstractsControllerTest < ActionController::TestCase
 	assert_no_route(:get,:new)
 	assert_no_route(:post,:create)
 
-	setup :create_case_subject
+	setup :create_case_study_subject
 
 	site_administrators.each do |cu|
 
@@ -49,7 +49,7 @@ class AbstractsControllerTest < ActionController::TestCase
 				" without abstract hash" do
 			u = send(cu)
 			login_as u
-			post :create, :subject_id => @subject.id
+			post :create, :study_subject_id => @study_subject.id
 			assert assigns(:abstract)
 			assert_equal u.uid, assigns(:abstract).entry_1_by_uid
 		end
@@ -57,85 +57,85 @@ class AbstractsControllerTest < ActionController::TestCase
 		test "should set entry_1_by_uid on creation with #{cu} login" do
 			u = send(cu)
 			login_as u
-			post :create, :subject_id => @subject.id,
+			post :create, :study_subject_id => @study_subject.id,
 				:abstract => factory_attributes
 			assert assigns(:abstract)
 			assert_equal u.uid, assigns(:abstract).entry_1_by_uid
 		end
 
-		test "should set entry_1_by on creation if subject's first abstract " <<
+		test "should set entry_1_by on creation if study_subject's first abstract " <<
 				"with #{cu} login" do
 			u = send(cu)
 			login_as u
 			assert_difference('Abstract.count',1) {
-				post :create, :subject_id => @subject.id,
+				post :create, :study_subject_id => @study_subject.id,
 					:abstract => factory_attributes
 			}
 			assert assigns(:abstract)
 			assert_equal u, assigns(:abstract).entry_1_by
 		end
 
-		test "should set entry_2_by on creation if subject's second abstract " <<
+		test "should set entry_2_by on creation if study_subject's second abstract " <<
 				"with #{cu} login" do
 			u = send(cu)
 			login_as u
-			Factory(:abstract, :subject => @subject)
+			Factory(:abstract, :study_subject => @study_subject)
 			assert_difference('Abstract.count',1) {
-				post :create, :subject_id => @subject.id,
+				post :create, :study_subject_id => @study_subject.id,
 					:abstract => factory_attributes
 			}
 			assert assigns(:abstract)
 			assert_equal u, assigns(:abstract).entry_2_by
 		end
 
-		test "should NOT get compare if subject only has 0 abstract with #{cu} login" do
+		test "should NOT get compare if study_subject only has 0 abstract with #{cu} login" do
 			u = send(cu)
 			login_as u
-			get :compare, :subject_id => @subject.id
+			get :compare, :study_subject_id => @study_subject.id
 			assert_redirected_to root_path
 		end
 
-		test "should NOT get compare if subject only has 1 abstract with #{cu} login" do
+		test "should NOT get compare if study_subject only has 1 abstract with #{cu} login" do
 			u = send(cu)
 			login_as u
-			Factory(:abstract, :subject => @subject)
-			get :compare, :subject_id => @subject.id
+			Factory(:abstract, :study_subject => @study_subject)
+			get :compare, :study_subject_id => @study_subject.id
 			assert_redirected_to root_path
 		end
 
-		test "should get compare if subject has 2 abstracts with #{cu} login" do
+		test "should get compare if study_subject has 2 abstracts with #{cu} login" do
 			u = send(cu)
 			login_as u
-			Factory(:abstract, :subject => @subject)
-			Factory(:abstract, :subject => @subject.reload)
-			get :compare, :subject_id => @subject.id
+			Factory(:abstract, :study_subject => @study_subject)
+			Factory(:abstract, :study_subject => @study_subject.reload)
+			get :compare, :study_subject_id => @study_subject.id
 			assert assigns(:abstracts)
 		end
 
-		test "should NOT merge if subject only has 0 abstract with #{cu} login" do
+		test "should NOT merge if study_subject only has 0 abstract with #{cu} login" do
 			u = send(cu)
 			login_as u
-			post :merge, :subject_id => @subject.id
+			post :merge, :study_subject_id => @study_subject.id
 			assert_redirected_to root_path
 		end
 
-		test "should NOT merge if subject only has 1 abstract with #{cu} login" do
+		test "should NOT merge if study_subject only has 1 abstract with #{cu} login" do
 			u = send(cu)
 			login_as u
-			Factory(:abstract, :subject => @subject)
-			post :merge, :subject_id => @subject.id
+			Factory(:abstract, :study_subject => @study_subject)
+			post :merge, :study_subject_id => @study_subject.id
 			assert_redirected_to root_path
 		end
 
-		test "should set merged_by on merge of subject's abstracts with #{cu} login" do
+		test "should set merged_by on merge of study_subject's abstracts with #{cu} login" do
 			u1 = send(cu)
 			u2 = send(cu)
 			u3 = send(cu)
 			login_as u3
-			Factory(:abstract, :subject => @subject,:current_user => u1)
-			Factory(:abstract, :subject => @subject.reload,:current_user => u2)
+			Factory(:abstract, :study_subject => @study_subject,:current_user => u1)
+			Factory(:abstract, :study_subject => @study_subject.reload,:current_user => u2)
 			assert_difference('Abstract.count', -1) {
-				post :merge, :subject_id => @subject.id
+				post :merge, :study_subject_id => @study_subject.id
 			}
 			assert assigns(:abstracts)
 			assert assigns(:abstract)
@@ -151,7 +151,7 @@ class AbstractsControllerTest < ActionController::TestCase
 			u = send(cu)
 			login_as u
 			assert_difference('Abstract.count',0) do
-				post :create, :subject_id => @subject.id
+				post :create, :study_subject_id => @study_subject.id
 			end
 			assert_not_nil flash[:error]
 			assert_redirected_to abstracts_path
@@ -162,20 +162,20 @@ class AbstractsControllerTest < ActionController::TestCase
 			u = send(cu)
 			login_as u
 			assert_difference('Abstract.count',0) do
-				post :create, :subject_id => @subject.id
+				post :create, :study_subject_id => @study_subject.id
 			end
 			assert_not_nil flash[:error]
 			assert_redirected_to abstracts_path
 		end
 
 		test "should NOT create merged invalid abstract with #{cu} login" do
-			Factory(:abstract, :subject => @subject)
-			Factory(:abstract, :subject => @subject.reload)
+			Factory(:abstract, :study_subject => @study_subject)
+			Factory(:abstract, :study_subject => @study_subject.reload)
 			Abstract.any_instance.stubs(:valid?).returns(false)
 			u = send(cu)
 			login_as u
 			assert_difference('Abstract.count',0) do
-				post :merge, :subject_id => @subject.id
+				post :merge, :study_subject_id => @study_subject.id
 			end
 			assert_not_nil flash[:error]
 			assert_response :success
@@ -183,42 +183,42 @@ class AbstractsControllerTest < ActionController::TestCase
 		end
 
 		test "should NOT create merged abstract when save fails with #{cu} login" do
-			Factory(:abstract, :subject => @subject)
-			Factory(:abstract, :subject => @subject.reload)
+			Factory(:abstract, :study_subject => @study_subject)
+			Factory(:abstract, :study_subject => @study_subject.reload)
 			Abstract.any_instance.stubs(:create_or_update).returns(false)
 			u = send(cu)
 			login_as u
 			assert_difference('Abstract.count',0) do
-				post :merge, :subject_id => @subject.id
+				post :merge, :study_subject_id => @study_subject.id
 			end
 			assert_not_nil flash[:error]
 			assert_response :success
 			assert_template 'compare'
 		end
 
-		test "should require valid subject_id on create with #{cu} login" do
+		test "should require valid study_subject_id on create with #{cu} login" do
 			u = send(cu)
 			login_as u
 			assert_difference('Abstract.count',0) do
-				post :create, :subject_id => 0
+				post :create, :study_subject_id => 0
 			end
 			assert_not_nil flash[:error]
 			assert_redirected_to subjects_path
 		end
 
-		test "should require valid subject_id on compare with #{cu} login" do
+		test "should require valid study_subject_id on compare with #{cu} login" do
 			u = send(cu)
 			login_as u
-			get :compare, :subject_id => 0
+			get :compare, :study_subject_id => 0
 			assert_not_nil flash[:error]
 			assert_redirected_to subjects_path
 		end
 
-		test "should require valid subject_id on merge with #{cu} login" do
+		test "should require valid study_subject_id on merge with #{cu} login" do
 			u = send(cu)
 			login_as u
 			assert_difference('Abstract.count',0) do
-				post :merge, :subject_id => 0
+				post :merge, :study_subject_id => 0
 			end
 			assert_not_nil flash[:error]
 			assert_redirected_to subjects_path
@@ -233,7 +233,7 @@ class AbstractsControllerTest < ActionController::TestCase
 			u = send(cu)
 			login_as u
 			assert_difference('Abstract.count',0) do
-				post :create, :subject_id => @subject.id
+				post :create, :study_subject_id => @study_subject.id
 			end
 			assert_not_nil flash[:error]
 			assert_redirected_to root_path
@@ -242,9 +242,9 @@ class AbstractsControllerTest < ActionController::TestCase
 		test "should NOT compare abstracts with #{cu} login" do
 			u = send(cu)
 			login_as u
-			Factory(:abstract, :subject => @subject)
-			Factory(:abstract, :subject => @subject.reload)
-			get :compare, :subject_id => @subject.id
+			Factory(:abstract, :study_subject => @study_subject)
+			Factory(:abstract, :study_subject => @study_subject.reload)
+			get :compare, :study_subject_id => @study_subject.id
 			assert_not_nil flash[:error]
 			assert_redirected_to root_path
 		end
@@ -252,9 +252,9 @@ class AbstractsControllerTest < ActionController::TestCase
 		test "should NOT merge abstracts with #{cu} login" do
 			u = send(cu)
 			login_as u
-			Factory(:abstract, :subject => @subject)
-			Factory(:abstract, :subject => @subject.reload)
-			post :merge, :subject_id => @subject.id
+			Factory(:abstract, :study_subject => @study_subject)
+			Factory(:abstract, :study_subject => @study_subject.reload)
+			post :merge, :study_subject_id => @study_subject.id
 			assert_not_nil flash[:error]
 			assert_redirected_to root_path
 		end
@@ -263,29 +263,29 @@ class AbstractsControllerTest < ActionController::TestCase
 
 	test "should NOT create abstract without login" do
 		assert_difference('Abstract.count',0) do
-			post :create, :subject_id => @subject.id
+			post :create, :study_subject_id => @study_subject.id
 		end
 		assert_redirected_to_login
 	end
 
 	test "should NOT compare abstracts without login" do
-		Factory(:abstract, :subject => @subject)
-		Factory(:abstract, :subject => @subject.reload)
-		get :compare, :subject_id => @subject.id
+		Factory(:abstract, :study_subject => @study_subject)
+		Factory(:abstract, :study_subject => @study_subject.reload)
+		get :compare, :study_subject_id => @study_subject.id
 		assert_redirected_to_login
 	end
 
 	test "should NOT merge abstracts without login" do
-		Factory(:abstract, :subject => @subject)
-		Factory(:abstract, :subject => @subject.reload)
-		post :merge, :subject_id => @subject.id
+		Factory(:abstract, :study_subject => @study_subject)
+		Factory(:abstract, :study_subject => @study_subject.reload)
+		post :merge, :study_subject_id => @study_subject.id
 		assert_redirected_to_login
 	end
 
 protected
 
-	def create_case_subject
-		@subject = Factory(:case_subject)
+	def create_case_study_subject
+		@study_subject = Factory(:case_study_subject)
 	end
 
 end

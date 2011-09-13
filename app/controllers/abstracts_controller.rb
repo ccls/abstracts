@@ -10,7 +10,7 @@ class AbstractsController < ApplicationController
 	skip_before_filter :get_new
 	skip_before_filter :get_all
 
-	before_filter :valid_subject_id_required, 
+	before_filter :valid_study_subject_id_required, 
 		:only => [:new,:create,:compare,:merge]
 
 	before_filter :two_abstracts_required, 
@@ -25,7 +25,7 @@ class AbstractsController < ApplicationController
 
 	#	override's resourceful create
 	def create
-		@abstract = @subject.abstracts.new(params[:abstract])
+		@abstract = @study_subject.abstracts.new(params[:abstract])
 		@abstract.save!
 		flash[:notice] = 'Success!'
 		redirect_to @abstract
@@ -38,7 +38,7 @@ class AbstractsController < ApplicationController
 	end
 
 	def merge
-		@abstract = @subject.abstracts.new(params[:abstract].merge(:merging => true))
+		@abstract = @study_subject.abstracts.new(params[:abstract].merge(:merging => true))
 		@abstract.save!
 		flash[:notice] = 'Success!'
 		redirect_to @abstract
@@ -50,12 +50,12 @@ class AbstractsController < ApplicationController
 protected
 
 	def compare_abstracts
-		@abstracts = @subject.abstracts
-		@diffs = @subject.abstract_diffs
+		@abstracts = @study_subject.abstracts
+		@diffs = @study_subject.abstract_diffs
 	end
 
 	def two_abstracts_required
-		abstracts_count = @subject.abstracts_count
+		abstracts_count = @study_subject.abstracts_count
 		unless( abstracts_count == 2 )
 			access_denied("Must complete 2 abstracts before merging. " <<
 				":#{abstracts_count}:")

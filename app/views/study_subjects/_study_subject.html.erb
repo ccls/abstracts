@@ -1,0 +1,25 @@
+<% content_tag_for( :tr, study_subject, :class => 'row' ) do %>
+<td class='patid'>
+<%= study_subject.patid -%>
+</td>
+<td class='count'>
+<%= study_subject.abstracts_count -%>
+</td>
+<td class='manage'>
+<% if study_subject.abstracts_count > 2 %>
+<%= link_to "View Merged Abstract", abstract_path(study_subject.merged_abstract),
+	:class => 'button' -%>
+<% elsif study_subject.abstracts_count == 2 %>
+<%= link_to "Compare &amp; Merge Abstracts", compare_study_subject_abstracts_path(study_subject),
+	:class => 'button' -%>
+<% else %>
+<% if study_subject.abstracts_count == 1 %>
+<%= link_to "View First Abstract", abstract_path(study_subject.abstracts.first),
+	:class => 'button' -%>
+<% end %>
+<% form_link_to 'Create New Abstract', study_subject_abstracts_path(study_subject) do %>
+<%= submit_link_to('Create New Abstract') %>
+<% end %>
+<% end %>
+</td>
+<% end %><%# content_tag_for %>

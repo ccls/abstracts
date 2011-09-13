@@ -28,11 +28,11 @@ protected
 		})
 	end
 
-	def valid_subject_id_required
-		if !params[:subject_id].blank? and Subject.exists?(params[:subject_id])
-			@subject = Subject.find(params[:subject_id])
+	def valid_study_subject_id_required
+		if !params[:study_subject_id].blank? and StudySubject.exists?(params[:study_subject_id])
+			@study_subject = StudySubject.find(params[:study_subject_id])
 		else
-			access_denied("Valid subject id required!", 
+			access_denied("Valid study_subject id required!", 
 				subjects_path)
 		end
 	end
