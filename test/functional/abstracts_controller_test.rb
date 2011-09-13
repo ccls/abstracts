@@ -203,7 +203,7 @@ class AbstractsControllerTest < ActionController::TestCase
 				post :create, :study_subject_id => 0
 			end
 			assert_not_nil flash[:error]
-			assert_redirected_to subjects_path
+			assert_redirected_to study_subjects_path
 		end
 
 		test "should require valid study_subject_id on compare with #{cu} login" do
@@ -211,7 +211,7 @@ class AbstractsControllerTest < ActionController::TestCase
 			login_as u
 			get :compare, :study_subject_id => 0
 			assert_not_nil flash[:error]
-			assert_redirected_to subjects_path
+			assert_redirected_to study_subjects_path
 		end
 
 		test "should require valid study_subject_id on merge with #{cu} login" do
@@ -221,7 +221,7 @@ class AbstractsControllerTest < ActionController::TestCase
 				post :merge, :study_subject_id => 0
 			end
 			assert_not_nil flash[:error]
-			assert_redirected_to subjects_path
+			assert_redirected_to study_subjects_path
 		end
 
 	end
