@@ -33,7 +33,7 @@ protected
 			@study_subject = StudySubject.find(params[:study_subject_id])
 		else
 			access_denied("Valid study_subject id required!", 
-				subjects_path)
+				study_subjects_path)
 		end
 	end
 
