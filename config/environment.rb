@@ -37,12 +37,16 @@ Rails::Initializer.run do |config|
 	#	due to some enhancements, the db gems MUST come first
 	#	for use in the jruby environment.
 	config.gem 'ccls-ccls_engine'
-	config.gem 'jakewendt-simply_authorized'
-	config.gem 'jakewendt-simply_pages'
-	config.gem 'jakewendt-simply_helpful'
+
+	#	Without this, rake doesn't properly include that app/ paths?
+#	config.gem 'ccls-common_lib'
+
+	config.gem 'jakewendt-simply_authorized'		#	TODO remove me
+	config.gem 'jakewendt-simply_pages'		#	TODO remove me
+	config.gem 'jakewendt-simply_helpful'		#	TODO remove me
 
 	#	require it, but don't load it
-	config.gem 'jakewendt-rdoc_rails', :lib => false
+	config.gem 'jakewendt-rdoc_rails', :lib => false		#	TODO remove me
 
 	#		http://chronic.rubyforge.org/
 	config.gem "chronic"	#, :version => '= 0.5.0'
