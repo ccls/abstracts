@@ -24,14 +24,11 @@ UC Berkeley, School of Public Health, California Childhood Leukemia Study
 * ruby-hmac
 * ssl_requirement
 * ryanb-acts-as-list
-* gravatar
 * RedCloth
-* paperclip
 * {ccls-ccls_engine}[http://github.com/ccls/ucb_ccls_engine]
 * {jakewendt-simply_helpful}[http://github.com/jakewendt/simply_helpful]
 * {ccls-calnet_authenticated}[http://github.com/ccls/calnet_authenticated]
 * {jakewendt-simply_authorized}[http://github.com/jakewendt/simply_authorized]
-* {jakewendt-simply_pages}[http://github.com/jakewendt/simply_pages]
 * {jakewendt-rails_extension}[http://github.com/jakewendt/rails_extension]
 * {jakewendt-use_db}[http://github.com/jakewendt/use_db]
 * {jakewendt-ruby_extension}[http://github.com/jakewendt/ruby_extension] - modifications, updates and     patches for ruby.
@@ -62,8 +59,6 @@ so must be created elsewhere and imported?
 
 
 == Credit / Special Thanks
-
-User icons from {Gravatar}[http://gravatar.com]
 
 {Demo on css rounded corners}[http://css-radius.heroku.com]
 

@@ -5,12 +5,6 @@ RAILS_GEM_VERSION = '2.3.14' unless defined? RAILS_GEM_VERSION
 
 #ENV['RAILS_ENV'] ||= 'production'
 
-#	In production, using script/console does not properly
-#	set a GEM_PATH, so gems aren't loaded correctly.
-#if ENV['RAILS_ENV'] == 'production'
-#ENV['GEM_PATH'] = File.expand_path(File.join(File.dirname(__FILE__),'..','gems'))
-#end
-
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
@@ -42,17 +36,17 @@ Rails::Initializer.run do |config|
 #	config.gem 'ccls-common_lib'
 
 	config.gem 'jakewendt-simply_authorized'		#	TODO remove me
-	config.gem 'jakewendt-simply_pages'		#	TODO remove me
 	config.gem 'jakewendt-simply_helpful'		#	TODO remove me
 
 	#	require it, but don't load it
-	config.gem 'jakewendt-rdoc_rails', :lib => false		#	TODO remove me
+#	config.gem 'jakewendt-rdoc_rails', :lib => false		#	TODO remove me
 
 	#		http://chronic.rubyforge.org/
 	config.gem "chronic"	#, :version => '= 0.5.0'
 	config.gem 'will_paginate'
 	config.gem 'fastercsv'
 	config.gem 'hpricot'
+	config.gem 'jrails'
 
 	# config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
