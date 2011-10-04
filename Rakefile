@@ -1,7 +1,7 @@
 require(File.join(File.dirname(__FILE__), 'config', 'boot'))
 
 #	Newer versions are incompatible with rdoc_rails gem/plugin
-gem 'rdoc', '~> 2'
+#gem 'rdoc', '~> 2'
 
 #	Use the updated rdoc gem rather than version
 #	included with ruby.
