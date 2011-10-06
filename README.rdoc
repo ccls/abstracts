@@ -38,8 +38,6 @@ UC Berkeley, School of Public Health, California Childhood Leukemia Study
 
 == Installation 
 
- rake app:setup	#	ONCE!
- rake app:update
 
 == Production Installation
 
