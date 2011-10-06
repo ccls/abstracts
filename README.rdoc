@@ -30,8 +30,8 @@ UC Berkeley, School of Public Health, California Childhood Leukemia Study
 * {ccls-calnet_authenticated}[http://github.com/ccls/calnet_authenticated]
 * {jakewendt-simply_authorized}[http://github.com/jakewendt/simply_authorized]
 * {jakewendt-rails_extension}[http://github.com/jakewendt/rails_extension]
-* {jakewendt-use_db}[http://github.com/jakewendt/use_db]
-* {jakewendt-ruby_extension}[http://github.com/jakewendt/ruby_extension] - modifications, updates and     patches for ruby.
+* {ccls-use_db}[http://github.com/ccls/use_db]
+* {jakewendt-ruby_extension}[http://github.com/jakewendt/ruby_extension] - modifications, updates and patches for ruby.
 
 == Required and included plugins
 
