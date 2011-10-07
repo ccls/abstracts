@@ -32,8 +32,8 @@ Rails::Initializer.run do |config|
 	#	for use in the jruby environment.
 	config.gem 'ccls-ccls_engine'
 
-	config.gem 'jakewendt-simply_authorized'		#	TODO remove me
-	config.gem 'jakewendt-simply_helpful'		#	TODO remove me
+	config.gem 'ccls-simply_authorized'
+	config.gem 'ccls-simply_helpful'
 
 	#		http://chronic.rubyforge.org/
 	config.gem "chronic"	#, :version => '= 0.5.0'
