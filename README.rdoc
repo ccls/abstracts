@@ -26,12 +26,12 @@ UC Berkeley, School of Public Health, California Childhood Leukemia Study
 * ryanb-acts-as-list
 * RedCloth
 * {ccls-ccls_engine}[http://github.com/ccls/ucb_ccls_engine]
-* {jakewendt-simply_helpful}[http://github.com/jakewendt/simply_helpful]
+* {ccls-simply_helpful}[http://github.com/ccls/simply_helpful]
 * {ccls-calnet_authenticated}[http://github.com/ccls/calnet_authenticated]
-* {jakewendt-simply_authorized}[http://github.com/jakewendt/simply_authorized]
-* {jakewendt-rails_extension}[http://github.com/jakewendt/rails_extension]
+* {ccls-simply_authorized}[http://github.com/ccls/simply_authorized]
+* {ccls-rails_extension}[http://github.com/ccls/rails_extension]
 * {ccls-use_db}[http://github.com/ccls/use_db]
-* {jakewendt-ruby_extension}[http://github.com/jakewendt/ruby_extension] - modifications, updates and patches for ruby.
+* {ccls-ruby_extension}[http://github.com/ccls/ruby_extension] - modifications, updates and patches for ruby.
 
 == Required and included plugins
 
