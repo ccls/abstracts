@@ -23,7 +23,7 @@
 </div><!-- class='institution' -->
 <div class='hospital_number field_wrapper'>
 <span class='label'>* Hospital Record #</span>
-<span class='value'><%= @abstract.try(:study_subject).try(:identifier).try(:hospital_no) || '&nbsp;' %></span>
+<span class='value'><%= @abstract.try(:study_subject).try(:patient).try(:hospital_no) || '&nbsp;' %></span>
 </div><!-- class='hospital_number' -->
 <div class='dob field_wrapper'>
 <span class='label'>* Patient Birth Date</span>

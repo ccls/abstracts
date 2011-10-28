@@ -33,6 +33,18 @@ module PartialAbstractControllerTestHelper
 					assert_response :success
 					assert_template 'show'
 				end
+
+				test "should show abstract with pii, patient and identifier and #{cu} login" do
+					patient = Factory(:patient)
+					pii = Factory(:pii,:study_subject => patient.study_subject)
+					identifier = Factory(:identifier,:study_subject => patient.study_subject)
+					abstract = create_abstract(:study_subject => patient.study_subject)
+					login_as send(cu)
+					get :show, :abstract_id => abstract.id
+					assert assigns(:abstract)
+					assert_response :success
+					assert_template 'show'
+				end
 			
 				test "should NOT show with invalid abstract_id " <<
 						"and #{cu} login" do
@@ -42,6 +54,18 @@ module PartialAbstractControllerTestHelper
 					assert_redirected_to abstracts_path
 				end
 			
+				test "should edit abstract with pii, patient and identifier and #{cu} login" do
+					patient = Factory(:patient)
+					pii = Factory(:pii,:study_subject => patient.study_subject)
+					identifier = Factory(:identifier,:study_subject => patient.study_subject)
+					abstract = create_abstract(:study_subject => patient.study_subject)
+					login_as send(cu)
+					get :edit, :abstract_id => abstract.id
+					assert assigns(:abstract)
+					assert_response :success
+					assert_template 'edit'
+				end
+
 				test "should edit with #{cu} login" do
 					abstract = create_abstract
 					login_as send(cu)
