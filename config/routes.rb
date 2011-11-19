@@ -18,6 +18,8 @@ ActionController::Routing::Routes.draw do |map|
 	map.resource :session, :only => [ :destroy ]
 
 
+#	most of these are pointless in this app
+#	I should probably remove them from the gem's generator
 #	from ccls_engine
 #	map.connect 'stylesheets/:action.:format', :controller => 'stylesheets'
 #	map.connect 'javascripts/:action.:format', :controller => 'javascripts'
