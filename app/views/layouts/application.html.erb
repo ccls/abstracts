@@ -6,8 +6,8 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <link rel="shortcut icon" href="<%=root_url%><%=image_path('cal.ico')%>" />
 <title><%= @page_title || "Abstracts" -%></title>
-<%= javascript_include_tag :ccls,'simply_helpful' %>
-<%= stylesheet_link_tag    :ccls,'simply_helpful','base/jquery.ui.all.css','authorized' %>
+<%= javascript_include_tag :ccls,'common_lib' %>
+<%= stylesheet_link_tag    :ccls,'common_lib','base/jquery.ui.all.css','authorized' %>
 <%= yield :head %>
 </head>
 <body>
