@@ -37,7 +37,7 @@ Rails::Initializer.run do |config|
 #	config.gem 'ccls-simply_helpful'
 
 	#		http://chronic.rubyforge.org/
-	config.gem "chronic"	#, :version => '= 0.5.0'
+#	config.gem "chronic"	#, :version => '= 0.5.0'
 	config.gem 'will_paginate'
 	config.gem 'fastercsv'
 	config.gem 'hpricot'

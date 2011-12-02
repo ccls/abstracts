@@ -101,7 +101,7 @@ module PartialAbstractControllerTestHelper
 
 				test "should NOT update with #{cu} " <<
 						"login when update fails" do
-					abstract = create_abstract(:updated_at => Chronic.parse('yesterday'))
+					abstract = create_abstract(:updated_at => ( Time.now - 1.day ) )
 					Abstract.any_instance.stubs(:create_or_update).returns(false)
 					login_as send(cu)
 					deny_changes("Abstract.find(#{abstract.id}).updated_at") {
@@ -116,7 +116,7 @@ module PartialAbstractControllerTestHelper
 
 				test "should NOT update with #{cu} " <<
 						"login and invalid abstract" do
-					abstract = create_abstract(:updated_at => Chronic.parse('yesterday'))
+					abstract = create_abstract(:updated_at => ( Time.now - 1.day ) )
 					Abstract.any_instance.stubs(:valid?).returns(false)
 					login_as send(cu)
 					deny_changes("Abstract.find(#{abstract.id}).updated_at") {
