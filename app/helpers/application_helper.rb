@@ -40,18 +40,32 @@ module ApplicationHelper
 		s << "</p>"
 	end
 
-	def pos_neg_select(object_name, method, 
-			options={}, html_options={})
-		select(object_name, method,
-			[['Positive',1],['Negative',2]],
-			{:include_blank => true}.merge(options), html_options)
-	end
+#	def pos_neg_select(object_name, method, 
+#			options={}, html_options={})
+#		select(object_name, method,
+#			[['Positive',1],['Negative',2]],
+#			{:include_blank => true}.merge(options), html_options)
+#	end
 
+#<div class='tdt_positive_or_negative pos_neg_spans field_wrapper'>
+#<span class='label'>Pos/Neg</span>
+#<span class='value'>&nbsp;</span>
+#</div><!-- class='tdt_positive_or_negative pos_neg_spans' -->
 	def _wrapped_pos_neg_spans(object_name,method,options={})
 		object = instance_variable_get("@#{object_name}")
 		_wrapped_spans(object_name,method,options.update(
 			:value => pos_neg(object.send(method)) ) )
 	end
+
+#<div class='tdt_positive_or_negative pos_neg_spans field_wrapper'>
+#<label for="abstract_tdt_positive_or_negative">Pos/Neg</label><span class='label'>tdt_positive_or_negative</span>
+#<span class='value'>&nbsp;</span>
+#</div><!-- class='tdt_positive_or_negative pos_neg_spans' -->
+#	def pos_neg_spans(object_name,method,options={})
+#		object = instance_variable_get("@#{object_name}")
+#		_wrapped_spans(object_name,method,options.update(
+#			:value => pos_neg(object.send(method)) ) )
+#	end
 
 	def pos_neg(value)
 		case value
@@ -86,6 +100,13 @@ ActionView::Helpers::FormBuilder.class_eval do
 				:value => 'edit_next') : '' )
 		s << "</p>\n"
 		s << "</div><!-- class='submit_bar' -->"
+	end
+
+#	def pos_neg_select(object_name, method, 
+	def pos_neg_select(method, options={}, html_options={})
+		@template.select(object_name, method,
+			[['Positive',1],['Negative',2]],
+			{:include_blank => true}.merge(options), html_options)
 	end
 
 end
