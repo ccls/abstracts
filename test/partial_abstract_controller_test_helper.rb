@@ -34,10 +34,11 @@ module PartialAbstractControllerTestHelper
 					assert_template 'show'
 				end
 
-				test "should show abstract with pii, patient and identifier and #{cu} login" do
+#				test "should show abstract with pii, patient and identifier and #{cu} login" do
+				test "should show abstract with patient and #{cu} login" do
 					patient = Factory(:patient)
-					pii = Factory(:pii,:study_subject => patient.study_subject)
-					identifier = Factory(:identifier,:study_subject => patient.study_subject)
+#					pii = Factory(:pii,:study_subject => patient.study_subject)
+#					identifier = Factory(:identifier,:study_subject => patient.study_subject)
 					abstract = create_abstract(:study_subject => patient.study_subject)
 					login_as send(cu)
 					get :show, :abstract_id => abstract.id
@@ -54,10 +55,11 @@ module PartialAbstractControllerTestHelper
 					assert_redirected_to abstracts_path
 				end
 			
-				test "should edit abstract with pii, patient and identifier and #{cu} login" do
+#				test "should edit abstract with pii, patient and identifier and #{cu} login" do
+				test "should edit abstract with patient and #{cu} login" do
 					patient = Factory(:patient)
-					pii = Factory(:pii,:study_subject => patient.study_subject)
-					identifier = Factory(:identifier,:study_subject => patient.study_subject)
+#					pii = Factory(:pii,:study_subject => patient.study_subject)
+#					identifier = Factory(:identifier,:study_subject => patient.study_subject)
 					abstract = create_abstract(:study_subject => patient.study_subject)
 					login_as send(cu)
 					get :edit, :abstract_id => abstract.id
