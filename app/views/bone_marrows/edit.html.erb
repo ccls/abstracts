@@ -4,7 +4,7 @@
 
 <fieldset><legend><%= @page_title %></legend>
 
-<%= f.wrapped_y_n_dk_select(:marrow_biopsy_report_found,
+<%= f.wrapped_yndk_select(:marrow_biopsy_report_found,
 	:label_text => "Biopsy Found?") %>
 <%= f.wrapped_date_text_field(:marrow_biopsy_on,
 	:label_text => "Date") %>
@@ -12,7 +12,7 @@
 	:class => 'autosize',
 	:label_text => "Diag/Intrep") %>
 
-<%= f.wrapped_y_n_dk_select(:marrow_aspirate_report_found,
+<%= f.wrapped_yndk_select(:marrow_aspirate_report_found,
 	:label_text => "Aspiration Found?") %>
 <%= f.wrapped_date_text_field(:marrow_aspirate_taken_on,
 	:label_text => "Date") %>
